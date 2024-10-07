@@ -23,8 +23,11 @@ Main (landing, home, and navbar)
 <h2><b>Source of initial dataset for main product category</b></h2>
 
 News (https://jogja.antaranews.com/rss/pariwisata-budaya.xml RSS Feed)
+<br>
 Tourist Attraction (https://www.kaggle.com/datasets/mrafif/yogyakarta-tourism-place)
+<br>
 Restraunts (https://www.kaggle.com/datasets/yudhaislamisulistya/places-to-eat-in-the-jogja-region)
+<br>
 Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
 User roles and their descriptions (as there may be more than one type of user accessing the application)
