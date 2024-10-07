@@ -5,6 +5,8 @@ Samuella Putri Nadia Pauntu 2306170446
 <br>
 Kezia Salsalina Agtyra Sebayang 2306172086
 <br>
+Hafizh Surya Mustafa Zen 2306256343
+<br>
 Heinrich Edric Damadika Suselo 2306256356
 
 
@@ -13,11 +15,17 @@ The application will be a type of travel guide for the city of Yogyakarta. We in
 
 <h2><b>iii. List of modules to be implemented</b></h2>
 Login, Authentication, and Security
+<br>
 Customer review
+<br>
 Restaurants
-Photo Gallery 
+<br>
+Photo Gallery
+<br> 
 Tourist Attraction
+<br>
 News 
+<br>
 Main (landing, home, and navbar)
 
 <h2><b>Source of initial dataset for main product category</b></h2>
@@ -32,6 +40,7 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
 User roles and their descriptions (as there may be more than one type of user accessing the application)
 User - Users are the targeted audience and can view news, photos, restraunt information, and tourist attraction information. They can also add a customer review or review.
+<br>
 Admin - Admin users can edit, delete, and add new data. They can view all data and will have the ability to modify customer reviews.
 
 
