@@ -1,8 +1,11 @@
 <h2><b>i. Names of group members</b></h2>
 Alano Davin Mandagi Awuy 2306172363
-samuella putri nadia pauntu 2306170446
+<br>
+Samuella Putri Nadia Pauntu 2306170446
+<br>
 Kezia Salsalina Agtyra Sebayang 2306172086
-
+<br>
+Heinrich Edric Damadika Suselo 2306256356
 
 
 <h2><b>ii. Application description (story of the proposed application and its usefulness)</b></h2>
@@ -29,4 +32,4 @@ User - Users are the targeted audience and can view news, photos, restraunt info
 Admin - Admin users can edit, delete, and add new data. They can view all data and will have the ability to modify customer reviews.
 
 
-Application deployment link
+<h2><b>Application deployment link</b></h2>
