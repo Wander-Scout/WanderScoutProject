@@ -41,7 +41,7 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 User roles and their descriptions (as there may be more than one type of user accessing the application)
 User - Users are the targeted audience and can view news, photos, restraunt information, and tourist attraction information. They can also add a customer review or review.
 <br>
-Admin - Admin users can edit, delete, and add new data. They can view all data and will have the ability to modify customer reviews.
+Admin - Admin users can edit, delete, and add new data. They can view all data and will have the ability to modify customer reviews. Admins will be able to view the internals of JSON and XML.
 
 
 <h2><b>Application deployment link</b></h2>
