@@ -11,7 +11,7 @@ Heinrich Edric Damadika Suselo 2306256356
 
 
 <h2><b>ii. Application description (story of the proposed application and its usefulness)</b></h2>
-The application will be a type of travel guide for the city of Yogyakarta. We intend to include local news, photos, tourist attractions, and restraunt information in the hopes that locals and visitors alike would be inspired or at the very least informed about their city. The intended goal is to motivate and encourage tourism domesically and from foreign visitors to potentially aid in the growing tourism industry. This app will be useful as a hub for information on activities and items in Yogyakarta. It acts a AIO (All in One) website to help visitors and tourist alike navigate the city of Yogyakarta.
+The application will be a type of travel guide for the city of Yogyakarta. We intend to include local news, photos, tourist attractions, and restraunt information in the hopes that locals and visitors alike would be inspired or at the very least informed about their city. The intended goal is to motivate and encourage tourism domesically and from foreign visitors to potentially aid in the growing tourism industry. This app will be useful as a hub for information on activities and items in Yogyakarta. It acts a AIO (All in One) website to help visitors and tourist alike navigate the city of Yogyakarta. This website intends to promote otherwise unknown locations in the hopes that the boost in awareness will facilitate the flourishment of the tourist industry in Yogyakarta.
 
 <h2><b>iii. List of modules to be implemented</b></h2>
 Login, Authentication, and Security
