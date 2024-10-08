@@ -14,13 +14,16 @@ Heinrich Edric Damadika Suselo 2306256356
 The application will be a type of travel guide for the city of Yogyakarta. We intend to include local news, photos, tourist attractions, and restraunt information in the hopes that locals and visitors alike would be inspired or at the very least informed about their city. The intended goal is to motivate and encourage tourism domesically and from foreign visitors to potentially aid in the growing tourism industry. This app will be useful as a hub for information on activities and items in Yogyakarta. It acts a AIO (All in One) website to help visitors and tourist alike navigate the city of Yogyakarta. This website intends to promote otherwise unknown locations in the hopes that the boost in awareness will facilitate the flourishment of the tourist industry in Yogyakarta.
 
 <h2><b>iii. List of modules to be implemented</b></h2>
-Login, Authentication, and Security
+Login, Authentication, and Security:
+This will be used by users to login to the website. This make sures that only a certain user can access what they ordered etc.
 <br>
-Customer review
+Customer review:
+This will be used by the customer to give reviews on certain products. Customers can upload pictures and give their ratings.
 <br>
-Restaurants
+Restaurants:
+This will be used to display the restaurants around Jogja.
 <br>
-Photo Gallery
+Photo Gallery:
 <br> 
 Tourist Attraction
 <br>
@@ -39,14 +42,40 @@ Restraunts (https://www.kaggle.com/datasets/yudhaislamisulistya/places-to-eat-in
 Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
 <h2><b>v. User roles and their descriptions (as there may be more than one type of user accessing the application)</b></h2>
-<h3>1. <b>User</b></h3>
-<p>
-    <b>Description:</b> Users are the primary audience of the platform. They can:
-    <ul>
-        <li>View news, photos, restaurant information, and tourist attraction information.</li>
-        <li>Add reviews or customer feedback for restaurants and tourist attractions.</li>
-    </ul>
-</p>
+<h3>User Features</h3>
+
+<p>The platform offers a variety of features for users, enabling them to engage with available content and services. Below is a breakdown of what users can do:</p>
+
+<h4>1. View News</h4>
+<p>Stay up-to-date with the latest information, including local events, travel news, and special offers. This feature ensures users are always informed about relevant updates.</p>
+
+<h4>2. Browse Photos</h4>
+<p>Explore visually rich galleries showcasing restaurants, tourist attractions, and other points of interest. These images help users make more informed decisions before visiting a place.</p>
+
+<h4>3. Access Restaurant Information</h4>
+<p>Users can dive into comprehensive restaurant details, including:</p>
+<ul>
+    <li>Restaurant names</li>
+    <li>Menu offerings</li>
+    <li>Customer preferences</li>
+    <li>Average prices</li>
+    <li>Ratings</li>
+    <li>Ambiance descriptions</li>
+</ul>
+
+<h4>4. Discover Tourist Attractions</h4>
+<p>Access a list of popular tourist spots and destinations. Each entry includes descriptions, locations, and other pertinent details to help users plan their trips efficiently.</p>
+
+<h4>5. Submit Reviews</h4>
+<p>Users can share their experiences by writing and submitting reviews for both restaurants and tourist attractions. These reviews allow users to:</p>
+<ul>
+    <li>Rate their experiences</li>
+    <li>Provide feedback on food quality, service, and atmosphere</li>
+</ul>
+
+<h4>6. Read Reviews</h4>
+<p>Users can also view reviews left by others. This feature helps them evaluate restaurants and attractions based on real-life experiences and varied perspectives.</p>
+
 <h3>2. <b>Admin</b></h3>
 <p>
     <b>Description:</b> Admin users have elevated permissions. They can:
