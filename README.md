@@ -18,25 +18,25 @@ The application’s core goal is to encourage tourism and increase awareness abo
 In short, the application serves as a digital hub for tourists and locals to discover, engage, and enjoy the beauty of Yogyakarta through a single, easy-to-use interface.
 
 <h2><b>iii. List of modules to be implemented</b></h2>
-Login, Authentication, and Security:
+<h4>Login, Authentication, and Security:</h4>
 This will be used by users to login to the website. This make sures that only a certain user can access what they ordered etc.
 <br>
-Customer review:
+<h4>Customer review:</h4>
 This will be used by the customer to give reviews on certain products. Customers can upload pictures and give their ratings.
 <br>
-Restaurants:
+<h4>Restaurants:</h4>
 This section of the app will display a comprehensive list of restaurants in Yogyakarta.
 <br>
-Photo Gallery:
+<h4>Photo Gallery:</h4>
 A gallery showcasing high-quality images from restaurants, tourist attractions, and other notable places in Yogyakarta. Users can explore visually appealing content to help them make informed decisions.
 <br> 
-Tourist Attraction:
+<h4>Tourist Attraction:</h4>
 This module will provide a curated list of tourist spots, including both well-known and hidden locations.
 <br>
-News:
+<h4>News:</h4>
 Integrated with an RSS feed from local news sources, this module will keep users updated on events, cultural happenings, and travel advisories in Yogyakarta. This ensures both locals and tourists have the latest information.
 <br>
-Main (landing, home, and navbar):
+<h4>Main (landing, home, and navbar):</h4>
 The central hub for users to navigate the app. This includes a landing page with featured content, popular tourist attractions, trending restaurants, and the latest news updates. The navigation bar will give users easy access to different sections of the app.
 
 <h2><b>iv. Source of initial dataset for main product category</b></h2>
