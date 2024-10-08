@@ -1,4 +1,4 @@
-<h2><b>i. Names of group members</b></h2>
+<h2><b>I. Names of group members</b></h2>
 Alano Davin Mandagi Awuy 2306172363
 <br>
 Samuella Putri Nadia Pauntu 2306170446
@@ -10,14 +10,14 @@ Hafizh Surya Mustafa Zen 2306256343
 Heinrich Edric Damadika Suselo 2306256356
 
 
-<h2><b>ii. Application description (story of the proposed application and its usefulness)</b></h2>
+<h2><b>II. Application description (story of the proposed application and its usefulness)</b></h2>
 The application will be a comprehensive travel guide for the city of Yogyakarta, catering to both locals and tourists. By providing curated local news, photo galleries, detailed information about tourist attractions, and a guide to restaurants, this application aims to become the go-to source for anyone exploring or living in Yogyakarta. The platform will help users discover hidden gems in the city, ensuring that both residents and visitors can explore beyond the well-known locations.
 
 The application’s core goal is to encourage tourism and increase awareness about Yogyakarta's lesser-known spots. It will serve as an All-in-One (AIO) platform, offering information that makes it easier for tourists to plan their trips and for locals to stay updated. By highlighting unique tourist spots, sharing the latest local news, and offering restaurant recommendations, the app will boost awareness and traffic to Yogyakarta’s businesses and attractions, supporting the city’s growing tourism industry.
 
 In short, the application serves as a digital hub for tourists and locals to discover, engage, and enjoy the beauty of Yogyakarta through a single, easy-to-use interface.
 
-<h2><b>iii. List of modules to be implemented</b></h2>
+<h2><b>III. List of modules to be implemented</b></h2>
 <h4>Login, Authentication, and Security:</h4>
 This will be used by users to login to the website. This make sures that only a certain user can access what they ordered etc.
 <br>
@@ -39,7 +39,7 @@ Integrated with an RSS feed from local news sources, this module will keep users
 <h4>Main (landing, home, and navbar):</h4>
 The central hub for users to navigate the app. This includes a landing page with featured content, popular tourist attractions, trending restaurants, and the latest news updates. The navigation bar will give users easy access to different sections of the app.
 
-<h2><b>iv. Source of initial dataset for main product category</b></h2>
+<h2><b>IV. Source of initial dataset for main product category</b></h2>
 
 News (https://jogja.antaranews.com/rss/pariwisata-budaya.xml RSS Feed)
 <br>
@@ -49,7 +49,7 @@ Restraunts (https://www.kaggle.com/datasets/yudhaislamisulistya/places-to-eat-in
 <br>
 Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
-<h2><b>v. User roles and their descriptions (as there may be more than one type of user accessing the application)</b></h2>
+<h2><b>V. User roles and their descriptions (as there may be more than one type of user accessing the application)</b></h2>
 <h3>User Features</h3>
 
 <p>The platform offers a variety of features for users, enabling them to engage with available content and services. Below is a breakdown of what users can do:</p>
@@ -108,4 +108,4 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
 
 
-<h2><b>vi. Application deployment link</b></h2>
+<h2><b>VI. Application deployment link</b></h2>
