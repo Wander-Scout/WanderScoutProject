@@ -38,9 +38,15 @@ Restraunts (https://www.kaggle.com/datasets/yudhaislamisulistya/places-to-eat-in
 <br>
 Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
-User roles and their descriptions (as there may be more than one type of user accessing the application)
-<br>
-User - Users are the targeted audience and can view news, photos, restaurant information, and tourist attraction information. They can also add a customer review or review.
+<h2><b>User roles and their descriptions (as there may be more than one type of user accessing the application)</b></h2>
+<h3>1. <b>User</b></h3>
+<p>
+    <b>Description:</b> Users are the primary audience of the platform. They can:
+    <ul>
+        <li>View news, photos, restaurant information, and tourist attraction information.</li>
+        <li>Add reviews or customer feedback for restaurants and tourist attractions.</li>
+    </ul>
+</p>
 <br>
 Admin - Admin users can edit, delete, and add new data. They can view all data and will have the ability to modify customer reviews. Admins will be able to view the internals of JSON and XML.
 
