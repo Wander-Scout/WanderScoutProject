@@ -28,7 +28,7 @@ News
 <br>
 Main (landing, home, and navbar)
 
-<h2><b>Source of initial dataset for main product category</b></h2>
+<h2><b>iv. Source of initial dataset for main product category</b></h2>
 
 News (https://jogja.antaranews.com/rss/pariwisata-budaya.xml RSS Feed)
 <br>
@@ -38,7 +38,7 @@ Restraunts (https://www.kaggle.com/datasets/yudhaislamisulistya/places-to-eat-in
 <br>
 Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
-<h2><b>User roles and their descriptions (as there may be more than one type of user accessing the application)</b></h2>
+<h2><b>v. User roles and their descriptions (as there may be more than one type of user accessing the application)</b></h2>
 <h3>1. <b>User</b></h3>
 <p>
     <b>Description:</b> Users are the primary audience of the platform. They can:
@@ -58,4 +58,4 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 </p>
 
 
-<h2><b>Application deployment link</b></h2>
+<h2><b>vi. Application deployment link</b></h2>
