@@ -47,8 +47,15 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
         <li>Add reviews or customer feedback for restaurants and tourist attractions.</li>
     </ul>
 </p>
-<br>
-Admin - Admin users can edit, delete, and add new data. They can view all data and will have the ability to modify customer reviews. Admins will be able to view the internals of JSON and XML.
+<h3>2. <b>Admin</b></h3>
+<p>
+    <b>Description:</b> Admin users have elevated permissions. They can:
+    <ul>
+        <li>Edit, delete, and add new data (news, restaurants, tourist attractions, photos).</li>
+        <li>View all user data and modify customer reviews.</li>
+        <li>Access and modify internal data formats such as JSON and XML.</li>
+    </ul>
+</p>
 
 
 <h2><b>Application deployment link</b></h2>
