@@ -79,6 +79,7 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 <ul>
     <li>Rate their experiences</li>
     <li>Provide feedback on food quality, service, and atmosphere</li>
+    <li>Provide a description of their experience</li>
 </ul>
 
 <h4>6. Read Reviews</h4>
