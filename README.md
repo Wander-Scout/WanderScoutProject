@@ -11,7 +11,11 @@ Heinrich Edric Damadika Suselo 2306256356
 
 
 <h2><b>ii. Application description (story of the proposed application and its usefulness)</b></h2>
-The application will be a type of travel guide for the city of Yogyakarta. We intend to include local news, photos, tourist attractions, and restraunt information in the hopes that locals and visitors alike would be inspired or at the very least informed about their city. The intended goal is to motivate and encourage tourism domesically and from foreign visitors to potentially aid in the growing tourism industry. This app will be useful as a hub for information on activities and items in Yogyakarta. It acts a AIO (All in One) website to help visitors and tourist alike navigate the city of Yogyakarta. This website intends to promote otherwise unknown locations in the hopes that the boost in awareness will facilitate the flourishment of the tourist industry in Yogyakarta.
+The application will be a comprehensive travel guide for the city of Yogyakarta, catering to both locals and tourists. By providing curated local news, photo galleries, detailed information about tourist attractions, and a guide to restaurants, this application aims to become the go-to source for anyone exploring or living in Yogyakarta. The platform will help users discover hidden gems in the city, ensuring that both residents and visitors can explore beyond the well-known locations.
+
+The application’s core goal is to encourage tourism and increase awareness about Yogyakarta's lesser-known spots. It will serve as an All-in-One (AIO) platform, offering information that makes it easier for tourists to plan their trips and for locals to stay updated. By highlighting unique tourist spots, sharing the latest local news, and offering restaurant recommendations, the app will boost awareness and traffic to Yogyakarta’s businesses and attractions, supporting the city’s growing tourism industry.
+
+In short, the application serves as a digital hub for tourists and locals to discover, engage, and enjoy the beauty of Yogyakarta through a single, easy-to-use interface.
 
 <h2><b>iii. List of modules to be implemented</b></h2>
 Login, Authentication, and Security:
@@ -21,15 +25,19 @@ Customer review:
 This will be used by the customer to give reviews on certain products. Customers can upload pictures and give their ratings.
 <br>
 Restaurants:
-This will be used to display the restaurants around Jogja.
+This section of the app will display a comprehensive list of restaurants in Yogyakarta.
 <br>
 Photo Gallery:
+A gallery showcasing high-quality images from restaurants, tourist attractions, and other notable places in Yogyakarta. Users can explore visually appealing content to help them make informed decisions.
 <br> 
-Tourist Attraction
+Tourist Attraction:
+This module will provide a curated list of tourist spots, including both well-known and hidden locations.
 <br>
-News 
+News:
+Integrated with an RSS feed from local news sources, this module will keep users updated on events, cultural happenings, and travel advisories in Yogyakarta. This ensures both locals and tourists have the latest information.
 <br>
-Main (landing, home, and navbar)
+Main (landing, home, and navbar):
+The central hub for users to navigate the app. This includes a landing page with featured content, popular tourist attractions, trending restaurants, and the latest news updates. The navigation bar will give users easy access to different sections of the app.
 
 <h2><b>iv. Source of initial dataset for main product category</b></h2>
 
