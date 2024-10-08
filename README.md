@@ -76,15 +76,27 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 <h4>6. Read Reviews</h4>
 <p>Users can also view reviews left by others. This feature helps them evaluate restaurants and attractions based on real-life experiences and varied perspectives.</p>
 
-<h3>2. <b>Admin</b></h3>
-<p>
-    <b>Description:</b> Admin users have elevated permissions. They can:
-    <ul>
-        <li>Edit, delete, and add new data (news, restaurants, tourist attractions, photos).</li>
-        <li>View all user data and modify customer reviews.</li>
-        <li>Access and modify internal data formats such as JSON and XML.</li>
-    </ul>
-</p>
+<h3>Admin Features</h3>
+
+<p>Admins have elevated permissions on the platform, enabling them to manage content and monitor user interactions. Below is a breakdown of what Admins can do:</p>
+
+<h4>1. Edit, Delete, and Add New Data</h4>
+<p>Admins have full control over the platform's data. They can add new content such as news articles, restaurant details, tourist attractions, and photos, keeping the platform updated. In addition, they can edit or remove outdated or incorrect data, ensuring the information on the platform is always accurate and relevant.</p>
+
+<h4>2. View All User Data</h4>
+<p>Admins have access to the complete set of user data, including profiles, activity logs, and reviews. This allows them to monitor user interactions, track engagement, and ensure compliance with the platform’s guidelines. Admins are responsible for maintaining the integrity and safety of user data.</p>
+
+<h4>3. Modify Customer Reviews</h4>
+<p>Admins can edit, approve, or remove customer reviews. This ensures that the reviews posted are respectful, relevant, and free from inappropriate content. By managing customer reviews, admins help maintain a constructive and informative environment for all users.</p>
+
+<h4>4. Access and Modify Internal Data Formats</h4>
+<p>Admins can work directly with the platform’s underlying data structures, such as JSON and XML files. This ability allows them to modify how data is stored, transferred, and displayed, ensuring smooth functionality and integration with backend systems. This technical capability is essential for optimizing performance and implementing new features.</p>
+
+<h4>5. System Maintenance and Security</h4>
+<p>Admins are also responsible for ensuring the platform runs efficiently by performing system updates, troubleshooting issues, and managing security protocols. This ensures the platform is stable, secure, and functioning correctly for all users.</p>
+
+<p>Admins are vital to the platform's operations, ensuring that content is up-to-date and accurate, user data is managed responsibly, and the platform remains secure and efficient.</p>
+
 
 
 <h2><b>vi. Application deployment link</b></h2>
