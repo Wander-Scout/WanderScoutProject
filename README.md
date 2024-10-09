@@ -34,7 +34,7 @@ A gallery showcasing high-quality images from restaurants, tourist attractions, 
 This module will provide a curated list of tourist spots, including both well-known and hidden locations.
 <br>
 <h4>News:</h4>
-Integrated with an RSS feed from local news sources, this module will keep users updated on events, cultural happenings, and travel advisories in Yogyakarta. This ensures both locals and tourists have the latest information.
+Integrated with an RSS feed from local news sources, this module will keep users updated on events, cultural events, and travel advisories in Yogyakarta. This ensures both locals and tourists have the latest information.
 <br>
 <h4>Main (landing, home, and navbar):</h4>
 The central hub for users to navigate the app. This includes a landing page with featured content, popular tourist attractions, trending restaurants, and the latest news updates. The navigation bar will give users easy access to different sections of the app.
