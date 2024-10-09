@@ -25,7 +25,7 @@ This will be used by users to login to the website. This make sures that only a 
 This will be used by the customer to give reviews on certain products. Customers can upload pictures and give their ratings.
 <br>
 <h4>Restaurants:</h4>
-This section of the app will display a comprehensive list of restaurants in Yogyakarta.
+This section of the app will display a comprehensive list of restaurants in Yogyakarta. Customers could view the most popular restarurants as well as the underrated ones.
 <br>
 <h4>Photo Gallery:</h4>
 A gallery showcasing high-quality images from restaurants, tourist attractions, and other notable places in Yogyakarta. Users can explore visually appealing content to help them make informed decisions.
