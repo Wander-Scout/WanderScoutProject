@@ -1,0 +1,9 @@
+<a href="/">Landing Page</a>
+<body>
+    {% for article in articles %}
+        <div class="card">
+            <h3>{{ article.title }}</h3>
+            <a href="{{ article.link }}" target="_blank">Read More</a>
+        </div>
+    {% endfor %}
+</body>
