@@ -6,6 +6,14 @@ from datetime import datetime
 from django.views.decorators.http import require_http_methods
 
 
+def strip_namespaces(root):
+    for elem in root.iter():
+        # Remove namespace prefixes from tags
+        elem.tag = elem.tag.split('}')[-1]
+        # Remove namespace prefixes from attributes, if any
+        elem.attrib = {key.split('}')[-1]: val for key, val in elem.attrib.items()}
+
+
 @require_http_methods(["GET"])
 def fetch_rss_items(request):
     url = "https://jogja.antaranews.com/rss/photo.xml"
@@ -14,7 +22,8 @@ def fetch_rss_items(request):
     if response.status_code == 200:
         # Parse the XML content
         root = ET.fromstring(response.content)
-        namespaces = {'media': 'https://search.yahoo.com/mrss/'}
+        strip_namespaces(root)  # Remove namespaces
+
         channel = root.find('channel')
         items = channel.findall('item')
 
@@ -25,8 +34,8 @@ def fetch_rss_items(request):
             # Convert pubDate string to datetime object
             pub_date = datetime.strptime(pub_date_str, '%a, %d %b %Y %H:%M:%S %z')
 
-            # Extract image URL from rss feed
-            media_content = item.find('media:content', namespaces)
+            # Extract image URL from the 'content' tag
+            media_content = item.find('content')
             if media_content is not None:
                 image_url = media_content.get('url')
             else:
