@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 
 
 @login_required(login_url='login/')
@@ -12,6 +13,7 @@ def landing_page(request):
 def home_page(request):
     return render(request, 'home_page.html')
 
+@require_http_methods(["GET","POST"])
 def login_user(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -24,6 +26,8 @@ def login_user(request):
             messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm(request)
+        
+        
     context = {'form': form}
     return render(request, 'login.html', context)
 
