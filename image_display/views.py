@@ -14,7 +14,7 @@ def fetch_rss_items(request):
     if response.status_code == 200:
         # Parse the XML content
         root = ET.fromstring(response.content)
-        namespaces = {'media': 'http://search.yahoo.com/mrss/'}
+        namespaces = {'media': 'https://search.yahoo.com/mrss/'}
         channel = root.find('channel')
         items = channel.findall('item')
 
