@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 
 
+
 @login_required(login_url='login/')
 def landing_page(request):
     return render(request, 'landing_page.html') 
@@ -13,7 +14,8 @@ def landing_page(request):
 def home_page(request):
     return render(request, 'home_page.html')
 
-@require_http_methods(["GET","POST"])
+
+@require_http_methods(["GET", "POST"])
 def login_user(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
