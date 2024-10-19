@@ -22,3 +22,20 @@ def submit_login_form(request):
     else:
         messages.error(request, "Invalid username or password.")
     return render(request, 'login.html', {'form': form})
+
+@require_http_methods(["GET"])
+def display_register_form(request):
+    form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})
+
+@require_http_methods(["POST"])
+def submit_register_form(request):
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+        form.save()  # This saves the new user to the database
+        username = form.cleaned_data.get('username')
+        messages.success(request, f'Account created for {username}! You can now log in.')
+        return redirect('authentication:login')  # Redirect to the login page after successful registration
+    else:
+        messages.error(request, "Invalid registration details.")
+    return render(request, 'register.html', {'form': form})

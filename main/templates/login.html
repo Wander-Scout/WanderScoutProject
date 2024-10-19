@@ -1,3 +1,4 @@
+
 {% block meta %}
 <title>Login</title>
 {% endblock meta %}
@@ -11,14 +12,22 @@
     {% csrf_token %}
     <table>
       <tr><th>Log in as Admin/User</th></tr>
-
       {{ form.as_table }}
       <tr>
         <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
+        <td>
+            <input class="btn login_btn" type="submit" value="Login" />
+            <!-- Register Button -->
+            <a href="{% url 'authentication:display_register_form' %}" class="btn register_btn">Register</a>
+        </td>
       </tr>
     </table>
   </form>
+
+  <!-- Additional prompt for users without an account -->
+  <div class="register-prompt">
+      <p>Don't have an account yet? <a href="{% url 'authentication:display_register_form' %}">REGISTER HERE</a></p>
+  </div>
 
   <!-- Display any messages (such as login success/failure) -->
   {% if messages %}

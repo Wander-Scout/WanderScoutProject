@@ -1,0 +1,33 @@
+{% block meta %}
+<title>Register</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="register">
+  <h1>Register</h1>
+
+  <!-- Form submits to the URL for handling the POST request for registration -->
+  <form method="POST" action="{% url 'authentication:submit_register_form' %}">
+    {% csrf_token %}
+    <table>
+      <tr><th>Register New User</th></tr>
+
+      {{ form.as_table }}
+      <tr>
+        <td></td>
+        <td><input class="btn register_btn" type="submit" value="Register" /></td>
+      </tr>
+    </table>
+  </form>
+
+  <!-- Display any messages (such as registration success/failure) -->
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+</div>
+{% endblock content %}
