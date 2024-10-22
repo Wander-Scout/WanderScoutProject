@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
+from django.contrib import messages
 from .models import CustomerReview
 from .forms import CustomerReviewForm
 
@@ -14,6 +12,7 @@ def landing_page(request):
 def home_page(request):
     return render(request, 'home_page.html')
 
+@require_http_methods(["POST"])
 def customer_reviews(request):
     if request.method == 'POST':
         form = CustomerReviewForm(request.POST)
@@ -28,8 +27,3 @@ def customer_reviews(request):
 
     reviews = CustomerReview.objects.all().order_by('-created_at')
     return render(request, 'customer_reviews.html', {'form': form, 'reviews': reviews})
-
-
-
-
-    
