@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Tourist Attractions
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto py-10">
+    <h1 class="text-3xl font-bold text-center mb-10">Tourist Attractions</h1>
+
+    <!-- Check if the attractions context is passed and is not empty -->
+    {% if attractions %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for attraction in attractions %}
+            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                <!-- Google Maps iframe -->
+                <iframe class="w-full" src="{{ attraction.gmapsurl }}" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <!-- Attraction details -->
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">{{ attraction.name }}</div>
+                    <p class="text-gray-700 text-base mb-2">
+                        Rating: {{ attraction.rating }} / 5
+                    </p>
+                    <p class="text-gray-700 text-base mb-2">
+                        Type: {{ attraction.attraction_type }}  <!-- Updated field name -->
+                    </p>
+                    <p class="text-gray-700 text-base mb-2">
+                        HTM (Weekday): {{ attraction.htmweekday }} IDR
+                    </p>
+                    <p class="text-gray-700 text-base mb-2">
+                        HTM (Weekend): {{ attraction.htmweekend }} IDR
+                    </p>
+                    <p class="text-gray-700 text-base">
+                        {{ attraction.description|truncatewords:20 }}
+                    </p>
+                </div>
+
+                <!-- Link to Google Maps -->
+                <div class="px-6 pt-4 pb-2">
+                    <a href="{{ attraction.gmapsurl }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        View on Google Maps
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- If no attractions are passed -->
+        <p class="text-center text-gray-700">No tourist attractions found.</p>
+    {% endif %}
+</div>
+{% endblock %}
