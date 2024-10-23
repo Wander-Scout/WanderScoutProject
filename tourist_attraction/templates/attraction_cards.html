@@ -1,53 +1,144 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}
-    Tourist Attractions
-{% endblock %}
+{% load static %}
 
 {% block content %}
-<div class="container mx-auto py-10">
-    <h1 class="text-3xl font-bold text-center mb-10">Tourist Attractions</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- Check if the attractions context is passed and is not empty -->
-    {% if attractions %}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for attraction in attractions %}
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-                <!-- Google Maps iframe -->
-                <iframe class="w-full" src="{{ attraction.gmapsurl }}" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<head>
+    <title>{% block title %}Tourist Attraction{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block extra_head %}{% endblock %}
+</head>
 
-                <!-- Attraction details -->
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">{{ attraction.name }}</div>
-                    <p class="text-gray-700 text-base mb-2">
-                        Rating: {{ attraction.rating }} / 5
-                    </p>
-                    <p class="text-gray-700 text-base mb-2">
-                        Type: {{ attraction.attraction_type }}  <!-- Updated field name -->
-                    </p>
-                    <p class="text-gray-700 text-base mb-2">
-                        HTM (Weekday): {{ attraction.htmweekday }} IDR
-                    </p>
-                    <p class="text-gray-700 text-base mb-2">
-                        HTM (Weekend): {{ attraction.htmweekend }} IDR
-                    </p>
-                    <p class="text-gray-700 text-base">
-                        {{ attraction.description|truncatewords:20 }}
-                    </p>
-                </div>
+<body>
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center mb-10">Tourist Attractions</h1>
+        <div id="attraction-list" class="space-y-6"></div>
+        <p id="no-attractions" class="text-center text-gray-700 hidden">No tourist attractions found.</p>
+    </div>
 
-                <!-- Link to Google Maps -->
-                <div class="px-6 pt-4 pb-2">
-                    <a href="{{ attraction.gmapsurl }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                        View on Google Maps
-                    </a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <!-- If no attractions are passed -->
-        <p class="text-center text-gray-700">No tourist attractions found.</p>
-    {% endif %}
-</div>
+    {% block scripts %}
+    <script>
+        // Fetch JSON data from the static directory
+        fetch("{% static 'data/TempatWisata.json' %}")
+            .then(response => response.json())
+            .then(data => {
+                const attractionList = document.getElementById('attraction-list');
+                const noAttractionsMessage = document.getElementById('no-attractions');
+
+                // Check if data exists
+                if (data.length === 0) {
+                    noAttractionsMessage.classList.remove('hidden');
+                } else {
+                    data.forEach(attraction => {
+                        // Create the structure for each attraction card using flexbox
+                        const card = document.createElement('div');
+                        card.classList.add('flex', 'flex-col', 'md:flex-row', 'bg-white', 'rounded-lg', 'shadow-lg', 'overflow-hidden');
+
+                        // Create hyperlink for image and title
+                        const link = document.createElement('a');
+                        link.href = attraction.gmaps_url || '#';
+                        link.classList.add('block', 'hover:opacity-75', 'transition-opacity', 'duration-300');
+
+                        // Image inside the link
+                        // Create the image element
+                        const img = document.createElement('img');
+
+                        // Dynamically set the image source based on the 'type' value, removing spaces
+                        const typeValue = attraction.type ? attraction.type.replace(/\s+/g, '') : 'placeholder';
+                        img.src = `/static/images/${typeValue}.png`;  // Assuming images are named after type values
+
+                        img.alt = attraction.nama || 'Attraction Image';
+                        img.classList.add('object-cover', 'w-full', 'h-64', 'md:h-full');
+
+                        // Append the image to the link element
+                        link.appendChild(img);
+
+
+                        // Image div to contain the image/link
+                        const imageDiv = document.createElement('div');
+                        imageDiv.classList.add('md:w-1/3', 'w-full');
+                        imageDiv.appendChild(link); // Link wraps the image
+
+                        // Attraction details
+                        const detailsDiv = document.createElement('div');
+                        detailsDiv.classList.add('md:w-2/3', 'w-full', 'p-6', 'flex', 'flex-col', 'justify-between');
+
+                        // Name with hyperlink
+                        const nameLink = document.createElement('a');
+                        nameLink.href = attraction.gmaps_url || '#';
+                        nameLink.classList.add('text-2xl', 'font-bold', 'text-gray-800', 'mb-4');
+                        nameLink.textContent = attraction.nama || 'Unknown';
+
+                        const rating = document.createElement('p');
+                        rating.classList.add('text-gray-600', 'mb-2');
+                        rating.textContent = `Rating: ${attraction.vote_average || 0} / 5`;
+
+                        const voteCount = document.createElement('p');
+                        voteCount.classList.add('text-gray-600', 'mb-2');
+                        voteCount.textContent = `Votes: ${attraction.vote_count || 0}`;
+
+                        const type = document.createElement('p');
+                        type.classList.add('text-gray-600', 'mb-2');
+                        type.textContent = `Type: ${attraction.type || 'Unknown'}`;
+
+                        const htmWeekday = document.createElement('p');
+                        htmWeekday.classList.add('text-gray-600', 'mb-2');
+                        htmWeekday.textContent = `HTM (Weekday): ${attraction.htm_weekday || 0} IDR`;
+
+                        const htmWeekend = document.createElement('p');
+                        htmWeekend.classList.add('text-gray-600', 'mb-2');
+                        htmWeekend.textContent = `HTM (Weekend): ${attraction.htm_weekend || 0} IDR`;
+
+                        const description = document.createElement('p');
+                        description.classList.add('text-gray-600', 'mb-4');
+                        description.textContent = `${attraction.description || 'No description available'}`;
+                        if (description.textContent.length > 100) {
+                            description.textContent = `${description.textContent.substring(0, 100)}...`;
+                        }
+
+                        // Link to Google Maps at the bottom
+                        const linkDiv = document.createElement('div');
+                        linkDiv.classList.add('pt-4');
+
+                        const googleMapsLink = document.createElement('a');
+                        googleMapsLink.href = attraction.gmaps_url || '#';
+                        googleMapsLink.classList.add('inline-block', 'bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded-full', 'text-center');
+                        googleMapsLink.textContent = 'View on Google Maps';
+
+                        // Append elements to the card
+                        detailsDiv.appendChild(nameLink); // Name link
+                        detailsDiv.appendChild(rating);
+                        detailsDiv.appendChild(voteCount);
+                        detailsDiv.appendChild(type);
+                        detailsDiv.appendChild(htmWeekday);
+                        detailsDiv.appendChild(htmWeekend);
+                        detailsDiv.appendChild(description);
+                        linkDiv.appendChild(googleMapsLink);
+                        detailsDiv.appendChild(linkDiv);
+
+                        // Append image and details to the card
+                        card.appendChild(imageDiv);
+                        card.appendChild(detailsDiv);
+
+                        // Append card to the attraction list
+                        attractionList.appendChild(card);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching attractions:', error);
+                const noAttractionsMessage = document.getElementById('no-attractions');
+                noAttractionsMessage.textContent = 'Failed to load tourist attractions.';
+                noAttractionsMessage.classList.remove('hidden');
+            });
+    </script>
+    {% endblock %}
+</body>
+
+</html>
 {% endblock %}
