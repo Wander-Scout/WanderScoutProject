@@ -51,7 +51,7 @@ def import_json_to_db(request):
 
     return JsonResponse({'message': 'Tourist attractions imported successfully.'})
 
-
+@require_http_methods(['GET'])
 def display_attractions_as_cards(request):
     return render(request, 'attraction_cards.html')
 
