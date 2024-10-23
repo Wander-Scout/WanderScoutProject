@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get-all-restaurants/', views.get_all_restaurants, name='get_all_restaurants'),
+    path('restaurants/', views.display_restaurants_as_cards, name='restaurants'),
+    path('import-restaurants/', views.import_json_to_db, name='import_restaurants'),
 ]

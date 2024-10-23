@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Restaurants{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center mb-10">Restaurants</h1>
+        <div id="restaurant-list" class="space-y-6"></div>
+        <p id="no-restaurants" class="text-center text-gray-700 hidden">No restaurants found.</p>
+    </div>
+
+    {% block scripts %}
+    <script>
+        // Fetch JSON data from the static directory
+        fetch("{% static 'data/Kuliner.json' %}")
+            .then(response => response.json())
+            .then(data => {
+                const restaurantList = document.getElementById('restaurant-list');
+                const noRestaurantsMessage = document.getElementById('no-restaurants');
+
+                // Check if data exists
+                if (data.length === 0) {
+                    noRestaurantsMessage.classList.remove('hidden');
+                } else {
+                    data.forEach(restaurant => {
+                        // Create the structure for each restaurant card using flexbox
+                        const card = document.createElement('div');
+                        card.classList.add('flex', 'flex-col', 'md:flex-row', 'bg-white', 'rounded-lg', 'shadow-lg', 'overflow-hidden');
+
+                        // Image section
+                        const imgDiv = document.createElement('div');
+                        imgDiv.classList.add('w-full', 'md:w-1/3'); // Image takes 1/3 of the card
+
+                        const img = document.createElement('img');
+                        const preference = restaurant['Preferensi Makanan'].replace(/\s+/g, ''); 
+                        img.src = `{% static 'images/preferences/' %}${preference}.jpg`; // Dynamic image path based on preference
+                        img.alt = restaurant['Preferensi Makanan'] || 'Unknown Preference';
+                        img.classList.add('w-full', 'h-full', 'object-cover'); // Tailwind classes for responsive images
+
+                        // Append image to image div
+                        imgDiv.appendChild(img);
+
+                        // Restaurant details
+                        const detailsDiv = document.createElement('div');
+                        detailsDiv.classList.add('p-6', 'flex', 'flex-col', 'justify-between', 'w-full', 'md:w-2/3'); // Details take 2/3 of the card
+
+                        // Name
+                        const name = document.createElement('h5');
+                        name.classList.add('text-2xl', 'font-bold', 'text-gray-800', 'mb-4');
+                        name.textContent = restaurant['Nama Restoran'] || 'Unknown';
+
+                        // Food preference
+                        const preferenceText = document.createElement('p');
+                        preferenceText.classList.add('text-gray-600', 'mb-2');
+                        preferenceText.textContent = `Preference: ${restaurant['Preferensi Makanan'] || 'Unknown'}`;
+
+                        // Average price
+                        const price = document.createElement('p');
+                        price.classList.add('text-gray-600', 'mb-2');
+                        price.textContent = `Average Price: Rp${restaurant['Harga Rata-Rata Makanan di Toko (Rp)'] || 0}`;
+
+                        // Rating
+                        const rating = document.createElement('p');
+                        rating.classList.add('text-gray-600', 'mb-2');
+                        rating.textContent = `Rating: ${restaurant['Rating Toko'] || 0} / 5`;
+
+                        // Atmosphere
+                        const atmosphere = document.createElement('p');
+                        atmosphere.classList.add('text-gray-600', 'mb-2');
+                        atmosphere.textContent = `Atmosphere: ${restaurant['Jenis Suasana'] || 'Unknown'}`;
+
+                        // Food variety
+                        const variety = document.createElement('p');
+                        variety.classList.add('text-gray-600', 'mb-4');
+                        variety.textContent = `Variety: ${restaurant['Variasi Makanan'] || 'Unknown'}`;
+
+                        // Append elements to the details div
+                        detailsDiv.appendChild(name);
+                        detailsDiv.appendChild(preferenceText);
+                        detailsDiv.appendChild(price);
+                        detailsDiv.appendChild(rating);
+                        detailsDiv.appendChild(atmosphere);
+                        detailsDiv.appendChild(variety);
+
+                        // Append image div and details div to the card
+                        card.appendChild(imgDiv);
+                        card.appendChild(detailsDiv);
+
+                        // Append card to the restaurant list
+                        restaurantList.appendChild(card);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching restaurants:', error);
+                const noRestaurantsMessage = document.getElementById('no-restaurants');
+                noRestaurantsMessage.textContent = 'Failed to load restaurants.';
+                noRestaurantsMessage.classList.remove('hidden');
+            });
+    </script>
+    {% endblock %}
+</body>
+
+</html>
+{% endblock %}
