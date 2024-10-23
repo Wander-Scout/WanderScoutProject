@@ -8,4 +8,5 @@ urlpatterns = [
     path('restaurant/', include('restaurant.urls')),
     path('image_display/', include('image_display.urls')),
     path('authentication/', include('authentication.urls')),
+    path('tourist_attraction/', include('tourist_attraction.urls')),
 ]
