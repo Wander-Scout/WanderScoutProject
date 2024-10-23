@@ -7,7 +7,13 @@ import feedparser
 ########################
 def get_news():
     feed_url = "https://jogja.antaranews.com/rss/pariwisata-budaya.xml"
-    feed = feedparser.parse(feed_url)
+    try:
+        response = requests.get(feed_url)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        return []
+    
+    feed = feedparser.parse(response.content)
     return feed.get('entries', [])
 
 def news_view(request):
