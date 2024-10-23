@@ -38,8 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+<<<<<<< HEAD
     'news_rss',
 
+=======
+    'tourist_attraction',
+    'restaurant',
+    'image_display',
+    'news_rss',
+>>>>>>> 3cbd80c73a6629c05a8a7488e65c853f3169286f
 ]
 
 MIDDLEWARE = [
@@ -57,7 +64,7 @@ ROOT_URLCONF = 'wanderscout.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,7 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
