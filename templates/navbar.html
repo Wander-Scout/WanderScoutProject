@@ -13,6 +13,9 @@
         <a href="{% url 'customer_reviews' %}" class="text-white font-bold hover:text-gray-300 mr-4">
           Customer Reviews
         </a>
+        <a href="{% url 'tourist_attractions' %}" class="text-white font-bold hover:text-gray-300 mr-4">
+          Tourist Attractions
+        </a>
         {% if user.is_authenticated %}
           <div class="text-right mr-4">
             <span class="block text-gray-300">Welcome back, {{ user.username }}</span>
@@ -44,6 +47,9 @@
     <div class="pt-2 pb-3 space-y-1 mx-auto">
       <a href="{% url 'customer_reviews' %}" class="block text-center text-white font-bold hover:text-gray-300 mb-2">
         Customer Reviews
+      </a>
+      <a href="{% url 'tourist_attractions' %}" class="block text-center text-white font-bold hover:text-gray-300 mb-2">
+        Tourist Attractions
       </a>
       {% if user.is_authenticated %}
         <span class="block text-gray-300 px-3 py-2">Welcome, {{ user.username }}</span>
