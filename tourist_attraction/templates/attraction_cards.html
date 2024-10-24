@@ -10,132 +10,192 @@
     <title>{% block title %}Tourist Attraction{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- cleared -->
     {% block extra_head %}{% endblock %}
 </head>
 
 <body>
-    <div class="container mx-auto py-10">
+    <div class="container mx-auto pt-24 pb-10">
         <h1 class="text-3xl font-bold text-center mb-10">Tourist Attractions</h1>
+
+        <div class="mb-6">
+            <input type="text" id="search-input" class="border border-gray-300 rounded-lg w-full p-2" placeholder="Search by name...">
+        </div>
+
+        <div class="mb-6">
+            <select id="type-filter" class="border border-gray-300 rounded-lg w-full p-2">
+                <option value="">All Types</option>
+            </select>
+        </div>
+
         <div id="attraction-list" class="space-y-6"></div>
         <p id="no-attractions" class="text-center text-gray-700 hidden">No tourist attractions found.</p>
     </div>
 
     {% block scripts %}
     <script>
-        // Fetch JSON data from the static directory
-        fetch("{% static 'data/TempatWisata.json' %}")
-            .then(response => response.json())
-            .then(data => {
-                const attractionList = document.getElementById('attraction-list');
-                const noAttractionsMessage = document.getElementById('no-attractions');
+        let attractionsData = [];
 
-                // Check if data exists
-                if (data.length === 0) {
-                    noAttractionsMessage.classList.remove('hidden');
-                } else {
-                    data.forEach(attraction => {
-                        // Create the structure for each attraction card using flexbox
-                        const card = document.createElement('div');
-                        card.classList.add('flex', 'flex-col', 'md:flex-row', 'bg-white', 'rounded-lg', 'shadow-lg', 'overflow-hidden');
+        fetch("{% url 'get_tourist_attractions' %}")  
+        .then(response => response.json())
+        .then(data => {
+            attractionsData = data.attractions || [];
 
-                        // Create hyperlink for image and title
-                        const link = document.createElement('a');
-                        link.href = attraction.gmaps_url || '#';
-                        link.classList.add('block', 'hover:opacity-75', 'transition-opacity', 'duration-300');
-
-                        // Image inside the link
-                        // Create the image element
-                        const img = document.createElement('img');
-
-                        // Dynamically set the image source based on the 'type' value, removing spaces
-                        const typeValue = attraction.type ? attraction.type.replace(/\s+/g, '') : 'placeholder';
-                        img.src = `/static/images/${typeValue}.png`;  // Assuming images are named after type values
-
-                        img.alt = attraction.nama || 'Attraction Image';
-                        img.classList.add('object-cover', 'w-full', 'h-64', 'md:h-full');
-
-                        // Append the image to the link element
-                        link.appendChild(img);
-
-
-                        // Image div to contain the image/link
-                        const imageDiv = document.createElement('div');
-                        imageDiv.classList.add('md:w-1/3', 'w-full');
-                        imageDiv.appendChild(link); // Link wraps the image
-
-                        // Attraction details
-                        const detailsDiv = document.createElement('div');
-                        detailsDiv.classList.add('md:w-2/3', 'w-full', 'p-6', 'flex', 'flex-col', 'justify-between');
-
-                        // Name with hyperlink
-                        const nameLink = document.createElement('a');
-                        nameLink.href = attraction.gmaps_url || '#';
-                        nameLink.classList.add('text-2xl', 'font-bold', 'text-gray-800', 'mb-4');
-                        nameLink.textContent = attraction.nama || 'Unknown';
-
-                        const rating = document.createElement('p');
-                        rating.classList.add('text-gray-600', 'mb-2');
-                        rating.textContent = `Rating: ${attraction.vote_average || 0} / 5`;
-
-                        const voteCount = document.createElement('p');
-                        voteCount.classList.add('text-gray-600', 'mb-2');
-                        voteCount.textContent = `Votes: ${attraction.vote_count || 0}`;
-
-                        const type = document.createElement('p');
-                        type.classList.add('text-gray-600', 'mb-2');
-                        type.textContent = `Type: ${attraction.type || 'Unknown'}`;
-
-                        const htmWeekday = document.createElement('p');
-                        htmWeekday.classList.add('text-gray-600', 'mb-2');
-                        htmWeekday.textContent = `HTM (Weekday): ${attraction.htm_weekday || 0} IDR`;
-
-                        const htmWeekend = document.createElement('p');
-                        htmWeekend.classList.add('text-gray-600', 'mb-2');
-                        htmWeekend.textContent = `HTM (Weekend): ${attraction.htm_weekend || 0} IDR`;
-
-                        const description = document.createElement('p');
-                        description.classList.add('text-gray-600', 'mb-4');
-                        description.textContent = `${attraction.description || 'No description available'}`;
-                        if (description.textContent.length > 100) {
-                            description.textContent = `${description.textContent.substring(0, 100)}...`;
-                        }
-
-                        // Link to Google Maps at the bottom
-                        const linkDiv = document.createElement('div');
-                        linkDiv.classList.add('pt-4');
-
-                        const googleMapsLink = document.createElement('a');
-                        googleMapsLink.href = attraction.gmaps_url || '#';
-                        googleMapsLink.classList.add('inline-block', 'bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded-full', 'text-center');
-                        googleMapsLink.textContent = 'View on Google Maps';
-
-                        // Append elements to the card
-                        detailsDiv.appendChild(nameLink); // Name link
-                        detailsDiv.appendChild(rating);
-                        detailsDiv.appendChild(voteCount);
-                        detailsDiv.appendChild(type);
-                        detailsDiv.appendChild(htmWeekday);
-                        detailsDiv.appendChild(htmWeekend);
-                        detailsDiv.appendChild(description);
-                        linkDiv.appendChild(googleMapsLink);
-                        detailsDiv.appendChild(linkDiv);
-
-                        // Append image and details to the card
-                        card.appendChild(imageDiv);
-                        card.appendChild(detailsDiv);
-
-                        // Append card to the attraction list
-                        attractionList.appendChild(card);
+            // Populate type filter options
+            const typeFilter = document.getElementById('type-filter');
+            const types = new Set();
+            attractionsData.forEach(attraction => {
+                if (attraction.type) {
+                    // Split types if they are comma-separated
+                    attraction.type.split(',').forEach(type => {
+                        types.add(type.trim());
                     });
                 }
-            })
-            .catch(error => {
-                console.error('Error fetching attractions:', error);
-                const noAttractionsMessage = document.getElementById('no-attractions');
-                noAttractionsMessage.textContent = 'Failed to load tourist attractions.';
-                noAttractionsMessage.classList.remove('hidden');
             });
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                typeFilter.appendChild(option);
+            });
+
+            // Initial render
+            renderAttractions(attractionsData);
+        })
+        .catch(error => {
+            console.error('Error fetching attractions:', error);
+            const noAttractionsMessage = document.getElementById('no-attractions');
+            noAttractionsMessage.textContent = 'Failed to load tourist attractions.';
+            noAttractionsMessage.classList.remove('hidden');
+        });
+
+        // Function to render attractions
+        function renderAttractions(attractions) {
+            const attractionList = document.getElementById('attraction-list');
+            attractionList.innerHTML = ''; // Clear previous content
+            const noAttractionsMessage = document.getElementById('no-attractions');
+
+            if (!attractions || attractions.length === 0) {
+                noAttractionsMessage.classList.remove('hidden');
+                return;
+            } else {
+                noAttractionsMessage.classList.add('hidden');
+            }
+
+            attractions.forEach(attraction => {
+                const card = document.createElement('div');
+                card.classList.add('flex', 'flex-col', 'md:flex-row', 'bg-white', 'rounded-lg', 'shadow-lg', 'overflow-hidden');
+
+                const link = document.createElement('a');
+                link.href = `/tourist_attraction/attractions/${attraction.id}`;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.classList.add('block', 'hover:opacity-75', 'transition-opacity', 'duration-300');
+
+                const img = document.createElement('img');
+
+                // Dynamically set the image source based on the 'type' value, taking only the part before the first comma
+                const typeValue = attraction.type ? attraction.type.split(',')[0].trim().replace(/\s+/g, '') : 'placeholder';
+                img.src = `/static/images/${typeValue}.png`;  
+                img.alt = attraction.nama || 'Attraction Image';
+                img.classList.add('object-cover', 'w-full', 'h-64', 'md:h-full');
+
+                link.appendChild(img);
+                const imageDiv = document.createElement('div');
+                imageDiv.classList.add('md:w-1/3', 'w-full');
+                imageDiv.appendChild(link); 
+
+                // Attraction details
+                const detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('md:w-2/3', 'w-full', 'p-6', 'flex', 'flex-col', 'justify-between');
+
+                // Name with hyperlink
+                const nameLink = document.createElement('a');
+                nameLink.href = `/tourist_attraction/attractions/${attraction.id}`
+                nameLink.target = "_blank";
+                nameLink.rel = "noopener noreferrer";
+                nameLink.classList.add('text-2xl', 'font-bold', 'text-gray-800', 'mb-4');
+                nameLink.textContent = attraction.nama || 'Unknown';
+
+                const rating = document.createElement('p');
+                rating.classList.add('text-gray-600', 'mb-2');
+                rating.textContent = `Rating: ${attraction.vote_average || 0} / 5`;
+
+                const voteCount = document.createElement('p');
+                voteCount.classList.add('text-gray-600', 'mb-2');
+                voteCount.textContent = `Votes: ${attraction.vote_count || 0}`;
+
+                const type = document.createElement('p');
+                type.classList.add('text-gray-600', 'mb-2');
+                type.textContent = `Type: ${attraction.type || 'Unknown'}`;
+
+                const htmWeekday = document.createElement('p');
+                htmWeekday.classList.add('text-gray-600', 'mb-2');
+                htmWeekday.textContent = `HTM (Weekday): ${attraction.htm_weekday || 0} IDR`;
+
+                const htmWeekend = document.createElement('p');
+                htmWeekend.classList.add('text-gray-600', 'mb-2');
+                htmWeekend.textContent = `HTM (Weekend): ${attraction.htm_weekend || 0} IDR`;
+
+                const description = document.createElement('p');
+                description.classList.add('text-gray-600', 'mb-4');
+                description.textContent = attraction.description || 'No description available';
+                if (description.textContent.length > 100) {
+                    description.textContent = `${description.textContent.substring(0, 100)}...`;
+                }
+
+                // Link to Google Maps at the bottom
+                const linkDiv = document.createElement('div');
+                linkDiv.classList.add('pt-4');
+
+                const googleMapsLink = document.createElement('a');
+                googleMapsLink.href = attraction.gmaps_url || '#';
+                googleMapsLink.target = "_blank";
+                googleMapsLink.rel = "noopener noreferrer";
+                googleMapsLink.classList.add('inline-block', 'bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded-full', 'text-center');
+                googleMapsLink.textContent = 'View on Google Maps';
+
+                // Append elements to the card
+                detailsDiv.appendChild(nameLink); // Name link
+                detailsDiv.appendChild(rating);
+                detailsDiv.appendChild(voteCount);
+                detailsDiv.appendChild(type);
+                detailsDiv.appendChild(htmWeekday);
+                detailsDiv.appendChild(htmWeekend);
+                detailsDiv.appendChild(description);
+                linkDiv.appendChild(googleMapsLink);
+                detailsDiv.appendChild(linkDiv);
+
+                // Append image and details to the card
+                card.appendChild(imageDiv);
+                card.appendChild(detailsDiv);
+
+                // Append card to the attraction list
+                attractionList.appendChild(card);
+            });
+        }
+
+        // Event listeners for search and filter
+        document.getElementById('search-input').addEventListener('input', function() {
+            filterAttractions();
+        });
+
+        document.getElementById('type-filter').addEventListener('change', function() {
+            filterAttractions();
+        });
+
+        function filterAttractions() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const typeFilter = document.getElementById('type-filter').value;
+
+            const filteredAttractions = attractionsData.filter(attraction => {
+                const matchesName = attraction.nama && attraction.nama.toLowerCase().includes(searchInput);
+                const matchesType = !typeFilter || (attraction.type && attraction.type.includes(typeFilter));
+                return matchesName && matchesType;
+            });
+
+            renderAttractions(filteredAttractions);
+        }
     </script>
     {% endblock %}
 </body>

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{ attraction.nama }} - Travel Guide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block extra_head %}
+    <script>
+        tailwind.config = {
+            plugins: [
+                function ({ addBase, config }) {
+                    addBase({
+                        'h1': { fontSize: config('theme.fontSize.4xl') },
+                        'h2': { fontSize: config('theme.fontSize.3xl') },
+                        'h3': { fontSize: config('theme.fontSize.2xl') },
+                    })
+                }
+            ]
+        }
+    </script>
+    {% endblock %}
+</head>
+
+<body>
+    <div class="relative bg-gray-800 text-white h-96">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <h1 class="text-5xl font-bold">{{ attraction.nama }}</h1>
+        </div>
+    </div>
+    
+
+    <div class="container mx-auto py-16 px-6 md:px-10">
+        <div class="mb-12">
+            <p class="text-gray-700 text-lg leading-relaxed">{{ attraction.description|default:"No description available" }}</p>
+        </div>
+
+        <div class="prose max-w-none mb-16">
+            <h2 class="mb-4">About {{ attraction.nama }}</h2>
+            <p class="mb-8">{{ attraction.description|default:"No description available" }}</p>
+
+            <h2 class="mb-4">Key Information</h2>
+            <ul class="list-disc list-inside mb-8">
+                <li><strong>Type:</strong> {{ attraction.type|default:"Unknown" }}</li>
+                <li><strong>Rating:</strong> {{ attraction.vote_average|default:"0" }} / 5 ({{ attraction.vote_count|default:"0" }} votes)</li>
+                <li><strong>Ticket Price (Weekday):</strong> {{ attraction.htm_weekday|default:"0" }} IDR</li>
+                <li><strong>Ticket Price (Weekend):</strong> {{ attraction.htm_weekend|default:"0" }} IDR</li>
+            </ul>
+
+            <h2 class="mb-4">What to Expect</h2>
+            <p class="mb-8">Experience the beauty and excitement of {{ attraction.nama }}. Whether you're looking for adventure, relaxation, or cultural immersion, this destination has something for everyone.</p>
+
+        </div>
+
+        <div class="bg-blue-600 text-white rounded-lg p-8 text-center mb-16">
+            <h2 class="text-3xl font-bold mb-6">Plan Your Visit</h2>
+            <p class="mb-8">Don't miss out on exploring {{ attraction.nama }}. Start planning your trip today!</p>
+            <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200 mr-4">
+                Get Directions
+            </a>
+            <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
+                Add to Plans
+            </a>
+            
+        </div>
+
+    </div>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>
+{% endblock %}
