@@ -1,7 +1,8 @@
 from django.db import models
+import uuid
 
 class Restaurant(models.Model):
-    id = models.AutoField(primary_key=True)  # Explicit ID field
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Nama_Restoran = models.CharField(max_length=255, default="Unnamed Restaurant")
     Preferensi_Makanan = models.CharField(max_length=100, default="Unknown")
     Harga_Rata_Rata_Makanan_di_Toko = models.IntegerField(default=0)
