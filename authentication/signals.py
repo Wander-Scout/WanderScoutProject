@@ -30,7 +30,7 @@ def create_superuser(sender, **kwargs):
         )
 
         admin_group, created = Group.objects.get_or_create(name='admin')
-        Group.objects.get_or_create(name='tourist')
+        _ = Group.objects.get_or_create(name='tourist')
 
         superuser.groups.add(admin_group)
 
