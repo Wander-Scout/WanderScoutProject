@@ -64,13 +64,44 @@
             <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200 mr-4">
                 Get Directions
             </a>
-            <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
-                Add to Plans
+            <!-- Add to Plan button -->
+            <a href="#" class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600"
+            onclick="addToPlan('{{ attraction.id }}')">
+            Add to Plan
             </a>
-            
         </div>
 
-    </div>
+        <script>
+            function addToPlan(attractionId) {
+                fetch(`/cart/add/${attractionId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',  // Indicate that this is an AJAX request
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();  // Convert response to JSON if successful
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    if (data.success) {
+                        console.log('Added to plan successfully');
+                        // You could show some kind of success indication here, like:
+                        alert("Attraction added to your plan!");
+                    } else {
+                        console.error('Failed to add to plan');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred. Please try again.");
+                });
+            }
+            </script>
+            
+
 
     {% block scripts %}
     {% endblock %}

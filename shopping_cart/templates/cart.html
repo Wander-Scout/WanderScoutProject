@@ -1,0 +1,132 @@
+{% include 'navbar.html' %}
+{% load static %}
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body::before {
+    content: '';
+    background-image: url("{% static 'images/Batik/batik.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .text-shadow {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  }
+</style>
+
+<!-- Cart Page -->
+ <title>Cart</title>
+<div class="container mx-auto px-5 py-16" id="cart-container">
+  <h2 class="text-4xl font-bold mb-8 text-white text-shadow text-center">Your Plan</h2>
+
+  {% if cart_items %}
+  <!-- Table Structure for Cart Items -->
+  <div id="cart-content" class="bg-white rounded-lg shadow-lg p-6">
+    <table class="w-full table-fixed text-left border-collapse border border-gray-300">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="w-1/2 px-6 py-4 text-lg font-semibold border border-gray-300">Services</th>
+          <th class="w-1/4 px-6 py-4 text-lg font-semibold border border-gray-300">Price</th>
+          <th class="w-1/4 px-6 py-4 text-lg font-semibold border border-gray-300 text-right">Action</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items-body" class="divide-y divide-gray-300">
+        <!-- Cart items will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Total Price and Proceed to Checkout Button -->
+  <div class="mt-8 text-right text-white">
+    <h3 class="text-2xl font-bold text-shadow" id="total-price">Total Price: Rp{{ total_price }}</h3>
+    <a href="#" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded shadow-lg">
+      Proceed to Checkout
+    </a>
+  </div>
+  {% else %}
+  <!-- Empty Cart Message -->
+  <p class="text-center text-white text-2xl font-bold mt-8">Your cart is empty.</p>
+  {% endif %}
+</div>
+
+<!-- Ajax script for handling cart updates -->
+<script>
+  function refreshCart() {
+    fetch("{% url 'view_cart' %}", {
+      method: 'GET',
+      headers: {
+        'x-requested-with': 'XMLHttpRequest'  // To ensure the server knows this is an AJAX request
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Clear the cart content first
+      let cartContent = '';
+
+      if (Object.keys(data.cart_items).length > 0) {
+        // Iterate over cart items from the response
+        Object.values(data.cart_items).forEach(item => {
+          cartContent += `
+            <tr class="align-middle">
+              <td class="px-6 py-4">
+                <h3 class="text-lg font-bold">${item.name}</h3>
+              </td>
+              <td class="px-6 py-4 text-lg text-gray-700">
+                Rp${item.price} x ${item.quantity} = Rp${(item.price * item.quantity).toFixed(2)}
+                ${item.is_weekend ? '<small class="text-red-500">(Weekend)</small>' : '<small class="text-green-500">(Weekday)</small>'}
+              </td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('${item.id}')">Remove</a>
+              </td>
+            </tr>
+          `;
+        });
+
+        // Update the tbody with the cart items
+        document.querySelector('#cart-items-body').innerHTML = cartContent;
+
+        // Update total price
+        document.querySelector('#total-price').innerText = `Total Price: Rp${data.total_price.toFixed(2)}`;
+      } else {
+        // If cart is empty, show empty message and hide the table
+        document.querySelector('#cart-container').innerHTML = '<p class="text-center text-white text-2xl font-bold mt-8">Your cart is empty.</p>';
+      }
+    })
+    .catch(error => console.error('Error refreshing cart:', error));
+  }
+
+  function removeFromCart(attractionId) {
+    const removeUrl = `/cart/remove/${attractionId}/`;
+
+    // Send an asynchronous request to remove the item
+    fetch(removeUrl, { 
+      method: 'GET',
+      headers: {
+        'x-requested-with': 'XMLHttpRequest'  // Ensure the request is marked as AJAX
+      }
+    })
+    .then(response => response.json())  // Expect JSON response
+    .then(data => {
+      if (data.success) {
+        refreshCart();  // Refresh the cart content after successful removal
+      } else {
+        console.error('Failed to remove item from cart');
+      }
+    })
+    .catch(error => console.error('Error removing item:', error));
+  }
+
+  // Initialize cart refresh on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    refreshCart();  // Load cart data on page load
+    setInterval(refreshCart, 10000);  // Auto refresh every 10 seconds
+  });
+</script>
+

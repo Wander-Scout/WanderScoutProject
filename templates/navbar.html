@@ -1,40 +1,48 @@
 {% load static %}
 
-<nav class="bg-blue-900 shadow-lg fixed top-0 left-0 z-40 w-screen">
+<nav class="bg-blue-900 shadow-lg fixed top-0 left-0 z-40 w-full">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex justify-between items-center h-16">
+      <!-- Left side (Logo) -->
       <div class="flex items-center relative">
-        <img src="{% static 'images/wayang.png' %}" alt="Wayang" class="w-24 h-24 mr-4">
-        <h1 class="text-2xl font-medium text-center text-white">WANDERSCOUT</h1>
+        <img src="{% static 'images/wayang.png' %}" alt="Wayang" class="w-20 h-24 mr-3"> <!-- Adjust the image size and spacing -->
+        <a href="{% url 'home_page' %}" class="text-2xl font-medium text-white">WANDERSCOUT</a>
       </div>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center">
-        <a href="{% url 'customer_reviews' %}" class="text-white font-bold hover:text-gray-300 mr-4">
+      <!-- Centered Navigation Links -->
+      <div class="hidden md:flex justify-center flex-grow space-x-6"> <!-- Flex-grow centers the items -->
+        <a href="{% url 'customer_reviews' %}" class="text-white hover:text-gray-300 font-bold">
           Customer Reviews
         </a>
-        <a href="{% url 'tourist_attractions' %}" class="text-white font-bold hover:text-gray-300 mr-4">
+        <a href="{% url 'tourist_attractions' %}" class="text-white hover:text-gray-300 font-bold">
           Tourist Attractions
         </a>
         <a href="{% url 'restaurants' %}" class="text-white font-bold hover:text-gray-300 mr-4">
           Restaurants
         </a>
+        <a href="{% url 'view_cart' %}" class="text-white hover:text-gray-300 font-bold">
+          Cart
+        </a>
+      </div>
+
+      <!-- Right side (User Info and Logout) -->
+      <div class="hidden md:flex items-center space-x-4"> <!-- Adjust the spacing between user info and buttons -->
         {% if user.is_authenticated %}
-          <div class="text-right mr-4">
-            <span class="block text-gray-300">Welcome back, {{ user.username }}</span>
-            <div class="block text-sm text-gray-300">Last Login: {{ last_login }}</div>
-          </div>
+          <!-- User Info -->
+          <span class="text-gray-300">Welcome back, {{ user.username }}</span>
+          <div class="text-sm text-gray-300">Last Login: {{ last_login }}</div>
           <form action="{% url 'authentication:logout_user' %}" method="post" style="display: inline;">
             {% csrf_token %}
-            <button type="submit" class="text-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300">
               Logout
             </button>
           </form>
         {% else %}
-          <a href="{% url 'main:login' %}" class="text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-2">
+          <!-- Login and Register for Guests -->
+          <a href="{% url 'main:login' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
             Login
           </a>
-          <a href="{% url 'main:register' %}" class="text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+          <a href="{% url 'main:register' %}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
             Register
           </a>
         {% endif %}
@@ -51,21 +59,24 @@
     </div>
   </div>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu hidden md:hidden px-4 w-full md:max-w-full">
-    <div class="pt-2 pb-3 space-y-1 mx-auto">
-      <a href="{% url 'customer_reviews' %}" class="block text-center text-white font-bold hover:text-gray-300 mb-2">
+  <!-- Mobile Menu -->
+  <div class="mobile-menu hidden md:hidden px-4 w-full">
+    <div class="pt-2 pb-3 space-y-1">
+      <a href="{% url 'customer_reviews' %}" class="block text-center text-white font-bold hover:text-gray-300">
         Customer Reviews
       </a>
-      <a href="{% url 'tourist_attractions' %}" class="block text-center text-white font-bold hover:text-gray-300 mb-2">
+      <a href="{% url 'tourist_attractions' %}" class="block text-center text-white font-bold hover:text-gray-300">
         Tourist Attractions
       </a>
       <a href="{% url 'restaurants' %}" class="block text-center text-white font-bold hover:text-gray-300 mb-2">
         Restaurants
       </a>
+      <a href="{% url 'view_cart' %}" class="block text-center text-white font-bold hover:text-gray-300">
+        Cart
+      </a>
       {% if user.is_authenticated %}
-        <span class="block text-gray-300 px-3 py-2">Welcome, {{ user.username }}</span>
-        <div class="block text-sm text-gray-300 px-3 py-2">Last Login: {{ last_login }}</div>
+        <span class="block text-gray-300 text-center">Welcome, {{ user.username }}</span>
+        <div class="block text-sm text-gray-300 text-center">Last Login: {{ last_login }}</div>
         <form action="{% url 'authentication:logout_user' %}" method="post" class="text-center">
           {% csrf_token %}
           <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300 mt-2">
@@ -73,10 +84,10 @@
           </button>
         </form>
       {% else %}
-        <a href="{% url 'main:login' %}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mb-2">
+        <a href="{% url 'main:login' %}" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 text-center">
           Login
         </a>
-        <a href="{% url 'main:register' %}" class="block text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+        <a href="{% url 'main:register' %}" class="block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 text-center">
           Register
         </a>
       {% endif %}
