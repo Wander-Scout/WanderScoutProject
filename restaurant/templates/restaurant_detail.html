@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{ restaurant.name }} - Restaurant Guide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block extra_head %}
+    <script>
+        tailwind.config = {
+            plugins: [
+                function ({ addBase, config }) {
+                    addBase({
+                        'h1': { fontSize: config('theme.fontSize.4xl') },
+                        'h2': { fontSize: config('theme.fontSize.3xl') },
+                        'h3': { fontSize: config('theme.fontSize.2xl') },
+                    })
+                }
+            ]
+        }
+    </script>
+    {% endblock %}
+</head>
+
+<body>
+    <div class="relative bg-gray-800 text-white h-96">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <h1 class="text-5xl font-bold">{{ restaurant.name }}</h1>
+        </div>
+    </div>
+    
+    <div class="container mx-auto py-16 px-6 md:px-10">
+        <div class="mb-12">
+            <p class="text-gray-700 text-lg leading-relaxed">{{ restaurant.food_variety|default:"No variety available" }}</p>
+        </div>
+
+        <div class="prose max-w-none mb-16">
+            <h2 class="mb-4">About {{ restaurant.name }}</h2>
+            <p class="mb-8">{{ restaurant.food_variety|default:"No variety available" }}</p>
+
+            <h2 class="mb-4">Key Information</h2>
+            <ul class="list-disc list-inside mb-8">
+                <li><strong>Food Preference:</strong> {{ restaurant.food_preference|default:"Unknown" }}</li>
+                <li><strong>Rating:</strong> {{ restaurant.rating|default:"0" }} / 5</li>
+                <li><strong>Average Price:</strong> Rp {{ restaurant.average_price|default:"0" }}</li>
+                <li><strong>Atmosphere:</strong> {{ restaurant.atmosphere|default:"Unknown" }}</li>
+            </ul>
+
+            <h2 class="mb-4">What to Expect</h2>
+            <p class="mb-8">Enjoy a wonderful dining experience at {{ restaurant.name }}. Whether you're in the mood for something casual or a bit more refined, this restaurant has something for everyone.</p>
+
+        </div>
+
+        <div class="bg-blue-600 text-white rounded-lg p-8 text-center mb-16">
+            <h2 class="text-3xl font-bold mb-6">Plan Your Visit</h2>
+            <p class="mb-8">Make sure to visit {{ restaurant.name }} and enjoy the delicious food and great atmosphere!</p>
+        </div>
+
+    </div>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>
+{% endblock %}
