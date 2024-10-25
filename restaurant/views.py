@@ -35,7 +35,7 @@ def restaurant_detail(request, restaurant_id):
     # Render the restaurant detail template
     return render(request, 'restaurant_detail.html', context)
 
-@csrf_exempt
+
 @require_http_methods(['POST'])
 @admin_only  # Restrict this view to admin users
 def add_restaurant(request):
