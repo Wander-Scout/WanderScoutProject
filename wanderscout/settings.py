@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'news_rss',
     'tourist_attraction',
     'restaurant',
     'image_display',
