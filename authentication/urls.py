@@ -8,4 +8,5 @@ urlpatterns = [
     path('login/submit/', views.submit_login_form, name='submit_login_form'),
     path('register/', views.display_register_form, name='display_register_form'),
     path('register/submit/', views.submit_register_form, name='submit_register_form'),
+    path('logout/', views.logout_user, name='logout_user'),
 ]

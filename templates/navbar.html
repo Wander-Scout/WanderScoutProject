@@ -21,6 +21,12 @@
             <span class="block text-gray-300">Welcome back, {{ user.username }}</span>
             <div class="block text-sm text-gray-300">Last Login: {{ last_login }}</div>
           </div>
+          <form action="{% url 'authentication:logout_user' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="text-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+              Logout
+            </button>
+          </form>
         {% else %}
           <a href="{% url 'main:login' %}" class="text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-2">
             Login
@@ -54,6 +60,12 @@
       {% if user.is_authenticated %}
         <span class="block text-gray-300 px-3 py-2">Welcome, {{ user.username }}</span>
         <div class="block text-sm text-gray-300 px-3 py-2">Last Login: {{ last_login }}</div>
+        <form action="{% url 'authentication:logout_user' %}" method="post" class="text-center">
+          {% csrf_token %}
+          <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300 mt-2">
+            Logout
+          </button>
+        </form>
       {% else %}
         <a href="{% url 'main:login' %}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mb-2">
           Login
