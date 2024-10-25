@@ -1,41 +1,54 @@
-import os
-import json
 from django.http import JsonResponse
-from django.conf import settings
-from .models import Restaurant
 from django.views.decorators.http import require_http_methods
-from django.shortcuts import render
+from restaurant.models import Restaurant
+from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from .models import Restaurant
+import json
+from authentication.decorators import admin_only
 
-@require_http_methods(["POST"])
-def import_json_to_db(request):
-    json_file_path = os.path.join(settings.BASE_DIR, 'static', 'data', 'Kuliner.json')
-
-    if not os.path.exists(json_file_path):
-        return JsonResponse({'error': 'JSON file not found'}, status=404)
-
-    try:
-        with open(json_file_path, 'r', encoding='utf-8') as json_file:
-            data = json.load(json_file)
-    except json.JSONDecodeError as e:
-        return JsonResponse({'error': f'Error reading JSON file: {str(e)}'}, status=400)
-
-    for item in data:
-        try:
-            Restaurant.objects.create(
-                name=item.get('Nama Restoran', 'Unknown'),
-                food_preference=item.get('Preferensi Makanan', 'Unknown'),
-                average_price=item.get('Harga Rata-Rata Makanan di Toko (Rp)', 0),
-                rating=item.get('Rating Toko', 0.0),
-                atmosphere=item.get('Jenis Suasana', 'Unknown'),
-                food_variety=item.get('Variasi Makanan', 'Unknown')
-            )
-        except KeyError as ke:
-            return JsonResponse({'error': f'Missing key in JSON: {str(ke)}'}, status=400)
-        except Exception as e:
-            return JsonResponse({'error': f'Error saving data: {str(e)}'}, status=500)
-
-    return JsonResponse({'message': 'Restaurants imported successfully.'})
+@require_http_methods(['GET'])
+def get_restaurants(request):
+    # Fetch all restaurants from the database
+    restaurants = Restaurant.objects.all()
+    # Return restaurants as JSON
+    return JsonResponse({'restaurants': list(restaurants.values())})
 
 @require_http_methods(['GET'])
 def display_restaurants_as_cards(request):
-    return render(request, 'restaurant_cards.html')
+    # Fetch all restaurants from the database
+    restaurants = Restaurant.objects.all()
+    context = {
+        'restaurants': restaurants
+    }
+    # Render the restaurant cards template with restaurant data
+    return render(request, 'restaurant_cards.html', context)
+
+
+@require_http_methods(['GET'])
+def restaurant_detail(request, restaurant_id):
+    # Fetch restaurant based on UUID
+    restaurant = get_object_or_404(Restaurant, id=restaurant_id)
+    context = {
+        'restaurant': restaurant
+    }
+    # Render the restaurant detail template
+    return render(request, 'restaurant_detail.html', context)
+
+@csrf_exempt
+@require_http_methods(['POST'])
+@admin_only  # Restrict this view to admin users
+def add_restaurant(request):
+    try:
+        data = json.loads(request.body)
+        restaurant = Restaurant.objects.create(
+            name=data['name'],
+            food_preference=data['food_preference'],
+            average_price=data['average_price'],
+            rating=data['rating'],
+            atmosphere=data['atmosphere'],
+            food_variety=data['food_variety']
+        )
+        return JsonResponse({'message': 'Restaurant added successfully!', 'restaurant': restaurant.id})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)

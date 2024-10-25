@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('restaurants/', views.display_restaurants_as_cards, name='restaurants'),
-    path('import-restaurants/', views.import_json_to_db, name='import_restaurants'),
+    path('', views.display_restaurants_as_cards, name='restaurants'),  # Display restaurant list
+    path('api/', views.get_restaurants, name='get_restaurants'),  # API for restaurants
+    path('restaurant/<uuid:restaurant_id>/', views.restaurant_detail, name='restaurant_detail'),  # Restaurant detail
+    path('api/add_restaurant/', views.add_restaurant, name='add_restaurant'),
 ]

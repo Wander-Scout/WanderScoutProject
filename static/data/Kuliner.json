@@ -1,0 +1,3785 @@
+[
+    {
+        "pk": "0bc862f6-6eed-46c3-b9d2-4c55c2b46fdc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0bc862f6-6eed-46c3-b9d2-4c55c2b46fdc",
+            "name": "Mie Bandung Chinese Food, Ngampilan",
+            "food_preference": "Chinese",
+            "average_price": 39000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Aneka nasi, Chinese"
+        }
+    },
+    {
+        "pk": "5ee493e4-9637-4487-8f1c-a94f645400e6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5ee493e4-9637-4487-8f1c-a94f645400e6",
+            "name": "Soto Tauco Pekalongan Bu Iswi, Jalan Bimokurdo No.46, Gondokusuman, Demangan",
+            "food_preference": "Indonesia",
+            "average_price": 19000,
+            "rating": 3.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Cepat saji, Minuman"
+        }
+    },
+    {
+        "pk": "06cc88d1-82d1-43a9-8f27-c1b3d21a004d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "06cc88d1-82d1-43a9-8f27-c1b3d21a004d",
+            "name": "Spesial Bakso Pak Jum Balai Kota, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 18000,
+            "rating": 3.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Jajanan, Minuman"
+        }
+    },
+    {
+        "pk": "a7590f07-3584-4a3c-b2fc-93b40769cc02",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a7590f07-3584-4a3c-b2fc-93b40769cc02",
+            "name": "Soto Ayam Kampung Dan Soto Daging Sapi Pak Ben",
+            "food_preference": "Indonesia",
+            "average_price": 22000,
+            "rating": 3.8,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Minuman"
+        }
+    },
+    {
+        "pk": "77999241-7a1f-417c-8fac-13bd9c3fe0ca",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "77999241-7a1f-417c-8fac-13bd9c3fe0ca",
+            "name": "Toba Tabo",
+            "food_preference": "Chinese",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Cepat saji, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "48003469-9d27-491e-993d-65d44a54ec53",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "48003469-9d27-491e-993d-65d44a54ec53",
+            "name": "Sop Ayam Klaten, Mantrijeron",
+            "food_preference": "Indonesia",
+            "average_price": 16000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Cepat saji, Minuman, Bakso & soto"
+        }
+    },
+    {
+        "pk": "78114639-77c1-4088-80dc-d20304b2a732",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "78114639-77c1-4088-80dc-d20304b2a732",
+            "name": "Legend Coffee, Yogyakarta",
+            "food_preference": "Western",
+            "average_price": 37000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Beverages, Pizza & pasta, Coffee, Rice, Noodles, Western"
+        }
+    },
+    {
+        "pk": "5446000a-c99a-41d3-b479-02e26c81ae63",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5446000a-c99a-41d3-b479-02e26c81ae63",
+            "name": "Martabak Okonomiyaki BAMLY, Sonopakis",
+            "food_preference": "Japanese",
+            "average_price": 25000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Japanese, Martabak"
+        }
+    },
+    {
+        "pk": "63b2b6b8-491b-489d-9247-1b78dca0db80",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "63b2b6b8-491b-489d-9247-1b78dca0db80",
+            "name": "Nasi Goreng Gemilang, Gedongkuning",
+            "food_preference": "Chinese",
+            "average_price": 19000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese"
+        }
+    },
+    {
+        "pk": "a830a99d-7a74-47da-9996-6ec124ab0efb",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a830a99d-7a74-47da-9996-6ec124ab0efb",
+            "name": "Restoran Mahkota (Tiong San), Pajeksan",
+            "food_preference": "Chinese",
+            "average_price": 132000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Ayam & bebek, Aneka nasi, Bakmie"
+        }
+    },
+    {
+        "pk": "0809a681-2298-4697-bf37-e8595350a36a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0809a681-2298-4697-bf37-e8595350a36a",
+            "name": "Curryin, Perumnas",
+            "food_preference": "Japanese",
+            "average_price": 42000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "170483c7-2c66-4e06-99c2-fa9890fce5ce",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "170483c7-2c66-4e06-99c2-fa9890fce5ce",
+            "name": "Marugame Udon, Hartono Mall Jogja",
+            "food_preference": "Japanese",
+            "average_price": 68000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "9e07a6a1-41f5-4e5e-89c7-b9ba6f8b2c80",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9e07a6a1-41f5-4e5e-89c7-b9ba6f8b2c80",
+            "name": "YOSHINOYA BEEF BOWL, Transmart Maguwoharjo",
+            "food_preference": "Japanese",
+            "average_price": 64000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Fast food, Chicken & duck, Rice"
+        }
+    },
+    {
+        "pk": "c811be44-1ef4-461a-a1eb-840df447464e",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c811be44-1ef4-461a-a1eb-840df447464e",
+            "name": "Sushi Battousai, Suryodiningratan",
+            "food_preference": "Japanese",
+            "average_price": 32000,
+            "rating": 4.5,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Snacks, Chinese"
+        }
+    },
+    {
+        "pk": "ad74d280-739d-4088-9e0f-76a0d5531b2d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ad74d280-739d-4088-9e0f-76a0d5531b2d",
+            "name": "Mochi Sakura, Plaza Ambarukmo",
+            "food_preference": "Japanese",
+            "average_price": 41000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Snacks, Sweets"
+        }
+    },
+    {
+        "pk": "8f7feda8-8c4c-4f24-b996-8d7696bde3a5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8f7feda8-8c4c-4f24-b996-8d7696bde3a5",
+            "name": "Soto Pak Zaenal Barokah, Warungboto Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 15000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Minuman, Bakso & soto"
+        }
+    },
+    {
+        "pk": "37611160-ba78-4d88-b433-5afb1d10c839",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "37611160-ba78-4d88-b433-5afb1d10c839",
+            "name": "Warung Lawas, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 41000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Pizza & pasta, Chicken & duck, Western, Rice, Beverages, Snacks, Sweets, Fast food, Bakery, Bakso & soto, Noodles, Coffee"
+        }
+    },
+    {
+        "pk": "33388c0c-b5f1-4708-a063-d491beab1ecc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "33388c0c-b5f1-4708-a063-d491beab1ecc",
+            "name": "Mediterranea Restaurant by Kamil, Matrijeron",
+            "food_preference": "Western",
+            "average_price": 76000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Pizza & pasta, Western"
+        }
+    },
+    {
+        "pk": "ee3586cf-6391-444a-a06d-1cc722d61101",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ee3586cf-6391-444a-a06d-1cc722d61101",
+            "name": "Rustik Bistro & Bar, Hotel Harper Malioboro Yogyakarta",
+            "food_preference": "Western",
+            "average_price": 32000,
+            "rating": 3.8,
+            "atmosphere": "Formal",
+            "food_variety": "Rice, Beverages, Western"
+        }
+    },
+    {
+        "pk": "e301053c-f8da-464f-bc52-e65ac76bfebc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e301053c-f8da-464f-bc52-e65ac76bfebc",
+            "name": "Gyudel Bowl & Nasi Goreng, Depok",
+            "food_preference": "Japanese",
+            "average_price": 29000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Rice, Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "c99ca47f-c5e9-4dd0-9720-1a56fd3a2477",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c99ca47f-c5e9-4dd0-9720-1a56fd3a2477",
+            "name": "Sushi Story, Gejayan",
+            "food_preference": "Japanese",
+            "average_price": 62000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Seafood, Japanese"
+        }
+    },
+    {
+        "pk": "8a444c71-5f12-4a30-a834-7f7925003836",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8a444c71-5f12-4a30-a834-7f7925003836",
+            "name": "Burgerax, Imogiri Timur",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Western, Fast food"
+        }
+    },
+    {
+        "pk": "f5a571ed-7b08-42cb-b9cf-2b665df7c85f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f5a571ed-7b08-42cb-b9cf-2b665df7c85f",
+            "name": "Pulung Steak & Ribs, Catur Tunggal",
+            "food_preference": "Western",
+            "average_price": 43000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "ff5cdadb-b3fb-4191-a133-c3f8cbdf0d90",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ff5cdadb-b3fb-4191-a133-c3f8cbdf0d90",
+            "name": "Burger Bangor Express, Bantul",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food, Chicken & duck"
+        }
+    },
+    {
+        "pk": "2916ed6b-09ac-42e1-8a0f-e36f6424fab1",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "2916ed6b-09ac-42e1-8a0f-e36f6424fab1",
+            "name": "BurgeriOr, Tempel",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food, Snacks"
+        }
+    },
+    {
+        "pk": "bca25803-1d9f-42b7-9480-ac82a4c746c9",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bca25803-1d9f-42b7-9480-ac82a4c746c9",
+            "name": "Mamam Food, Pringgolayan Banguntapan",
+            "food_preference": "Western",
+            "average_price": 27000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Pizza & pasta, Rice"
+        }
+    },
+    {
+        "pk": "7e6a9d45-eef0-4945-bb05-03b904323a39",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "7e6a9d45-eef0-4945-bb05-03b904323a39",
+            "name": "Yamie Panda, Cokroaminoto",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese, Bakso & soto"
+        }
+    },
+    {
+        "pk": "2aa2aff5-39b2-493d-b6e5-98ab7d09f85e",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "2aa2aff5-39b2-493d-b6e5-98ab7d09f85e",
+            "name": "Kedai Mie Nyinyir, Sorogenen",
+            "food_preference": "Indonesia",
+            "average_price": 22000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "0cb5a12a-dceb-40e9-8487-dfabc97e660b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0cb5a12a-dceb-40e9-8487-dfabc97e660b",
+            "name": "Dudidu Dimsum, ISI",
+            "food_preference": "Chinese",
+            "average_price": 40000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Japanese, Korean"
+        }
+    },
+    {
+        "pk": "0ed3c535-7d22-4cf0-ad4f-cca7e1f95a56",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0ed3c535-7d22-4cf0-ad4f-cca7e1f95a56",
+            "name": "Kwetiau Goreng Dan Nasi Goreng Seafood Makjoss, Batikan",
+            "food_preference": "Chinese",
+            "average_price": 25000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Seafood, Bakmie"
+        }
+    },
+    {
+        "pk": "6aa015c1-9b98-4fc6-aca4-fe6b5f60a8b7",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "6aa015c1-9b98-4fc6-aca4-fe6b5f60a8b7",
+            "name": "Double O Resto, Tegalrejo",
+            "food_preference": "Japanese",
+            "average_price": 30000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Coffee, Beverages, Japanese"
+        }
+    },
+    {
+        "pk": "719cb7ef-4e96-4307-9f83-9b89b97cfea5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "719cb7ef-4e96-4307-9f83-9b89b97cfea5",
+            "name": "HokBen Kitchen, Godean Jogjakarta",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "b790d2ff-ec49-4c58-bcba-b74e8769f321",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b790d2ff-ec49-4c58-bcba-b74e8769f321",
+            "name": "Salad Sehat Fd",
+            "food_preference": "Japanese",
+            "average_price": 30000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Japanese, Korean"
+        }
+    },
+    {
+        "pk": "17aa9ad8-d1aa-4848-aeee-e478adc3956c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "17aa9ad8-d1aa-4848-aeee-e478adc3956c",
+            "name": "Bakmi Nikmat Rasa, Soragan",
+            "food_preference": "Indonesia",
+            "average_price": 59000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "63e96c4e-a727-4140-9f6c-7d4522115aff",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "63e96c4e-a727-4140-9f6c-7d4522115aff",
+            "name": "GYU KATSU, CONDONGCATUR",
+            "food_preference": "Japanese",
+            "average_price": 32000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Rice"
+        }
+    },
+    {
+        "pk": "1427ad90-399d-4625-9d77-52230f73cefc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1427ad90-399d-4625-9d77-52230f73cefc",
+            "name": "Vegan Cafe Black Forest, Brontokusuman",
+            "food_preference": "Chinese",
+            "average_price": 22000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Minuman, Chinese, Barat"
+        }
+    },
+    {
+        "pk": "0ee68528-86c8-4c37-8bda-b8aa29205352",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0ee68528-86c8-4c37-8bda-b8aa29205352",
+            "name": "Grennesia Salad Bar & Breakfast, Parangtritis",
+            "food_preference": "Western",
+            "average_price": 22000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Rice, Western, Snacks"
+        }
+    },
+    {
+        "pk": "96a5d9e1-de65-4120-a30b-8d9f5cdc0835",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "96a5d9e1-de65-4120-a30b-8d9f5cdc0835",
+            "name": "Chikuro Pakuwon Mall Jogja, Pakuwon Mall Lantai LG",
+            "food_preference": "Japanese",
+            "average_price": 40000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Snacks, Japanese"
+        }
+    },
+    {
+        "pk": "34cfcb5f-2150-4eaa-85b0-a32aec91bcc6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "34cfcb5f-2150-4eaa-85b0-a32aec91bcc6",
+            "name": "Waroeng Steak And Shake, Tamansiswa",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "a851cf7d-f774-484e-9b4a-f7acef97077e",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a851cf7d-f774-484e-9b4a-f7acef97077e",
+            "name": "Burger King, Diponegoro",
+            "food_preference": "Western",
+            "average_price": 57000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food"
+        }
+    },
+    {
+        "pk": "337a6b8c-0fc6-44b4-9776-4d63021f4219",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "337a6b8c-0fc6-44b4-9776-4d63021f4219",
+            "name": "ViaVia Jogja, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 75000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Indian, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "d18d81eb-d219-4f04-a4a3-4279d2e6442e",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d18d81eb-d219-4f04-a4a3-4279d2e6442e",
+            "name": "AMco, Parangtritis",
+            "food_preference": "Japanese",
+            "average_price": 108000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Western, Japanese, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "cf336ebd-1cdf-4e5b-aabd-2c0c1dcc3e43",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "cf336ebd-1cdf-4e5b-aabd-2c0c1dcc3e43",
+            "name": "The Rock Burger, Melati Wetan",
+            "food_preference": "Western",
+            "average_price": 50000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Rice, Fast food"
+        }
+    },
+    {
+        "pk": "f412c6af-9ae1-49be-a6c4-a9a7d1b6229a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f412c6af-9ae1-49be-a6c4-a9a7d1b6229a",
+            "name": "Lotek Gado-Gado Bu Ning, Tamansiswa",
+            "food_preference": "Indonesia",
+            "average_price": 26000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Ayam & bebek, Bakso & soto"
+        }
+    },
+    {
+        "pk": "5f050ca7-945c-405e-bad0-13870f88d82a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5f050ca7-945c-405e-bad0-13870f88d82a",
+            "name": "Pecel Lele Dan Bakso Mie Ayam Sakolehe, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 20000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Ayam & bebek, Bakso & soto"
+        }
+    },
+    {
+        "pk": "5dd23ff1-0440-4b4e-ba49-4bc5da0e5a42",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5dd23ff1-0440-4b4e-ba49-4bc5da0e5a42",
+            "name": "Pork King - Ricebox Babi, Gondokusuman",
+            "food_preference": "Chinese",
+            "average_price": 52000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Cepat saji, Chinese"
+        }
+    },
+    {
+        "pk": "440fd800-b21f-4246-a1e3-792ad1083be8",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "440fd800-b21f-4246-a1e3-792ad1083be8",
+            "name": "PigGoo Kitchen, Baciro",
+            "food_preference": "Chinese",
+            "average_price": 52000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese, Aneka nasi"
+        }
+    },
+    {
+        "pk": "0e72fac9-73b7-46c4-bcc8-9c5c0c4f3339",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0e72fac9-73b7-46c4-bcc8-9c5c0c4f3339",
+            "name": "Soto Sehati, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 26000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "871df654-587a-4126-b256-302ced426ce9",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "871df654-587a-4126-b256-302ced426ce9",
+            "name": "Bakso Urat & Mie Ayam Rizky, Sorogenen",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "26308b79-d9d7-419a-9700-9c3087350a7c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "26308b79-d9d7-419a-9700-9c3087350a7c",
+            "name": "Izakaya Japanese Resto",
+            "food_preference": "Japanese",
+            "average_price": 120000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Beverages, Japanese, Seafood"
+        }
+    },
+    {
+        "pk": "56e5c7c3-2888-4fde-a213-b0c089884e5b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "56e5c7c3-2888-4fde-a213-b0c089884e5b",
+            "name": "Yani's Kitchen",
+            "food_preference": "Chinese",
+            "average_price": 26000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Ayam & bebek, Aneka nasi, Bakmie"
+        }
+    },
+    {
+        "pk": "35207af0-3cf0-40a0-b115-2c4c59dc237f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "35207af0-3cf0-40a0-b115-2c4c59dc237f",
+            "name": "Seafood 99, Wonocatur",
+            "food_preference": "Chinese",
+            "average_price": 23000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Seafood, Aneka nasi"
+        }
+    },
+    {
+        "pk": "17ad28dd-6890-419a-9f43-7241667f1aed",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "17ad28dd-6890-419a-9f43-7241667f1aed",
+            "name": "Hotaru Ramen, Banguntapan",
+            "food_preference": "Japanese",
+            "average_price": 36000,
+            "rating": 4.0,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Japanese, Noodles"
+        }
+    },
+    {
+        "pk": "82ff7333-4c92-4dc5-b12a-1c79256498f0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "82ff7333-4c92-4dc5-b12a-1c79256498f0",
+            "name": "Kantin Mama Mirza",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Bakso & soto, Aneka nasi"
+        }
+    },
+    {
+        "pk": "e93e7119-6537-497c-8438-88837631fdec",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e93e7119-6537-497c-8438-88837631fdec",
+            "name": "Mitsuru Ramen, Foodcourt135",
+            "food_preference": "Japanese",
+            "average_price": 35000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "8ecaa4c7-eab3-4ff4-8e56-07df41161014",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8ecaa4c7-eab3-4ff4-8e56-07df41161014",
+            "name": "Warung Ramen N Katsu, Chapter 1 Menteri Supeno",
+            "food_preference": "Japanese",
+            "average_price": 30000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "25dad7ca-6ec2-4fcf-a0c1-175009e940c0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "25dad7ca-6ec2-4fcf-a0c1-175009e940c0",
+            "name": "Deta Kitchen",
+            "food_preference": "Japanese",
+            "average_price": 16000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Chinese"
+        }
+    },
+    {
+        "pk": "932a3fd3-eaef-49fb-8512-7b5c0892a627",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "932a3fd3-eaef-49fb-8512-7b5c0892a627",
+            "name": "Chicken Katsu Domreneo, Suryodiningratan",
+            "food_preference": "Japanese",
+            "average_price": 21000,
+            "rating": 3.4,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Chicken & duck"
+        }
+    },
+    {
+        "pk": "59a1363d-b199-47ad-a9c2-e60df858c2b0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "59a1363d-b199-47ad-a9c2-e60df858c2b0",
+            "name": "Sushi Yay, Selokan Yogya",
+            "food_preference": "Japanese",
+            "average_price": 82000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Fast food, Chicken & duck"
+        }
+    },
+    {
+        "pk": "af6df1b9-5d48-4338-b5ed-041fe47c5b42",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "af6df1b9-5d48-4338-b5ed-041fe47c5b42",
+            "name": "Tanoshi Bedjo Homestay",
+            "food_preference": "Japanese",
+            "average_price": 66000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Sate"
+        }
+    },
+    {
+        "pk": "72d41ed9-e166-4f6b-b6cf-7784dcfb755d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "72d41ed9-e166-4f6b-b6cf-7784dcfb755d",
+            "name": "Kantin Siap Saji Zupa Soup The Eifel",
+            "food_preference": "Western",
+            "average_price": 22000,
+            "rating": 3.9,
+            "atmosphere": "Santai",
+            "food_variety": "Pizza & pasta, Rice, Western"
+        }
+    },
+    {
+        "pk": "a2641c3d-9080-41fa-a101-f895b1985101",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a2641c3d-9080-41fa-a101-f895b1985101",
+            "name": "Penyetan Ayam Bakar Dan Suki Tomyam Yss Food",
+            "food_preference": "Japanese",
+            "average_price": 32000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Chicken & duck, Japanese"
+        }
+    },
+    {
+        "pk": "4f4e3735-5c21-4543-9325-873de1acff19",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4f4e3735-5c21-4543-9325-873de1acff19",
+            "name": "Bento Yay, Selokan Yogya",
+            "food_preference": "Japanese",
+            "average_price": 58000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Rice, Japanese, Chicken & duck"
+        }
+    },
+    {
+        "pk": "529b214b-6529-451d-a05b-63bc170deaae",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "529b214b-6529-451d-a05b-63bc170deaae",
+            "name": "Nikkou Ramen, Pakualaman",
+            "food_preference": "Japanese",
+            "average_price": 32000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Noodles, Japanese"
+        }
+    },
+    {
+        "pk": "db9555b5-a720-4e2d-ac1b-f061915c42c4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "db9555b5-a720-4e2d-ac1b-f061915c42c4",
+            "name": "d'Sushi & Takoyaki, Rejodadi Sidorejo",
+            "food_preference": "Japanese",
+            "average_price": 34000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Snacks, Japanese"
+        }
+    },
+    {
+        "pk": "4eaba5a0-0b78-4712-97c4-aa4758ef15d0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4eaba5a0-0b78-4712-97c4-aa4758ef15d0",
+            "name": "Wangoen Zuppa Soup, Umbulharjo",
+            "food_preference": "Western",
+            "average_price": 20000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Western"
+        }
+    },
+    {
+        "pk": "d76b4c28-65b7-4b87-92c3-f4b4ce7140bb",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d76b4c28-65b7-4b87-92c3-f4b4ce7140bb",
+            "name": "Burgerax, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Western, Fast food"
+        }
+    },
+    {
+        "pk": "cfbc22ef-a0aa-4cd9-b19d-44768bfe330a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "cfbc22ef-a0aa-4cd9-b19d-44768bfe330a",
+            "name": "Kedai Jagoan Moy-Moy, Tamsis",
+            "food_preference": "Chinese",
+            "average_price": 12000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Sweets, Chinese"
+        }
+    },
+    {
+        "pk": "49050270-0948-440e-89bd-f64ac72d1796",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "49050270-0948-440e-89bd-f64ac72d1796",
+            "name": "Waroeng Steak and Shake, Demangan",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "e2fedde9-7373-4696-986c-539336876901",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e2fedde9-7373-4696-986c-539336876901",
+            "name": "Waroeng Steak and Shake, Jalan Bantul",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "f9f121e6-9068-4f79-a73f-84185790a1d0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f9f121e6-9068-4f79-a73f-84185790a1d0",
+            "name": "Spark Resto And Sports Bar, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 36000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Beverages, Sate"
+        }
+    },
+    {
+        "pk": "02376b83-b916-4126-9b95-ffc86607cd8c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "02376b83-b916-4126-9b95-ffc86607cd8c",
+            "name": "Dapur Mamika, Jl Sisingamangaraja Gg Menur",
+            "food_preference": "Western",
+            "average_price": 18000,
+            "rating": 3.9,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Chicken & duck, Rice"
+        }
+    },
+    {
+        "pk": "d71bb6ae-2a98-4431-8518-f298c69b5de1",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d71bb6ae-2a98-4431-8518-f298c69b5de1",
+            "name": "Burgerax, Demangan Baru",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Snacks, Fast food"
+        }
+    },
+    {
+        "pk": "71d9325d-eab2-4f74-b4b7-469e165abe82",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "71d9325d-eab2-4f74-b4b7-469e165abe82",
+            "name": "Pawon Mbokdis, Mantrigawen Lor",
+            "food_preference": "Japanese",
+            "average_price": 20000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "9bb995fb-6da8-4133-8fbe-256bf3e02c59",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9bb995fb-6da8-4133-8fbe-256bf3e02c59",
+            "name": "Rm & Seafood 99, Sorowajan",
+            "food_preference": "Chinese",
+            "average_price": 22000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "a9ed75d0-8904-45d5-8545-78374b322531",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a9ed75d0-8904-45d5-8545-78374b322531",
+            "name": "Pecel Lele, Rawon Dan Soto Lamongan Yuk In, Giwangan, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 15000,
+            "rating": 3.9,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakso & soto"
+        }
+    },
+    {
+        "pk": "27b17d8e-f0d7-4844-9585-773c66f860e3",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "27b17d8e-f0d7-4844-9585-773c66f860e3",
+            "name": "Ayam Geprek DBC, Beskalan",
+            "food_preference": "Indonesia",
+            "average_price": 21000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakso & soto, Ayam & bebek, Minuman"
+        }
+    },
+    {
+        "pk": "25fd35e2-188f-44ff-8087-00e86f3fdd48",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "25fd35e2-188f-44ff-8087-00e86f3fdd48",
+            "name": "Nasi Goreng & Halal Chinesefood MakJoss, Rumah Pagar Biru Salon Yuli",
+            "food_preference": "Chinese",
+            "average_price": 25000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Chinese, Bakmie"
+        }
+    },
+    {
+        "pk": "1a10e744-7ced-4d6b-b538-61217083b831",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1a10e744-7ced-4d6b-b538-61217083b831",
+            "name": "Soto Ayam 61, Gondomanan",
+            "food_preference": "Indonesia",
+            "average_price": 19000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Ayam & bebek, Bakso & soto"
+        }
+    },
+    {
+        "pk": "b8c9ffbe-35a1-413e-8fbc-0e8a86ed6bec",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b8c9ffbe-35a1-413e-8fbc-0e8a86ed6bec",
+            "name": "Seblak Mang Cepot & Baso Aci Hoax, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 19000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Ayam & bebek, Bakso & soto, Cepat saji"
+        }
+    },
+    {
+        "pk": "104691c7-8e87-4b92-97f0-1878602778eb",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "104691c7-8e87-4b92-97f0-1878602778eb",
+            "name": "Buttersweet, Saman Utara",
+            "food_preference": "Western",
+            "average_price": 20000,
+            "rating": 3.9,
+            "atmosphere": "Santai",
+            "food_variety": "Bakery, Beverages, Western"
+        }
+    },
+    {
+        "pk": "09a075ec-c9e1-44de-a789-5c83d6f85f48",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "09a075ec-c9e1-44de-a789-5c83d6f85f48",
+            "name": "Bakso Lontong Djeng Thathit, Suryodiningratan",
+            "food_preference": "Indonesia",
+            "average_price": 16000,
+            "rating": 4.0,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "215fb262-ebbc-41e9-9291-012cb7e3aa1c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "215fb262-ebbc-41e9-9291-012cb7e3aa1c",
+            "name": "Bakso Urat Arema Soringin, Langensari",
+            "food_preference": "Indonesia",
+            "average_price": 19000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "a4c34475-4233-4d15-9ad9-8b7731866512",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a4c34475-4233-4d15-9ad9-8b7731866512",
+            "name": "Bakso Urat Cak Ari, Mataram",
+            "food_preference": "Indonesia",
+            "average_price": 20000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "ec5ba54d-9e38-439c-a776-6a99ea41865f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ec5ba54d-9e38-439c-a776-6a99ea41865f",
+            "name": "Soto Daging Lamongan Cak Ngun, Jl. Veteran No 212 Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 24000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "26147002-6b10-4cf5-b552-38bb5e253305",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "26147002-6b10-4cf5-b552-38bb5e253305",
+            "name": "Agenda Resto & Vibes, Arkadia",
+            "food_preference": "Western",
+            "average_price": 48000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Beverages, Pizza & pasta, Western"
+        }
+    },
+    {
+        "pk": "9a31dd73-e71f-4a15-8e87-e3abdc9682bd",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9a31dd73-e71f-4a15-8e87-e3abdc9682bd",
+            "name": "Raja Sate & Soto",
+            "food_preference": "Indonesia",
+            "average_price": 27000,
+            "rating": 4.9,
+            "atmosphere": "Santai",
+            "food_variety": "Cepat saji, Sate, Bakso & soto"
+        }
+    },
+    {
+        "pk": "d8fa3f63-4efb-4c18-9a51-49dfa63ba7b5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d8fa3f63-4efb-4c18-9a51-49dfa63ba7b5",
+            "name": "CHICKATS",
+            "food_preference": "Japanese",
+            "average_price": 25000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Rice, Japanese"
+        }
+    },
+    {
+        "pk": "c48ddf9c-f0be-4d37-ae75-083c431eadcd",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c48ddf9c-f0be-4d37-ae75-083c431eadcd",
+            "name": "Chinese Food / Sea Food Kondang",
+            "food_preference": "Chinese",
+            "average_price": 31000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Ayam & bebek, Seafood"
+        }
+    },
+    {
+        "pk": "35042220-de0d-4786-86cb-fffaa22e91cc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "35042220-de0d-4786-86cb-fffaa22e91cc",
+            "name": "Suguhand Cafe",
+            "food_preference": "Western",
+            "average_price": 111000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Coffee, Western, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "022e5351-bac5-4f76-ad82-d637320e2efb",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "022e5351-bac5-4f76-ad82-d637320e2efb",
+            "name": "HokBen, Kaliurang",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "04027289-d626-44f2-8865-78af6b27e390",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "04027289-d626-44f2-8865-78af6b27e390",
+            "name": "Pop Mart, Laksda Adi Sucipto (Korner)",
+            "food_preference": "Western",
+            "average_price": 22000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Western, Coffee"
+        }
+    },
+    {
+        "pk": "f1fea731-88b1-4a7a-b7c7-cf599ef1b1ab",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f1fea731-88b1-4a7a-b7c7-cf599ef1b1ab",
+            "name": "Tahu Walik & Soto Warisan, Masjid Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 19000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Cepat saji, Bakso & soto"
+        }
+    },
+    {
+        "pk": "62b46174-0c88-46f3-8183-8b81dabc417a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "62b46174-0c88-46f3-8183-8b81dabc417a",
+            "name": "HokBen Kitchen, Brontokusuman Parangtritis",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Fast food"
+        }
+    },
+    {
+        "pk": "0a2d95a5-25d0-4736-9cc6-5d507979ca4d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0a2d95a5-25d0-4736-9cc6-5d507979ca4d",
+            "name": "Hakata Ikkousha, Demangan Baru",
+            "food_preference": "Japanese",
+            "average_price": 80000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Noodles"
+        }
+    },
+    {
+        "pk": "65b98d11-b06d-41e9-a6a0-9a1283dc3a82",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "65b98d11-b06d-41e9-a6a0-9a1283dc3a82",
+            "name": "Tanoshii Sushi, Pogung Dalangan",
+            "food_preference": "Japanese",
+            "average_price": 58000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Korean, Snacks, Fast food"
+        }
+    },
+    {
+        "pk": "b2b85f1d-1809-4a64-8009-f2268ea10798",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b2b85f1d-1809-4a64-8009-f2268ea10798",
+            "name": "Pizza Hut, Sudirman",
+            "food_preference": "Western",
+            "average_price": 119000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Pizza & pasta, Fast food, Western"
+        }
+    },
+    {
+        "pk": "e0ebb3bf-1bb7-4f54-a8b4-1f9d6f729ab0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e0ebb3bf-1bb7-4f54-a8b4-1f9d6f729ab0",
+            "name": "Roaster and Bear, P. Mangkubumi",
+            "food_preference": "Western",
+            "average_price": 87000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Chicken & duck, Beverages, Snacks, Sweets, Western, Coffee, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "c172b433-3463-4cd3-af6c-709f52018076",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c172b433-3463-4cd3-af6c-709f52018076",
+            "name": "Essen Choco Pot, Gedong Kuning",
+            "food_preference": "Western",
+            "average_price": 35000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Western, Beverages"
+        }
+    },
+    {
+        "pk": "df897f86-e971-4385-a0fb-167769ef0e34",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "df897f86-e971-4385-a0fb-167769ef0e34",
+            "name": "Zona Seafood, Kotabaru",
+            "food_preference": "Chinese",
+            "average_price": 44000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Seafood, Chinese"
+        }
+    },
+    {
+        "pk": "0c1cbc5d-29ed-41ea-8473-c8a045f5ea08",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0c1cbc5d-29ed-41ea-8473-c8a045f5ea08",
+            "name": "Burgerax Demangan 2",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Fast food, Western"
+        }
+    },
+    {
+        "pk": "b7c171ab-3590-4cab-a57e-be654b2529d2",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b7c171ab-3590-4cab-a57e-be654b2529d2",
+            "name": "Makan Burger & Toast, Mantrirejon",
+            "food_preference": "Western",
+            "average_price": 21000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "4cda9981-1978-4f98-bbde-3e7a1530f5d9",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4cda9981-1978-4f98-bbde-3e7a1530f5d9",
+            "name": "Reisban Coffee Shop, Menukan",
+            "food_preference": "Western",
+            "average_price": 25000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Coffee, Beverages"
+        }
+    },
+    {
+        "pk": "26ca7cdb-41ab-4ff8-9d94-48a65e2428d4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "26ca7cdb-41ab-4ff8-9d94-48a65e2428d4",
+            "name": "Pupa Meatshop, Banguntapan",
+            "food_preference": "Western",
+            "average_price": 47000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Japanese, Korean"
+        }
+    },
+    {
+        "pk": "d1de9401-c5be-43ce-a4ac-f2cc011a64ec",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d1de9401-c5be-43ce-a4ac-f2cc011a64ec",
+            "name": "Pupa Meatshop, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 47000,
+            "rating": 4.9,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Japanese, Korean"
+        }
+    },
+    {
+        "pk": "4b63a981-766e-4e20-a270-72b59ca824d6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4b63a981-766e-4e20-a270-72b59ca824d6",
+            "name": "Pepper Lunch, Hartono Mall",
+            "food_preference": "Japanese",
+            "average_price": 92000,
+            "rating": 4.9,
+            "atmosphere": "Formal",
+            "food_variety": "Western, Japanese, Rice, Chicken & duck"
+        }
+    },
+    {
+        "pk": "78966ed2-1d31-4fa2-925e-a0eeb7be34ff",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "78966ed2-1d31-4fa2-925e-a0eeb7be34ff",
+            "name": "King Star Kebab, Nogorojo",
+            "food_preference": "Western",
+            "average_price": 23000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Snacks"
+        }
+    },
+    {
+        "pk": "0eaa8341-4e62-4069-b3f2-62ecba3ac55b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0eaa8341-4e62-4069-b3f2-62ecba3ac55b",
+            "name": "Yamie Panda, Kridosono",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "bb2378cc-9cc1-41ae-82e8-4ad5f94c3868",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bb2378cc-9cc1-41ae-82e8-4ad5f94c3868",
+            "name": "Warung Makan Bu Sri, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 13000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Ayam & bebek, Bakso & soto"
+        }
+    },
+    {
+        "pk": "f0736eff-74cd-4a11-a807-86530636e587",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f0736eff-74cd-4a11-a807-86530636e587",
+            "name": "Rumah Makan Terang Mulyo, Katamso",
+            "food_preference": "Chinese",
+            "average_price": 42000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "7023eec8-1b38-4bf3-ad64-93dca87fb009",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "7023eec8-1b38-4bf3-ad64-93dca87fb009",
+            "name": "SGPC Sop Penyetan Bu Wiryo Cendana",
+            "food_preference": "Indonesia",
+            "average_price": 18000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakso & soto"
+        }
+    },
+    {
+        "pk": "bc4639e9-05f6-4999-bb4a-c65cabddd418",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bc4639e9-05f6-4999-bb4a-c65cabddd418",
+            "name": "Berkah Abadi, Pasar Kranggan",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Ayam & bebek, Chinese"
+        }
+    },
+    {
+        "pk": "0f7b7fca-2b85-4bdc-b249-432c658e9be4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0f7b7fca-2b85-4bdc-b249-432c658e9be4",
+            "name": "Mie Ayam Dan Bakso Babaran, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Bakso & soto"
+        }
+    },
+    {
+        "pk": "f34468cf-42bc-4cea-a5b2-e1667e7930d3",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f34468cf-42bc-4cea-a5b2-e1667e7930d3",
+            "name": "Yamie Singkawang",
+            "food_preference": "Chinese",
+            "average_price": 45000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "e3703566-81ca-49f4-975c-b9cd121ccbc9",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e3703566-81ca-49f4-975c-b9cd121ccbc9",
+            "name": "Easy Peasy Kitchen, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 43000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Beverages, Western"
+        }
+    },
+    {
+        "pk": "8cd88174-ffc0-4934-988d-6dea34ca1b28",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8cd88174-ffc0-4934-988d-6dea34ca1b28",
+            "name": "Kiwae Ayam Kekinian, Nologaten",
+            "food_preference": "Western",
+            "average_price": 30000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Korean, Western"
+        }
+    },
+    {
+        "pk": "5d67951b-7927-42b8-9543-078226b2a4ed",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5d67951b-7927-42b8-9543-078226b2a4ed",
+            "name": "Pepper Lunch, Plaza Ambarrukmo",
+            "food_preference": "Japanese",
+            "average_price": 92000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Chicken & duck, Rice, Japanese"
+        }
+    },
+    {
+        "pk": "dd1c2a0b-1c23-4303-b903-113cd090590a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "dd1c2a0b-1c23-4303-b903-113cd090590a",
+            "name": "Makmur Spesial B2 Food",
+            "food_preference": "Chinese",
+            "average_price": 31000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Aneka nasi, Bakmie"
+        }
+    },
+    {
+        "pk": "aec106a4-6d55-40c1-9cf3-726e0051cd63",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "aec106a4-6d55-40c1-9cf3-726e0051cd63",
+            "name": "Rice&Steak, Ngipik, Potorono, Banguntapan, Bantul",
+            "food_preference": "Chinese",
+            "average_price": 27000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Chinese, Western"
+        }
+    },
+    {
+        "pk": "f5fbad8c-91bf-4aea-9f71-21346e25442d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f5fbad8c-91bf-4aea-9f71-21346e25442d",
+            "name": "Japanese Town Snack, Matrijeron",
+            "food_preference": "Japanese",
+            "average_price": 27000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Japanese, Snacks"
+        }
+    },
+    {
+        "pk": "21b9f1be-8e8f-460c-9117-c8c6f2e0b46f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "21b9f1be-8e8f-460c-9117-c8c6f2e0b46f",
+            "name": "Seblak Asgar, Lowanu",
+            "food_preference": "Indonesia",
+            "average_price": 33000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Bakso & soto"
+        }
+    },
+    {
+        "pk": "fa9e9656-013a-4c19-981b-c039f3d8ae8c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "fa9e9656-013a-4c19-981b-c039f3d8ae8c",
+            "name": "Tora Tora, Kaliurang",
+            "food_preference": "Japanese",
+            "average_price": 28000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice"
+        }
+    },
+    {
+        "pk": "62a0ac67-6809-4650-a96c-2c018ddce456",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "62a0ac67-6809-4650-a96c-2c018ddce456",
+            "name": "Jajan Fast Food, Sisingamangaraja",
+            "food_preference": "Western",
+            "average_price": 18000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Fast food, Western"
+        }
+    },
+    {
+        "pk": "70364908-c33f-48af-b8bd-9c8806f19824",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "70364908-c33f-48af-b8bd-9c8806f19824",
+            "name": "Sate Taichan Hitz, Gejayan",
+            "food_preference": "Japanese",
+            "average_price": 32000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Japanese, Sate"
+        }
+    },
+    {
+        "pk": "712e2c4f-2087-4622-ac23-2b0f129493ac",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "712e2c4f-2087-4622-ac23-2b0f129493ac",
+            "name": "Kebab Turki Babarafi, Babarsari",
+            "food_preference": "Western",
+            "average_price": 23000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Western"
+        }
+    },
+    {
+        "pk": "845c4a7c-d178-4ad8-a092-54df5d055ad9",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "845c4a7c-d178-4ad8-a092-54df5d055ad9",
+            "name": "Boom Burger, Seturan",
+            "food_preference": "Western",
+            "average_price": 37000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "e6493934-aa7d-45b8-ab02-8855b0328e86",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e6493934-aa7d-45b8-ab02-8855b0328e86",
+            "name": "Dang! Burger, Glagah Sari",
+            "food_preference": "Western",
+            "average_price": 29000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "9e1b59d0-79bb-417a-935a-965e4f95029c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9e1b59d0-79bb-417a-935a-965e4f95029c",
+            "name": "Burger Bangor Express, Taman Siswa",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food, Chicken & duck"
+        }
+    },
+    {
+        "pk": "d0d98870-7aff-486f-8f19-0f42756b30bd",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d0d98870-7aff-486f-8f19-0f42756b30bd",
+            "name": "Yamie Panda, Timoho",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Bakso & soto, Chinese"
+        }
+    },
+    {
+        "pk": "e311c08a-25de-43f5-8f02-bc7ddf377294",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e311c08a-25de-43f5-8f02-bc7ddf377294",
+            "name": "Cak No Chinese Food, Jogoyudan",
+            "food_preference": "Chinese",
+            "average_price": 25000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "cfec7461-9a7b-4365-a9d3-42af7d7c6fe5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "cfec7461-9a7b-4365-a9d3-42af7d7c6fe5",
+            "name": "Warung Sop Iga Dan Soto Betawi Bu Tya",
+            "food_preference": "Indonesia",
+            "average_price": 28000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakso & soto"
+        }
+    },
+    {
+        "pk": "6bb5a1b5-82a6-4206-b01b-71ac40735083",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "6bb5a1b5-82a6-4206-b01b-71ac40735083",
+            "name": "Bakso dan Mie Ayam Muncul, Jl. Nyi Wiji Adhisoro",
+            "food_preference": "Indonesia",
+            "average_price": 14000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "eda1ebf0-dade-4ae8-bb53-ff32c5d85bc0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "eda1ebf0-dade-4ae8-bb53-ff32c5d85bc0",
+            "name": "Sop Ayam Pak Min Klaten, Taman Siswa",
+            "food_preference": "Indonesia",
+            "average_price": 20000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Ayam & bebek, Aneka nasi"
+        }
+    },
+    {
+        "pk": "c000b890-6517-44ec-9884-ce77fac3d9c4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c000b890-6517-44ec-9884-ce77fac3d9c4",
+            "name": "Warung Makan Bu Week, Tegalturi",
+            "food_preference": "Indonesia",
+            "average_price": 15000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Minuman"
+        }
+    },
+    {
+        "pk": "998d9ee0-58e7-441b-9110-210d60faed45",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "998d9ee0-58e7-441b-9110-210d60faed45",
+            "name": "DF HEALTHY KITCHEN (DF FIT CLUB), Yk",
+            "food_preference": "Western",
+            "average_price": 76000,
+            "rating": 4.9,
+            "atmosphere": "Santai",
+            "food_variety": "Beverages, Rice, Western"
+        }
+    },
+    {
+        "pk": "9d427a16-e4ee-441c-996c-06d8c92b6a53",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9d427a16-e4ee-441c-996c-06d8c92b6a53",
+            "name": "Ono Dimsum, Baciro",
+            "food_preference": "Japanese",
+            "average_price": 17000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Jajanan"
+        }
+    },
+    {
+        "pk": "1629c0d0-a3d2-48e5-b234-0f2f26d58967",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1629c0d0-a3d2-48e5-b234-0f2f26d58967",
+            "name": "Sushiruma, Babarsari",
+            "food_preference": "Japanese",
+            "average_price": 30000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "1bacfa51-19eb-4dd2-8011-2e6a33ccbcb5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1bacfa51-19eb-4dd2-8011-2e6a33ccbcb5",
+            "name": "Hokben Kitchen, Seturan Jogja",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Fast food"
+        }
+    },
+    {
+        "pk": "b946a422-299c-44bf-967d-081ea947a753",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b946a422-299c-44bf-967d-081ea947a753",
+            "name": "Tom Sushi, Hartono Mall Jogja",
+            "food_preference": "Japanese",
+            "average_price": 56000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Fast food"
+        }
+    },
+    {
+        "pk": "42b31359-b332-47b8-8d07-4eecc79fef55",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "42b31359-b332-47b8-8d07-4eecc79fef55",
+            "name": "Banzai, Mergangsan",
+            "food_preference": "Japanese",
+            "average_price": 45000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Fast food, Rice"
+        }
+    },
+    {
+        "pk": "5d3a87bf-b5f6-4f70-ada7-d46bfca031b6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5d3a87bf-b5f6-4f70-ada7-d46bfca031b6",
+            "name": "RamenYa!, Plaza Ambarrukmo",
+            "food_preference": "Japanese",
+            "average_price": 73000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Noodles"
+        }
+    },
+    {
+        "pk": "5396f454-6fc7-4f86-9ceb-cd38dff4dcd5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5396f454-6fc7-4f86-9ceb-cd38dff4dcd5",
+            "name": "Pizza Hut, Adi Sucipto Jogja",
+            "food_preference": "Western",
+            "average_price": 119000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Pizza & pasta, Fast food, Western"
+        }
+    },
+    {
+        "pk": "7125e385-0fe5-4c5d-bcb9-5968dc122552",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "7125e385-0fe5-4c5d-bcb9-5968dc122552",
+            "name": "Pizza Hut, Sultan Agung Yogyakarta",
+            "food_preference": "Western",
+            "average_price": 119000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Pizza & pasta, Fast food, Western"
+        }
+    },
+    {
+        "pk": "9b328702-ba2b-42e9-bfd9-79d375834f04",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9b328702-ba2b-42e9-bfd9-79d375834f04",
+            "name": "Picnic! Pata X Sausage Tamansiswa, Jl. Tamansiswa No.49 Yogya",
+            "food_preference": "Western",
+            "average_price": 29000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Pizza & pasta, Snacks, Western"
+        }
+    },
+    {
+        "pk": "461956f2-f7e3-4ed9-8cfd-5d15e77a10a4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "461956f2-f7e3-4ed9-8cfd-5d15e77a10a4",
+            "name": "Rumah Makan Tio Asli Ciu Chinese Food & Sea Food, Jetis",
+            "food_preference": "Chinese",
+            "average_price": 120000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Seafood, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "23360d3e-a2e2-49a7-828c-94c4cb54e61a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "23360d3e-a2e2-49a7-828c-94c4cb54e61a",
+            "name": "Manalagi KQ 5, Ngampilan",
+            "food_preference": "Chinese",
+            "average_price": 26000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Seafood, Chinese"
+        }
+    },
+    {
+        "pk": "00060374-d09d-4a68-86c8-f7be0f4a2f60",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "00060374-d09d-4a68-86c8-f7be0f4a2f60",
+            "name": "Lawson Shop, Tegalrejo",
+            "food_preference": "Japanese",
+            "average_price": 44000,
+            "rating": 4.0,
+            "atmosphere": "Formal",
+            "food_variety": "Snacks, Beverages, Japanese, Coffee, Korean"
+        }
+    },
+    {
+        "pk": "883993b6-b95e-4143-9915-c0127bde2d86",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "883993b6-b95e-4143-9915-c0127bde2d86",
+            "name": "Burgerax, Glagahsari",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Western"
+        }
+    },
+    {
+        "pk": "d14d0e06-9c64-45bb-852d-46dc20a122d5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d14d0e06-9c64-45bb-852d-46dc20a122d5",
+            "name": "Ini Baru Rajanya Steak, Banguntapan",
+            "food_preference": "Western",
+            "average_price": 35000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "d38fc151-ecd8-4a07-b6d2-464a94c11189",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d38fc151-ecd8-4a07-b6d2-464a94c11189",
+            "name": "Burger Bangor Express, Janti",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food, Chicken & duck"
+        }
+    },
+    {
+        "pk": "56c9acb9-9dcf-48ff-bd84-2126278ce57e",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "56c9acb9-9dcf-48ff-bd84-2126278ce57e",
+            "name": "Black Kebab, Wirobrajan",
+            "food_preference": "Middle Eastern",
+            "average_price": 23000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Middle Eastern, Snacks"
+        }
+    },
+    {
+        "pk": "eb31156a-17f9-4854-a69e-454b7c4f92dc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "eb31156a-17f9-4854-a69e-454b7c4f92dc",
+            "name": "Oz Resto & Cafe, Permata Demangan",
+            "food_preference": "Western",
+            "average_price": 25000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Western, Pizza & pasta, Rice, Chicken & duck"
+        }
+    },
+    {
+        "pk": "aeb36ae4-938f-4b4b-b7a6-1350eeeed5ab",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "aeb36ae4-938f-4b4b-b7a6-1350eeeed5ab",
+            "name": "Twisted Noodle, Gondokusuman",
+            "food_preference": "Chinese",
+            "average_price": 12000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "171325d2-843b-448e-bd6b-faf66adb5daa",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "171325d2-843b-448e-bd6b-faf66adb5daa",
+            "name": "Yamie Panda, Demangan",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "1f2a9a8d-2636-40a1-b59a-312ef7b00dd6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1f2a9a8d-2636-40a1-b59a-312ef7b00dd6",
+            "name": "RM Makmur Chinese Food, Sosromenduran",
+            "food_preference": "Chinese",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "d1cf9be7-946c-479a-9dbf-371209c3ade8",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d1cf9be7-946c-479a-9dbf-371209c3ade8",
+            "name": "Brongkos Koyor dan Sop Buntut Mbak Ris, Balaikota",
+            "food_preference": "Indonesia",
+            "average_price": 30000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakso & soto, Seafood"
+        }
+    },
+    {
+        "pk": "137bc2b6-2fbf-49e3-952c-b892dc88d3f2",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "137bc2b6-2fbf-49e3-952c-b892dc88d3f2",
+            "name": "Mie Ayam Goreng & Gado-gado Om Brewok",
+            "food_preference": "Indonesia",
+            "average_price": 19000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Ayam & bebek, Bakmie, Bakso & soto"
+        }
+    },
+    {
+        "pk": "5652ed7a-aaa5-4315-9786-f22a157fedc2",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5652ed7a-aaa5-4315-9786-f22a157fedc2",
+            "name": "Bebek Peking dan Ayam Panggang Pak Gembul, Jl KH Ahmad Dahlan No 40",
+            "food_preference": "Chinese",
+            "average_price": 45000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Ayam & bebek, Chinese, Aneka nasi"
+        }
+    },
+    {
+        "pk": "610c7a0d-3808-4342-9d0d-5f3aa042d712",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "610c7a0d-3808-4342-9d0d-5f3aa042d712",
+            "name": "Soto Pak Zaenal, Dr. Supomo",
+            "food_preference": "Indonesia",
+            "average_price": 15000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "42db3749-adab-4e5b-a98a-9e01c9a87e80",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "42db3749-adab-4e5b-a98a-9e01c9a87e80",
+            "name": "Bakso Lapangan Tembak Senayan - Cendana",
+            "food_preference": "Indonesia",
+            "average_price": 42000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Aneka nasi, Bakmie"
+        }
+    },
+    {
+        "pk": "5b650dac-69e0-4b06-8624-2a09fe5c5ea8",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5b650dac-69e0-4b06-8624-2a09fe5c5ea8",
+            "name": "Soto Ayam Jadul Mak Yem, Sorogenen",
+            "food_preference": "Indonesia",
+            "average_price": 10000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Minuman"
+        }
+    },
+    {
+        "pk": "4b97800c-c532-489b-aa67-13d337e7f260",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4b97800c-c532-489b-aa67-13d337e7f260",
+            "name": "Ayam Geprek & Rice Bowl Tobiko Mentai, Karangkajen",
+            "food_preference": "Japanese",
+            "average_price": 23000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Japanese, Beverages"
+        }
+    },
+    {
+        "pk": "778a44dc-3594-4f53-84cd-873e9f9e93fe",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "778a44dc-3594-4f53-84cd-873e9f9e93fe",
+            "name": "Funkydak, Komplek Colombo",
+            "food_preference": "Western",
+            "average_price": 58000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Western, Fast food"
+        }
+    },
+    {
+        "pk": "def24049-7adb-4e57-b734-9b9191e72226",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "def24049-7adb-4e57-b734-9b9191e72226",
+            "name": "RM. Gajah jaya",
+            "food_preference": "Chinese",
+            "average_price": 25000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese"
+        }
+    },
+    {
+        "pk": "0102d4a0-f588-4f28-b98a-1815c297e4d6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0102d4a0-f588-4f28-b98a-1815c297e4d6",
+            "name": "Hore Steak Jogja, Jl. Cenderawasih 32b",
+            "food_preference": "Western",
+            "average_price": 77000,
+            "rating": 4.1,
+            "atmosphere": "Formal",
+            "food_variety": "Fast food, Beverages, Western"
+        }
+    },
+    {
+        "pk": "1bb30f70-2ab9-44a2-8f45-12bf388e128f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1bb30f70-2ab9-44a2-8f45-12bf388e128f",
+            "name": "Ichiban Sushi, Hartono Mall",
+            "food_preference": "Japanese",
+            "average_price": 52000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "342fc615-74d7-4f71-a6de-49760f06f180",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "342fc615-74d7-4f71-a6de-49760f06f180",
+            "name": "BOX MIE, Monjali",
+            "food_preference": "Japanese",
+            "average_price": 24000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Noodles, Korean"
+        }
+    },
+    {
+        "pk": "14b82d03-d487-4028-8441-ba8afd6228ab",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "14b82d03-d487-4028-8441-ba8afd6228ab",
+            "name": "Warung Makan Tokyo, Titik Maps Sabi Jogja",
+            "food_preference": "Japanese",
+            "average_price": 17000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Japanese, Seafood"
+        }
+    },
+    {
+        "pk": "7bf1ac33-1459-4cc9-b445-5c0f6989d829",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "7bf1ac33-1459-4cc9-b445-5c0f6989d829",
+            "name": "East Pork - #1 Sei Babi Kupang In Jogja, Ampel",
+            "food_preference": "Western",
+            "average_price": 30000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Western, Sate"
+        }
+    },
+    {
+        "pk": "c9c9cbd2-275a-4d7a-b32d-7b3c0b7cd24f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c9c9cbd2-275a-4d7a-b32d-7b3c0b7cd24f",
+            "name": "Kebab Jawa, Sorogenen",
+            "food_preference": "Western",
+            "average_price": 18000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "a01e3f4a-b353-4247-a84a-42da66070cba",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a01e3f4a-b353-4247-a84a-42da66070cba",
+            "name": "Iten Kitchen, PazelKitchen Sudirman",
+            "food_preference": "Western",
+            "average_price": 26000,
+            "rating": 4.2,
+            "atmosphere": "Formal",
+            "food_variety": "Western, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "32c69da4-ad55-4200-a8fe-de3951227802",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "32c69da4-ad55-4200-a8fe-de3951227802",
+            "name": "Warung Toscana",
+            "food_preference": "Western",
+            "average_price": 69000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "0aa88e40-b5d3-4f94-b7ca-f9f57f313736",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0aa88e40-b5d3-4f94-b7ca-f9f57f313736",
+            "name": "Kedai Zu Pa ( Zuppa Soup & Pasta ) Kotabaru, Juadi",
+            "food_preference": "Western",
+            "average_price": 21000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Snacks, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "27b49328-a535-416b-813f-7b0a3de250aa",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "27b49328-a535-416b-813f-7b0a3de250aa",
+            "name": "NABE COFFEE Soragan",
+            "food_preference": "Japanese",
+            "average_price": 36000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Bakery, Japanese, Coffee"
+        }
+    },
+    {
+        "pk": "02ca7f69-4b44-4709-b601-67efd716a4f7",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "02ca7f69-4b44-4709-b601-67efd716a4f7",
+            "name": "Mie Jakarta Express, Galeria Mall",
+            "food_preference": "Chinese",
+            "average_price": 48000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Seafood, Chinese"
+        }
+    },
+    {
+        "pk": "8ba04387-c842-44bf-96d2-1f8399a00828",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8ba04387-c842-44bf-96d2-1f8399a00828",
+            "name": "Soto Ayam Pak Satar",
+            "food_preference": "Indonesia",
+            "average_price": 13000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "d0ee3845-0c25-423d-8f6d-36be27acec94",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d0ee3845-0c25-423d-8f6d-36be27acec94",
+            "name": "Mie Ayam Sae Raos, Jl Sidikan No. 71 Sorosutan",
+            "food_preference": "Indonesia",
+            "average_price": 14000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "36b0ad11-12f4-4dc4-ad67-d94b76760127",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "36b0ad11-12f4-4dc4-ad67-d94b76760127",
+            "name": "Happy Juice & Soto Padang, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 18000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Minuman"
+        }
+    },
+    {
+        "pk": "229ea28d-4fd8-4cb3-8754-fd051b63398c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "229ea28d-4fd8-4cb3-8754-fd051b63398c",
+            "name": "Cerenti Restaurant, Hotel Grand Zuri",
+            "food_preference": "Western",
+            "average_price": 66000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Barat, Pizza & pasta, Aneka nasi, Chinese"
+        }
+    },
+    {
+        "pk": "86999b48-c7d2-42af-b0a3-aaf92721edbe",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "86999b48-c7d2-42af-b0a3-aaf92721edbe",
+            "name": "Sushi Tei, Komplek Colombo",
+            "food_preference": "Japanese",
+            "average_price": 100000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Beverages, Seafood, Japanese"
+        }
+    },
+    {
+        "pk": "56f899db-177f-44fe-a36f-c111d700dd75",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "56f899db-177f-44fe-a36f-c111d700dd75",
+            "name": "Bubur Ayam Kampung Hawila, Timoho",
+            "food_preference": "Chinese",
+            "average_price": 25000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Cepat saji, Chinese, Aneka nasi"
+        }
+    },
+    {
+        "pk": "ad5b50f8-fbd2-42b8-ad52-4cd10c1ebc1b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ad5b50f8-fbd2-42b8-ad52-4cd10c1ebc1b",
+            "name": "Nasi Ayam d' Katsu, Rejodadi Sidorejo",
+            "food_preference": "Japanese",
+            "average_price": 38000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Japanese, Rice"
+        }
+    },
+    {
+        "pk": "cf90c7d3-7b36-4c9d-8704-12878077334d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "cf90c7d3-7b36-4c9d-8704-12878077334d",
+            "name": "Kedai Liang Xin",
+            "food_preference": "Chinese",
+            "average_price": 22000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Japanese"
+        }
+    },
+    {
+        "pk": "af938ff2-39f5-4ca8-a75c-079459dc0345",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "af938ff2-39f5-4ca8-a75c-079459dc0345",
+            "name": "My Kopi-O! Indonesian Bistro, Sagan",
+            "food_preference": "Western",
+            "average_price": 51000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Coffee, Snacks, Western"
+        }
+    },
+    {
+        "pk": "60c31d56-82b7-45ed-9f42-7c88edbdfbc6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "60c31d56-82b7-45ed-9f42-7c88edbdfbc6",
+            "name": "Gokana Ramen & Teppan, Pakuwon Mall Jogja",
+            "food_preference": "Japanese",
+            "average_price": 55000,
+            "rating": 4.5,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Rice"
+        }
+    },
+    {
+        "pk": "45a4f37a-7f73-4176-9e4e-31cbac8b85f1",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "45a4f37a-7f73-4176-9e4e-31cbac8b85f1",
+            "name": "Katsukai, Selokan Mataram",
+            "food_preference": "Japanese",
+            "average_price": 37000,
+            "rating": 4.1,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice"
+        }
+    },
+    {
+        "pk": "97549859-ba21-438d-805a-18e8520c620b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "97549859-ba21-438d-805a-18e8520c620b",
+            "name": "Kalluna, Kotabaru",
+            "food_preference": "Western",
+            "average_price": 60000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Chicken & duck, Western"
+        }
+    },
+    {
+        "pk": "22dcc149-c304-48d4-ae8b-27d75bbf885d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "22dcc149-c304-48d4-ae8b-27d75bbf885d",
+            "name": "Daruma Donburi, Mlati, Sinduadi",
+            "food_preference": "Japanese",
+            "average_price": 35000,
+            "rating": 4.0,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Japanese"
+        }
+    },
+    {
+        "pk": "91db33a3-84e0-4276-9565-df8c7901a9bf",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "91db33a3-84e0-4276-9565-df8c7901a9bf",
+            "name": "Sabi Jogja, Caturtunggal",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Sate, Rice, Japanese"
+        }
+    },
+    {
+        "pk": "e2668740-48e4-44fc-9493-5c02c9875068",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e2668740-48e4-44fc-9493-5c02c9875068",
+            "name": "Brick Pastrami Burger, Kuliner Lor Tugu",
+            "food_preference": "Western",
+            "average_price": 44000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "9123a2e3-230e-4f54-8751-53192c4ee4b0",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9123a2e3-230e-4f54-8751-53192c4ee4b0",
+            "name": "Burger Bros, Mergangsan",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "29e9497f-3b6e-4938-9b49-37e03445398f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "29e9497f-3b6e-4938-9b49-37e03445398f",
+            "name": "Lawang Resto, Yellow Star Ambarrukmo Hotel",
+            "food_preference": "Western",
+            "average_price": 28000,
+            "rating": 3.9,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "cf890957-11b1-44d8-845f-6997ce12be58",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "cf890957-11b1-44d8-845f-6997ce12be58",
+            "name": "Waroeng Steak and Shake, HOS Cokroaminoto",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "473f9497-c84d-4d8c-81af-fc8bbcd8bbe4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "473f9497-c84d-4d8c-81af-fc8bbcd8bbe4",
+            "name": "Kebab Turki Baba Rafi, Tegalrejo",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.0,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Middle Eastern, Snacks"
+        }
+    },
+    {
+        "pk": "bb241c73-47a3-481b-b064-44ab0b87cbe6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bb241c73-47a3-481b-b064-44ab0b87cbe6",
+            "name": "Madam Tan Indonesian Food, Gondokusuman",
+            "food_preference": "Western",
+            "average_price": 30000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Pizza & pasta, Noodles, Seafood"
+        }
+    },
+    {
+        "pk": "a1b7b339-36f3-4c9e-a571-6c59b1200710",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a1b7b339-36f3-4c9e-a571-6c59b1200710",
+            "name": "Yamie Panda, Jalan Solo",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Bakmie"
+        }
+    },
+    {
+        "pk": "d83fc8d9-5e84-495e-b954-bdaec85e1196",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d83fc8d9-5e84-495e-b954-bdaec85e1196",
+            "name": "Soto Lamongan Cak Mangku",
+            "food_preference": "Indonesia",
+            "average_price": 18000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "d32bb809-6bf1-46c4-9651-7e7a8fcb3f09",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d32bb809-6bf1-46c4-9651-7e7a8fcb3f09",
+            "name": "Soto Bu Kamto, Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 15000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Aneka nasi, Ayam & bebek"
+        }
+    },
+    {
+        "pk": "5034fa5b-a737-4397-9b01-bd5609a93acc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5034fa5b-a737-4397-9b01-bd5609a93acc",
+            "name": "Bakso Ceker Mercon dan Penyetan Mayang Sidikan",
+            "food_preference": "Indonesia",
+            "average_price": 18000,
+            "rating": 4.0,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Aneka nasi, Korea"
+        }
+    },
+    {
+        "pk": "df16f724-c8f5-4191-be88-bbf242857856",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "df16f724-c8f5-4191-be88-bbf242857856",
+            "name": "Mie Ayam & Bakso Idolaku Pak Tikno, Tamansiswa",
+            "food_preference": "Indonesia",
+            "average_price": 30000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "8aa8bea4-7223-469a-a808-f8ccf13eec05",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8aa8bea4-7223-469a-a808-f8ccf13eec05",
+            "name": "Soto Daging Sapi Lamongan Cak Sodik, Jl Veteran,umbuhalrjo",
+            "food_preference": "Indonesia",
+            "average_price": 22000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Minuman, Cepat saji"
+        }
+    },
+    {
+        "pk": "928feb96-26d3-41ae-829d-bd009e10e2e8",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "928feb96-26d3-41ae-829d-bd009e10e2e8",
+            "name": "YOSHINOYA BEEF BOWL, Kaliurang Jogja",
+            "food_preference": "Japanese",
+            "average_price": 64000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Fast food, Japanese, Chicken & duck, Rice, Coffee"
+        }
+    },
+    {
+        "pk": "f8c73354-c475-4c8c-8256-df06e6315b13",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f8c73354-c475-4c8c-8256-df06e6315b13",
+            "name": "Melt Salad Fresh n Healthy Food, Sukun Raya",
+            "food_preference": "Western",
+            "average_price": 19000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Sweets, Western"
+        }
+    },
+    {
+        "pk": "3d5d1b35-953c-4ab7-be4f-d4106e3a8eca",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "3d5d1b35-953c-4ab7-be4f-d4106e3a8eca",
+            "name": "Nasi Bakar Lagi Dan Mendoan Jumbo \"Mbakayune\", Umbulharjo",
+            "food_preference": "Indonesia",
+            "average_price": 20000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Aneka nasi, Bakso & soto"
+        }
+    },
+    {
+        "pk": "5c421dca-b558-43ab-918a-48a582d8a817",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "5c421dca-b558-43ab-918a-48a582d8a817",
+            "name": "Oriyamie, Kusumanegara",
+            "food_preference": "Indonesia",
+            "average_price": 20000,
+            "rating": 3.7,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "6d34cb92-f906-4660-852a-25c3869d9a54",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "6d34cb92-f906-4660-852a-25c3869d9a54",
+            "name": "Ichiban Sushi, Plaza Malioboro",
+            "food_preference": "Japanese",
+            "average_price": 52000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "d3a91c82-3fc6-4165-92f1-1fdc61d46ebc",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d3a91c82-3fc6-4165-92f1-1fdc61d46ebc",
+            "name": "Banzai, Tegalrejo",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Fast food, Rice"
+        }
+    },
+    {
+        "pk": "9a89dc50-2ac4-4d96-9538-fa860f9657df",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9a89dc50-2ac4-4d96-9538-fa860f9657df",
+            "name": "Nakdang, Banguntapan",
+            "food_preference": "Japanese",
+            "average_price": 33000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Chicken & duck"
+        }
+    },
+    {
+        "pk": "48014bd1-e227-46ad-a7de-d1f669cf2921",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "48014bd1-e227-46ad-a7de-d1f669cf2921",
+            "name": "Boga Kitchen, Selokan Yogya",
+            "food_preference": "Japanese",
+            "average_price": 82000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Rice, Fast food, Chicken & duck"
+        }
+    },
+    {
+        "pk": "ebdbb86f-8e88-44f3-b38b-b467b0e0c79d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ebdbb86f-8e88-44f3-b38b-b467b0e0c79d",
+            "name": "Por Aqui Resto & IRD, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 33000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Beverages, Western"
+        }
+    },
+    {
+        "pk": "a373e99c-f497-4b52-a45a-e30ef3f248aa",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a373e99c-f497-4b52-a45a-e30ef3f248aa",
+            "name": "Ayam Geprek Dan Katsu KALARASA, Umbulharjo",
+            "food_preference": "Japanese",
+            "average_price": 18000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "4e06d9b4-23a3-483f-9bf7-be7f9e0d4605",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4e06d9b4-23a3-483f-9bf7-be7f9e0d4605",
+            "name": "Nasi Mangkok Uncle Dave, Depok/Caturtunggal/Seturan",
+            "food_preference": "Japanese",
+            "average_price": 21000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "bc38c581-88f6-433a-a5d9-c3a636a02938",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bc38c581-88f6-433a-a5d9-c3a636a02938",
+            "name": "Ramen Kanbai, Babarsari",
+            "food_preference": "Japanese",
+            "average_price": 27000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Sweets, Japanese, Noodles"
+        }
+    },
+    {
+        "pk": "42c9c168-c117-4cae-a78d-832d55e2be80",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "42c9c168-c117-4cae-a78d-832d55e2be80",
+            "name": "Boom Burger, Mergangsan",
+            "food_preference": "Western",
+            "average_price": 37000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "e44718c7-c128-4b54-9f2e-6643855a2938",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e44718c7-c128-4b54-9f2e-6643855a2938",
+            "name": "Burger Bros, Seturan",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "68b2f4ce-0dc3-480a-986d-10835d73ebf6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "68b2f4ce-0dc3-480a-986d-10835d73ebf6",
+            "name": "Monalisa Burger Sisingamangaraja, seberang BDS syariah",
+            "food_preference": "Western",
+            "average_price": 33000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "2290b39b-13de-4ee3-b908-df3d2c291623",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "2290b39b-13de-4ee3-b908-df3d2c291623",
+            "name": "Choky Spaghetti Steak, Sugiyono",
+            "food_preference": "Western",
+            "average_price": 24000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Rice"
+        }
+    },
+    {
+        "pk": "58b8bfd2-28a8-4e25-a6d9-162718aaa7ef",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "58b8bfd2-28a8-4e25-a6d9-162718aaa7ef",
+            "name": "Steak Box, Gondokusuman, Kotabaru",
+            "food_preference": "Western",
+            "average_price": 27000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Rice, Fast food"
+        }
+    },
+    {
+        "pk": "48113a93-1dd5-4f11-aa6c-6c6e4d123bae",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "48113a93-1dd5-4f11-aa6c-6c6e4d123bae",
+            "name": "Ta Wan, Malioboro",
+            "food_preference": "Chinese",
+            "average_price": 56000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Aneka nasi, Ayam & bebek, Chinese"
+        }
+    },
+    {
+        "pk": "9e04ef96-832a-4a88-961d-9f9863e0fc25",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9e04ef96-832a-4a88-961d-9f9863e0fc25",
+            "name": "Yamie Panda, Lippo Mall Jogja",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "9f7560d3-48e3-4e10-8b2d-c8fc82581fd6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9f7560d3-48e3-4e10-8b2d-c8fc82581fd6",
+            "name": "Yamie Panda, Tamansiswa",
+            "food_preference": "Chinese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Bakmie"
+        }
+    },
+    {
+        "pk": "7c808211-885f-48b8-a852-2ee4ecbf4c77",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "7c808211-885f-48b8-a852-2ee4ecbf4c77",
+            "name": "Pondok Damai Mbah Tin",
+            "food_preference": "Chinese",
+            "average_price": 23000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "03ec966f-6c6e-4f9a-bf82-d8c163482bb2",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "03ec966f-6c6e-4f9a-bf82-d8c163482bb2",
+            "name": "Mie Ayam Pancoran, Glagahsari",
+            "food_preference": "Indonesia",
+            "average_price": 21000,
+            "rating": 3.9,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Bakso & soto"
+        }
+    },
+    {
+        "pk": "3d4091f0-689d-469e-9596-b55a94d41630",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "3d4091f0-689d-469e-9596-b55a94d41630",
+            "name": "Mie Kita Orang, Pasar Kranggan Lantai 2",
+            "food_preference": "Chinese",
+            "average_price": 20000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese"
+        }
+    },
+    {
+        "pk": "a5bfbade-6b5c-4a18-8110-becdabec49e1",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a5bfbade-6b5c-4a18-8110-becdabec49e1",
+            "name": "Bakso Cak Masrur, Timoho",
+            "food_preference": "Indonesia",
+            "average_price": 43000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "bfc8d296-7b58-4462-aff8-6fe821e58e21",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bfc8d296-7b58-4462-aff8-6fe821e58e21",
+            "name": "Mie Ayam Dan Bakso Urat Sari Roso Wonogiri",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "d25a88b3-1c4d-4b2a-9d35-f34dd0bc7438",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d25a88b3-1c4d-4b2a-9d35-f34dd0bc7438",
+            "name": "Soto Daging Sapi Lamongan Cak Lim",
+            "food_preference": "Indonesia",
+            "average_price": 22000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Cepat saji, Aneka nasi"
+        }
+    },
+    {
+        "pk": "6ad934d8-53a0-4b60-a2bc-6f1a8d90ec61",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "6ad934d8-53a0-4b60-a2bc-6f1a8d90ec61",
+            "name": "Etnik Kafe, Mergangsan",
+            "food_preference": "Chinese",
+            "average_price": 23000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Aneka nasi, Ayam & bebek"
+        }
+    },
+    {
+        "pk": "eefed99e-7499-4af6-b7c3-d10dcb5f446a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "eefed99e-7499-4af6-b7c3-d10dcb5f446a",
+            "name": "Bakso Bakar Sosis Bakar Depokan",
+            "food_preference": "Indonesia",
+            "average_price": 22000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "0d8c70ca-c270-4337-8c9b-12e56d161f58",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0d8c70ca-c270-4337-8c9b-12e56d161f58",
+            "name": "HokBen, Malioboro Mall",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "50fc7019-411b-4de1-a5b2-d3501c1e9b74",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "50fc7019-411b-4de1-a5b2-d3501c1e9b74",
+            "name": "Silla Korean & Japanese Restaurant",
+            "food_preference": "Japanese",
+            "average_price": 85000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Korean"
+        }
+    },
+    {
+        "pk": "822b2950-25bb-450d-af1e-a418d00d8e15",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "822b2950-25bb-450d-af1e-a418d00d8e15",
+            "name": "Aqori Angkringan Jepang, Kuliner Lor Tugu",
+            "food_preference": "Japanese",
+            "average_price": 23000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese, Snacks"
+        }
+    },
+    {
+        "pk": "c865c59e-e6e3-4461-83c8-0f60ac8ee181",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c865c59e-e6e3-4461-83c8-0f60ac8ee181",
+            "name": "Bakso Urat dan Mie Ayam Krowal Krowel",
+            "food_preference": "Indonesia",
+            "average_price": 15000,
+            "rating": 3.5,
+            "atmosphere": "Santai",
+            "food_variety": "Minuman, Bakso & soto, Bakmie"
+        }
+    },
+    {
+        "pk": "453b35c4-80b6-435e-846c-bcdf1042bf7b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "453b35c4-80b6-435e-846c-bcdf1042bf7b",
+            "name": "Bubur Ayam Bang Opik",
+            "food_preference": "Chinese",
+            "average_price": 18000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Minuman, Cepat saji, Chinese"
+        }
+    },
+    {
+        "pk": "e1c5ca7e-7728-436a-b914-ceacd22858cd",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "e1c5ca7e-7728-436a-b914-ceacd22858cd",
+            "name": "Sun Rice Bowl, Panggungharjo",
+            "food_preference": "Japanese",
+            "average_price": 28000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Chicken & duck, Japanese"
+        }
+    },
+    {
+        "pk": "ac742da4-1f88-44a1-9000-2c501294320a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ac742da4-1f88-44a1-9000-2c501294320a",
+            "name": "Sate Kambing Pak Tomek, Ngentak",
+            "food_preference": "Indonesia",
+            "average_price": 22000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Sate, Aneka nasi, Bakso & soto"
+        }
+    },
+    {
+        "pk": "99dfbeb2-f1ff-4214-ad3c-899ea2f2123f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "99dfbeb2-f1ff-4214-ad3c-899ea2f2123f",
+            "name": "Seafood 99, Sorogenen",
+            "food_preference": "Chinese",
+            "average_price": 32000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Seafood, Aneka nasi, Chinese"
+        }
+    },
+    {
+        "pk": "bfb8ce10-e23d-4e3e-9e21-91815ae062e1",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "bfb8ce10-e23d-4e3e-9e21-91815ae062e1",
+            "name": "Lawson Shop, Imogiri Barat",
+            "food_preference": "Japanese",
+            "average_price": 44000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Snacks, Beverages, Japanese, Coffee, Korean"
+        }
+    },
+    {
+        "pk": "2911683a-12ab-408e-9435-a17d6d8dc191",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "2911683a-12ab-408e-9435-a17d6d8dc191",
+            "name": "Lawson Shop, Sorowajan",
+            "food_preference": "Japanese",
+            "average_price": 44000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Snacks, Beverages, Japanese, Coffee, Korean"
+        }
+    },
+    {
+        "pk": "1566287e-033c-49ea-b4a9-15f2ec119151",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1566287e-033c-49ea-b4a9-15f2ec119151",
+            "name": "Burgerax, Gedongkuning",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Fast food, Western"
+        }
+    },
+    {
+        "pk": "1e054b76-33bf-47fb-9558-45598272aa46",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "1e054b76-33bf-47fb-9558-45598272aa46",
+            "name": "Hawker's Steak, JEC",
+            "food_preference": "Western",
+            "average_price": 28000,
+            "rating": 4.5,
+            "atmosphere": "Formal",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "eaa52343-8d46-492d-9a4b-34328c43dd52",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "eaa52343-8d46-492d-9a4b-34328c43dd52",
+            "name": "Pizza Aroma Italia 2, Gondokusuman",
+            "food_preference": "Western",
+            "average_price": 107000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Western, Pizza & pasta"
+        }
+    },
+    {
+        "pk": "48defcd7-b3a7-4bdf-9231-1c7388f140c8",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "48defcd7-b3a7-4bdf-9231-1c7388f140c8",
+            "name": "Blengerr, Hayam Wuruk",
+            "food_preference": "Chinese",
+            "average_price": 34000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Ayam & bebek, Chinese"
+        }
+    },
+    {
+        "pk": "39ccf027-c114-42ca-b073-3766d74925d7",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "39ccf027-c114-42ca-b073-3766d74925d7",
+            "name": "Nasi Goreng dan Chinese Food Abah, Prawirotaman",
+            "food_preference": "Chinese",
+            "average_price": 22000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Chinese, Aneka nasi"
+        }
+    },
+    {
+        "pk": "09783ec8-a5dc-45e9-840f-7c113d9d4ecf",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "09783ec8-a5dc-45e9-840f-7c113d9d4ecf",
+            "name": "Bakso Rahayu",
+            "food_preference": "Indonesia",
+            "average_price": 14000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "d697855e-2bac-45b3-ae6e-34429936795f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "d697855e-2bac-45b3-ae6e-34429936795f",
+            "name": "BAKSO URAT CAK EKA AREMA MALANG JATIM",
+            "food_preference": "Indonesia",
+            "average_price": 16000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "8d1ceb06-7e54-402c-8518-0b8c1d402bac",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8d1ceb06-7e54-402c-8518-0b8c1d402bac",
+            "name": "Soto Sapi Winong, Ngeksigondo",
+            "food_preference": "Indonesia",
+            "average_price": 25000,
+            "rating": 4.9,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto"
+        }
+    },
+    {
+        "pk": "a886e77a-f7b3-437a-8f27-7c3db62073f3",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a886e77a-f7b3-437a-8f27-7c3db62073f3",
+            "name": "Mr. Teto Sate & Soto, Perintis Kemerdekaan",
+            "food_preference": "Indonesia",
+            "average_price": 27000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Sate"
+        }
+    },
+    {
+        "pk": "9fd68d08-83ba-4626-8475-b6a64468d67d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9fd68d08-83ba-4626-8475-b6a64468d67d",
+            "name": "Steak 36 Kusumanegara, No.222 , Kota Yogyakarta",
+            "food_preference": "Western",
+            "average_price": 24000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Western"
+        }
+    },
+    {
+        "pk": "2b8627a5-32d5-4162-a28a-b822e817aeeb",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "2b8627a5-32d5-4162-a28a-b822e817aeeb",
+            "name": "Petit Paris Boulangerie and Bistro, Kotabaru",
+            "food_preference": "Western",
+            "average_price": 103000,
+            "rating": 4.5,
+            "atmosphere": "Formal",
+            "food_variety": "Chicken & duck, Western, Fast food"
+        }
+    },
+    {
+        "pk": "4477cadd-6fd5-4e49-8d3e-623b190880c3",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4477cadd-6fd5-4e49-8d3e-623b190880c3",
+            "name": "A&M Co. Express, Jogja",
+            "food_preference": "Japanese",
+            "average_price": 75000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "9b24eff1-c57a-48f8-8754-7c274e6d2b65",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9b24eff1-c57a-48f8-8754-7c274e6d2b65",
+            "name": "Ayam Serundeng, Nitikan",
+            "food_preference": "Indonesia",
+            "average_price": 21000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Jajanan, Aneka nasi, Bakso & soto"
+        }
+    },
+    {
+        "pk": "8618581e-f625-41b4-b007-a9d120ca3c04",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8618581e-f625-41b4-b007-a9d120ca3c04",
+            "name": "Hakata Ikkousha, Hartono Mall",
+            "food_preference": "Japanese",
+            "average_price": 64000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "de20a342-bb30-4bd8-bc99-708b09ec4c2d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "de20a342-bb30-4bd8-bc99-708b09ec4c2d",
+            "name": "Shigeru Sushi, Pakuwon Mall Yogyakarta",
+            "food_preference": "Japanese",
+            "average_price": 50000,
+            "rating": 4.5,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "f33e9e1f-b1bb-4bb1-9ccc-3b7f2dd633b5",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "f33e9e1f-b1bb-4bb1-9ccc-3b7f2dd633b5",
+            "name": "Kimukatsu, Hartono Mall",
+            "food_preference": "Japanese",
+            "average_price": 67000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Rice, Chicken & duck"
+        }
+    },
+    {
+        "pk": "4714348e-9cd6-497f-ab4f-d67f100e9c1f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4714348e-9cd6-497f-ab4f-d67f100e9c1f",
+            "name": "Beef Mafia, Selokan Yogya",
+            "food_preference": "Japanese",
+            "average_price": 70000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Rice, Fast food, Chicken & duck"
+        }
+    },
+    {
+        "pk": "a558eaf3-fdfb-45f2-b6fe-5dd87fd952f6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a558eaf3-fdfb-45f2-b6fe-5dd87fd952f6",
+            "name": "Genki Sushi, Plaza Ambarrukmo",
+            "food_preference": "Japanese",
+            "average_price": 58000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Rice, Snacks"
+        }
+    },
+    {
+        "pk": "4c76ac9c-bb72-42bf-9611-d180ea72dc7f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "4c76ac9c-bb72-42bf-9611-d180ea72dc7f",
+            "name": "K'Meals Bar & Restaurant, Prawirotaman",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Pizza & pasta, Beverages, Western"
+        }
+    },
+    {
+        "pk": "0e8a09a9-3360-4405-a10c-ae5d54cf6e6d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0e8a09a9-3360-4405-a10c-ae5d54cf6e6d",
+            "name": "Ganbate Kitchen, Widya Mataram",
+            "food_preference": "Japanese",
+            "average_price": 31000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Chicken & duck, Japanese"
+        }
+    },
+    {
+        "pk": "8ff85eee-aa03-4e14-b9b5-de0775ea1a71",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "8ff85eee-aa03-4e14-b9b5-de0775ea1a71",
+            "name": "AB Oriental Streetfood, Pedak",
+            "food_preference": "Japanese",
+            "average_price": 32000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "c280c74b-b79e-4350-8af8-dfe0df3d8584",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c280c74b-b79e-4350-8af8-dfe0df3d8584",
+            "name": "Steak Moen-Moen, Galeria Mall",
+            "food_preference": "Western",
+            "average_price": 26000,
+            "rating": 4.4,
+            "atmosphere": "Formal",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "a30b2b65-87a0-4513-b918-6af07da1696e",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a30b2b65-87a0-4513-b918-6af07da1696e",
+            "name": "Steak Up, Mlati",
+            "food_preference": "Western",
+            "average_price": 88000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "9101aaf0-f4c6-4592-b624-cefcb3cc1f83",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9101aaf0-f4c6-4592-b624-cefcb3cc1f83",
+            "name": "Kebab Burger 26, Kotagede",
+            "food_preference": "Western",
+            "average_price": 19000,
+            "rating": 4.3,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food"
+        }
+    },
+    {
+        "pk": "36a43b56-d2bc-431c-b227-8702416fbfd4",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "36a43b56-d2bc-431c-b227-8702416fbfd4",
+            "name": "Pothz Burger, STM Pembangunan",
+            "food_preference": "Western",
+            "average_price": 27000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Fast food"
+        }
+    },
+    {
+        "pk": "af838b57-e031-4b45-b51c-7a487f9b8388",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "af838b57-e031-4b45-b51c-7a487f9b8388",
+            "name": "Warung Buto",
+            "food_preference": "Chinese",
+            "average_price": 43000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Aneka nasi, Chinese, Sate"
+        }
+    },
+    {
+        "pk": "45f826fa-a498-422f-85a4-203c6f131d6c",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "45f826fa-a498-422f-85a4-203c6f131d6c",
+            "name": "Mie Surabaya Pak Joko, Gedongkuning Selatan",
+            "food_preference": "Chinese",
+            "average_price": 18000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Aneka nasi, Chinese"
+        }
+    },
+    {
+        "pk": "04526866-7d76-4d55-81b8-c5e8942d065a",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "04526866-7d76-4d55-81b8-c5e8942d065a",
+            "name": "Bakso Dan Mie Ayam Barokah 354 Sor Talok",
+            "food_preference": "Indonesia",
+            "average_price": 16000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Bakso & soto"
+        }
+    },
+    {
+        "pk": "71a78e2c-5646-457c-89be-995b251d834b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "71a78e2c-5646-457c-89be-995b251d834b",
+            "name": "Mie Kepang Jayakarta, Kusumanegara",
+            "food_preference": "Indonesia",
+            "average_price": 42000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakmie, Jajanan, Bakso & soto"
+        }
+    },
+    {
+        "pk": "563a863e-2a9f-4f0a-9233-8a7ca025e4fa",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "563a863e-2a9f-4f0a-9233-8a7ca025e4fa",
+            "name": "Warung Sop dan Tongseng Ayam Family",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Ayam & bebek"
+        }
+    },
+    {
+        "pk": "06766852-6553-472b-9b37-6367ecb6f5c9",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "06766852-6553-472b-9b37-6367ecb6f5c9",
+            "name": "Ono Dimsum, Timoho",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Cepat saji, Jajanan"
+        }
+    },
+    {
+        "pk": "670e0a46-f074-4993-b30c-b64f0d95e35d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "670e0a46-f074-4993-b30c-b64f0d95e35d",
+            "name": "Bakso Dan Seblak Asgar",
+            "food_preference": "Indonesia",
+            "average_price": 17000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Bakso & soto, Cepat saji, Minuman"
+        }
+    },
+    {
+        "pk": "b936609b-538d-45a2-96cc-ae495d04fa13",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b936609b-538d-45a2-96cc-ae495d04fa13",
+            "name": "Tanamera Coffee Roastery, Yogyakarta",
+            "food_preference": "Western",
+            "average_price": 75000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Beverages, Coffee, Western"
+        }
+    },
+    {
+        "pk": "9fbf3603-b17b-48e1-964d-3706c29568a2",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "9fbf3603-b17b-48e1-964d-3706c29568a2",
+            "name": "Rembo Chick n Steak, Mantrijeron",
+            "food_preference": "Western",
+            "average_price": 15000,
+            "rating": 3.4,
+            "atmosphere": "Santai",
+            "food_variety": "Chicken & duck, Western, Fast food"
+        }
+    },
+    {
+        "pk": "ee01608b-f7ed-4f54-9e6b-df3e94027dd6",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ee01608b-f7ed-4f54-9e6b-df3e94027dd6",
+            "name": "Oase Cafe & Coffe, Mergangsan",
+            "food_preference": "Chinese",
+            "average_price": 22000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Aneka nasi, Bakmie"
+        }
+    },
+    {
+        "pk": "45ccbdca-121e-4ba4-8521-c61c2d12d776",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "45ccbdca-121e-4ba4-8521-c61c2d12d776",
+            "name": "Rumah Makan Echo Roso 1",
+            "food_preference": "Chinese",
+            "average_price": 27000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Chinese, Aneka nasi, Seafood"
+        }
+    },
+    {
+        "pk": "ad5dc353-3f23-4a85-81b0-e9732036527d",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ad5dc353-3f23-4a85-81b0-e9732036527d",
+            "name": "Vegan Fortunate Coffee, Jogonegaran",
+            "food_preference": "Western",
+            "average_price": 45000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Coffee, Western, Beverages"
+        }
+    },
+    {
+        "pk": "34bd2639-45e5-41f1-a9d2-6cc506895662",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "34bd2639-45e5-41f1-a9d2-6cc506895662",
+            "name": "Onoki Mentai, Depok",
+            "food_preference": "Japanese",
+            "average_price": 45000,
+            "rating": 4.8,
+            "atmosphere": "Santai",
+            "food_variety": "Fast food, Japanese, Rice"
+        }
+    },
+    {
+        "pk": "c0a8da0c-abdb-4d46-b719-902decdb221b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "c0a8da0c-abdb-4d46-b719-902decdb221b",
+            "name": "Banzai!, Seturan",
+            "food_preference": "Japanese",
+            "average_price": 49000,
+            "rating": 4.7,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "fc192d23-3013-4fbb-8a3a-68b851befeef",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "fc192d23-3013-4fbb-8a3a-68b851befeef",
+            "name": "Ichiban Sushi, Plaza Ambarrukmo",
+            "food_preference": "Japanese",
+            "average_price": 52000,
+            "rating": 4.6,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "26341f93-d7c7-4fa1-a864-a7ae7cf25b6f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "26341f93-d7c7-4fa1-a864-a7ae7cf25b6f",
+            "name": "Umami House Sushi & Dry Ramen",
+            "food_preference": "Japanese",
+            "average_price": 21000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "116096ad-5d90-423b-8b80-7fb3ba75c464",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "116096ad-5d90-423b-8b80-7fb3ba75c464",
+            "name": "Zutto Sushi Homemade, Elang",
+            "food_preference": "Japanese",
+            "average_price": 30000,
+            "rating": 4.4,
+            "atmosphere": "Santai",
+            "food_variety": "Japanese"
+        }
+    },
+    {
+        "pk": "a2d6873c-a84b-4140-bece-963a0e40749f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a2d6873c-a84b-4140-bece-963a0e40749f",
+            "name": "Marugame Udon & Tempura, Plaza Ambarrukmo",
+            "food_preference": "Japanese",
+            "average_price": 68000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Noodles"
+        }
+    },
+    {
+        "pk": "0141a86f-1e83-4c57-a902-3938dadb4306",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "0141a86f-1e83-4c57-a902-3938dadb4306",
+            "name": "Warunk Sushi Condong Catur, Depok",
+            "food_preference": "Japanese",
+            "average_price": 44000,
+            "rating": 4.6,
+            "atmosphere": "Santai",
+            "food_variety": "Rice, Fast food, Japanese"
+        }
+    },
+    {
+        "pk": "575560ff-79d9-44e8-a5bc-159322b9eff7",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "575560ff-79d9-44e8-a5bc-159322b9eff7",
+            "name": "Takoyaki Kuliner Lor Tugu",
+            "food_preference": "Japanese",
+            "average_price": 22000,
+            "rating": 4.2,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Beverages, Japanese"
+        }
+    },
+    {
+        "pk": "b91f9d71-d886-4252-a757-4edd08ce374b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "b91f9d71-d886-4252-a757-4edd08ce374b",
+            "name": "Lawson Shop, Mantrijeron",
+            "food_preference": "Japanese",
+            "average_price": 44000,
+            "rating": 4.4,
+            "atmosphere": "Formal",
+            "food_variety": "Snacks, Beverages, Japanese, Coffee, Korean"
+        }
+    },
+    {
+        "pk": "27881321-cbac-4f5b-a3b0-fbae19ef2953",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "27881321-cbac-4f5b-a3b0-fbae19ef2953",
+            "name": "Veno'S Burger, Mergangsan",
+            "food_preference": "Western",
+            "average_price": 40000,
+            "rating": 4.1,
+            "atmosphere": "Santai",
+            "food_variety": "Snacks, Fast food, Western"
+        }
+    },
+    {
+        "pk": "48886c1a-ff99-4ecd-9145-4468d908444f",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "48886c1a-ff99-4ecd-9145-4468d908444f",
+            "name": "OMAH STEAK AND CHICKEN",
+            "food_preference": "Western",
+            "average_price": 34000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western"
+        }
+    },
+    {
+        "pk": "faa255a1-d913-4dfa-87dc-208c31f8ea11",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "faa255a1-d913-4dfa-87dc-208c31f8ea11",
+            "name": "Pondok Cabe Bistro, C Simanjuntak",
+            "food_preference": "Western",
+            "average_price": 35000,
+            "rating": 4.5,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Pizza & pasta, Rice, Chicken & duck, Bakso & soto"
+        }
+    },
+    {
+        "pk": "42b8f5e3-6bf0-4dd7-812f-e8b282c9d97b",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "42b8f5e3-6bf0-4dd7-812f-e8b282c9d97b",
+            "name": "Waroeng Spaghetti Balapan",
+            "food_preference": "Western",
+            "average_price": 25000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Snacks"
+        }
+    },
+    {
+        "pk": "ab38a450-91b5-4abf-ae24-1e3c97ce7afa",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "ab38a450-91b5-4abf-ae24-1e3c97ce7afa",
+            "name": "Burgerax, Patangpuluhan",
+            "food_preference": "Western",
+            "average_price": 38000,
+            "rating": 4.7,
+            "atmosphere": "Santai",
+            "food_variety": "Western, Snacks, Fast food"
+        }
+    },
+    {
+        "pk": "a21e7177-5524-4cde-b709-88eb66894bf2",
+        "model": "restaurant.Restaurant",
+        "fields": {
+            "id": "a21e7177-5524-4cde-b709-88eb66894bf2",
+            "name": "Shaburi & Kintan Buffet, Ambarukmo Plaza Yogya",
+            "food_preference": "Japanese",
+            "average_price": 330000,
+            "rating": 4.8,
+            "atmosphere": "Formal",
+            "food_variety": "Japanese, Rice, Chicken & duck"
+        }
+    }
+]
