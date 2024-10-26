@@ -39,7 +39,7 @@ def restaurant_detail(request, restaurant_id):
 
 
 @require_http_methods(['POST'])
-@login_required
+@admin_only
 def add_restaurant(request):
     if not request.user.is_staff:  # Check if the user is an admin
         return JsonResponse({'error': 'Admin access required.'}, status=403)
@@ -62,6 +62,7 @@ def add_restaurant(request):
 
 logger = logging.getLogger(__name__)
 @require_http_methods(["GET"])
+@admin_only
 def delete_restaurant(request, restaurant_id):
     if not request.user.is_staff:  # Check if the user is an admin
         return JsonResponse({'error': 'Admin access required.'}, status=403)

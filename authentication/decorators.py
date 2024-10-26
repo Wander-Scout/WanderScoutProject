@@ -21,7 +21,8 @@ def allowed_users(allowed_roles=[]):
             else:
                 return HttpResponse('You are not authorized to view this page')
         return wrapper_func
-    
+    return decorator  # Added missing return here for the decorator
+
 def admin_only(view_func):
     def wrapper_func(request, *args, **kwargs):
         group = None
@@ -30,7 +31,8 @@ def admin_only(view_func):
 
         if group == 'tourist':
             return redirect('home')
-
-        if group == 'admin':
+        elif group == 'admin':
             return view_func(request, *args, **kwargs)
+        else:
+            return HttpResponse('You are not authorized to view this page')  # Added for non-admin, non-tourist users
     return wrapper_func
