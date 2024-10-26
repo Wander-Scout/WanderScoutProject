@@ -25,6 +25,10 @@
         <a href="{% url 'view_cart' %}" class="text-white font-bold hover:text-gray-300 mr-4">
           Cart
         </a>
+        <a href="{% url 'authentication:profile' %}" class="text-white font-bold hover:text-gray-300 mr-4">
+          Profile
+        </a>
+        
         {% if user.is_authenticated %}
           <div class="text-right mr-4">
             <span class="block text-gray-300">Welcome back, {{ user.username }}</span>
@@ -69,6 +73,13 @@
       <a href="{% url 'restaurants' %}" class="block text-center text-white font-bold hover:text-gray-300 mb-2">
         Restaurants
       </a>
+      <a href="{% url 'view_cart' %}" class="text-white font-bold hover:text-gray-300 mr-4">
+        Cart
+      </a>
+      <a href="{% url 'authentication:profile' %}" class="text-white font-bold hover:text-gray-300 mr-4">
+        Profile
+      </a>
+      
       {% if user.is_authenticated %}
         <span class="block text-gray-300 px-3 py-2">Welcome, {{ user.username }}</span>
         <div class="block text-sm text-gray-300 px-3 py-2">Last Login: {{ last_login }}</div>

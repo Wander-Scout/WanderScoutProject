@@ -73,7 +73,8 @@ def logout_user(request):
 @login_required
 @require_http_methods(["GET"])
 def display_edit_profile_page(request):
-    return render(request, 'edit_profile.html')
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'profile.html', {'profile': profile})
 
 @allowed_users(['tourist', 'admin'])
 @login_required
@@ -95,10 +96,3 @@ def submit_edit_profile(request):
         return JsonResponse({'success': True, 'message': 'Profile updated successfully!'})
     else:
         return JsonResponse({'success': False, 'errors': form.errors}, status=400)
-
-@allowed_users(['tourist', 'admin'])
-@login_required
-@require_http_methods(["GET"])
-def profile_view(request):
-    profile = Profile.objects.get(user=request.user)
-    return render(request, 'profile.html', {'profile': profile})
