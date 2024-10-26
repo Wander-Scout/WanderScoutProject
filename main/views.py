@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import CustomerReview
 from .forms import CustomerReviewForm
-from image_display.models import ImageModel
+from image_display.models import RSSItem
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -16,7 +16,7 @@ def landing_page(request):
     return render(request, 'landing_page.html')
 
 def home_page(request):
-    images = ImageModel.objects.all()
+    images = RSSItem.objects.all()
     return render(request, 'home_page.html', {'images': images})
 
 @require_http_methods(["GET"])

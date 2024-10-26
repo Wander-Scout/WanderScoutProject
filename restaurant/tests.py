@@ -4,15 +4,25 @@ from .models import Restaurant
 from django.contrib.auth.models import User
 import uuid
 import json
+from django.contrib.auth.models import Group
 
 class DeleteRestaurantViewTest(TestCase):
+
     def setUp(self):
         # Create an admin user for authentication
         self.admin_user = User.objects.create_superuser(
             username="admin", password="adminpass", email="admin@example.com"
         )
+        
+        # Ensure the 'admin' group exists
+        admin_group, created = Group.objects.get_or_create(name="admin")
+        
+        # Add the admin user to the 'admin' group
+        self.admin_user.groups.add(admin_group)
+        
         self.client = Client()
         self.client.login(username="admin", password="adminpass")
+
 
         # Create a test restaurant
         self.restaurant = Restaurant.objects.create(
@@ -46,6 +56,13 @@ class AddRestaurantViewTest(TestCase):
         self.admin_user = User.objects.create_superuser(
             username="admin", password="adminpass", email="admin@example.com"
         )
+        
+        # Ensure the 'admin' group exists
+        admin_group, created = Group.objects.get_or_create(name="admin")
+        
+        # Add the admin user to the 'admin' group
+        self.admin_user.groups.add(admin_group)
+        
         self.client = Client()
         self.client.login(username="admin", password="adminpass")
 
