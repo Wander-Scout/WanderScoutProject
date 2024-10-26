@@ -1,0 +1,232 @@
+{% include 'navbar.html' %}
+{% load static %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  /* Background and Basic Styling */
+  body::before {
+    content: '';
+    background-image: url("{% static 'images/batikbg.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: brightness(0.9);
+  }
+
+  /* Ensure Content is Below Navbar */
+  .main-content {
+    padding-top: 90px; /* Match this to the navbar height */
+  }
+
+  /* Styling for the Cart Container */
+  #cart-container {
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Title Styling */
+  .cart-title {
+    color: #23395d;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Table Styling */
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .cart-table th {
+    background-color: #d9e2ec;
+    color: #102a43;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-bottom: 2px solid #bcd4e6;
+  }
+
+  .cart-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e0e8f9;
+  }
+
+  /* Price and Total Price */
+  .price, .total-price {
+    color: #102a43;
+    font-weight: 700;
+  }
+
+  /* Buttons */
+  .btn-checkout {
+    background-color: #335c81;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-checkout:hover {
+    background-color: #102a43;
+  }
+
+  /* Empty Cart Message */
+  .empty-cart-message {
+    color: #3e5063;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+<title>Cart</title>
+<!-- Main Content Wrapper with Padding for Navbar -->
+<!-- Main Content Wrapper with Padding for Navbar -->
+<div class="main-content">
+    <div class="flex justify-center mt-8">
+        <form action="{% url 'search_booking' %}" method="get" class="flex items-center space-x-2 bg-white p-4 rounded shadow-lg">
+            <input type="text" name="booking_id" placeholder="Enter past booking ID" class="border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+            <button type="submit" class="btn-checkout">Search Receipt</button>
+        </form>
+    </div>
+    {% if cart_items %}
+      <!-- Cart container and items table -->
+      <div class="container mx-auto px-5 py-16" id="cart-container">
+        <h2 class="text-4xl font-bold mb-8 cart-title text-center">Your Plan</h2>
+  
+        <!-- Table Structure for Cart Items -->
+        <div id="cart-content" class="rounded-lg p-6">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th class="text-left">Services</th>
+                <th class="text-left">Price</th>
+                <th class="text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="cart-items-body" class="divide-y divide-gray-300">
+              <!-- Cart items will be dynamically inserted here -->
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Proceed to Checkout Button -->
+        <div class="mt-8 text-right">
+          <h3 class="text-2xl total-price mb-4">Total Price: Rp{{ total_price }}</h3>
+          <!-- Form for Proceeding to Checkout -->
+          <form action="{% url 'checkout' %}" method="post" id="checkout-form">
+              {% csrf_token %}
+              <button type="submit" class="btn-checkout inline-block">Proceed to Checkout</button>
+          </form>
+        </div>
+    {% else %}
+      <!-- Simple empty cart message without extra styling -->
+      <p class="text-center text-2xl mt-8 empty-cart-message">Your cart is empty.</p>
+    {% endif %}
+</div>
+
+
+<!-- AJAX script for handling cart updates -->
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const csrftoken = getCookie('csrftoken');  // Get CSRF token for AJAX requests
+
+  function refreshCart() {
+    fetch("{% url 'view_cart' %}", {
+        method: 'GET',
+        headers: {
+        'x-requested-with': 'XMLHttpRequest'  // Ensure server recognizes this as an AJAX request
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        let cartContent = '';
+
+        if (Object.keys(data.cart_items).length > 0) {
+        // Iterate over cart items from the response
+        Object.values(data.cart_items).forEach(item => {
+            cartContent += `
+            <tr class="align-middle">
+                <td class="px-6 py-4">
+                <h3 class="text-lg font-bold">${item.name}</h3>
+                </td>
+                <td class="px-6 py-4 text-lg text-gray-700">
+                Rp${item.price} x ${item.quantity} = Rp${(item.price * item.quantity).toFixed(2)}
+                ${item.is_weekend ? '<small class="text-red-500">(Weekend)</small>' : '<small class="text-green-500">(Weekday)</small>'}
+                </td>
+                <td class="px-6 py-4 text-right">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('${item.id}')">Remove</a>
+                </td>
+            </tr>
+            `;
+        });
+
+        // Update the tbody with the cart items
+        document.querySelector('#cart-items-body').innerHTML = cartContent;
+
+        // Update total price
+        document.querySelector('.total-price').innerText = `Total Price: Rp${data.total_price.toFixed(2)}`;
+
+        // Update booking ID if available
+        if (data.booking_id) {
+            document.querySelector('.text-blue-700').innerText = data.booking_id;
+        }
+        } else {
+        // If cart is empty, show empty message and hide the table
+        document.querySelector('#cart-container').innerHTML = '<p class="text-center text-2xl mt-8 empty-cart-message">Your cart is empty.</p>';
+        }
+    })
+    .catch(error => console.error('Error refreshing cart:', error));
+    }
+
+
+  function removeFromCart(attractionId) {
+    const removeUrl = `/cart/remove/${attractionId}/`;
+
+    // Send an asynchronous POST request to remove the item
+    fetch(removeUrl, { 
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,  // Include CSRF token for POST requests
+        'x-requested-with': 'XMLHttpRequest'  // Mark request as AJAX
+      }
+    })
+    .then(response => response.json())  // Expect JSON response
+    .then(data => {
+      if (data.success) {
+        refreshCart();  // Refresh the cart content after successful removal
+      } else {
+        console.error('Failed to remove item from cart');
+      }
+    })
+    .catch(error => console.error('Error removing item:', error));
+  }
+
+  // Initialize cart refresh on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    refreshCart();  // Load cart data on page load
+    setInterval(refreshCart, 10000);  // Auto refresh every 10 seconds
+  });
+</script>

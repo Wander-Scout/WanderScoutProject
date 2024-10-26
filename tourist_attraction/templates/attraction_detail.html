@@ -64,14 +64,58 @@
             <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200 mr-4">
                 Get Directions
             </a>
-            <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
-                Add to Plans
-            </a>
-            
+            <button onclick="addToCart('{{ attraction.id }}')" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
+                Add to Cart
+            </button>
         </div>
-
     </div>
-
+    
+    <script>
+      // Helper function to get CSRF token from cookies
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+    
+      const csrftoken = getCookie('csrftoken');  // Get CSRF token
+    
+      // Function to add the attraction to the cart using AJAX
+      function addToCart(attractionId) {
+        fetch(`/cart/add/${attractionId}/`, {  // Use the URL matching your `add_to_cart` view
+          method: 'POST',
+          headers: {
+            'X-CSRFToken': csrftoken,  // Include CSRF token in the headers
+            'X-Requested-With': 'XMLHttpRequest',  // Mark request as AJAX
+            'Content-Type': 'application/json'  // Set content type to JSON
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();  // Parse response as JSON
+          }
+          throw new Error('Failed to add to cart');
+        })
+        .then(data => {
+          if (data.success) {
+            alert("Attraction added to your plan!");  // Show success message
+          } else {
+            alert("Failed to add attraction to your plan.");  // Show failure message
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      }
+    </script>
+    
     {% block scripts %}
     {% endblock %}
 </body>
