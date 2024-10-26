@@ -9,3 +9,9 @@ class CustomerReview(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.rating} Stars"
+    
+class AdminReply(models.Model):
+    review = models.ForeignKey(CustomerReview, on_delete=models.CASCADE, related_name='replies')
+    admin = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'is_staff': True})
+    reply_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)

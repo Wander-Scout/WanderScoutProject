@@ -9,7 +9,9 @@ from .forms import CustomerReviewForm
 from image_display.models import RSSItem
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-
+from authentication.decorators import allowed_users
+from .models import AdminReply
+from .forms import AdminReplyForm
 
 @login_required(login_url='authentication:login')
 def landing_page(request):
@@ -36,7 +38,7 @@ def display_customer_reviews(request):
         'rating_filter': rating_filter
     })
 
-@login_required(login_url='authentication:login')
+@allowed_users(['tourist'])
 @require_http_methods(["POST"])
 def submit_customer_review(request):
     form = CustomerReviewForm(request.POST)
@@ -62,10 +64,28 @@ def submit_customer_review(request):
     
     return redirect('display_customer_reviews')
 
-
+@allowed_users(['tourist'])
 @require_http_methods(["POST"])
 def delete_customer_review(request, review_id):
     review = get_object_or_404(CustomerReview, id=review_id, user=request.user)
     review.delete()
+    rating_filter = request.GET.get('rating', '')
+    return HttpResponseRedirect(f"{reverse('display_customer_reviews')}?rating={rating_filter}")
+
+
+@allowed_users(['admin'])
+@require_http_methods(["POST"])
+def add_admin_reply(request, review_id):
+    review = get_object_or_404(CustomerReview, id=review_id)
+    form = AdminReplyForm(request.POST)
+    if form.is_valid():
+        reply = form.save(commit=False)
+        reply.review = review
+        reply.admin = request.user
+        reply.save()
+        messages.success(request, "Reply has been added!")
+    else:
+        messages.error(request, "Error adding reply.")
+    
     rating_filter = request.GET.get('rating', '')
     return HttpResponseRedirect(f"{reverse('display_customer_reviews')}?rating={rating_filter}")

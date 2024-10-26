@@ -41,6 +41,15 @@
             background-color: rgba(255, 255, 255, 0.8);
             margin-bottom: 16px;
         }
+
+        .admin-reply {
+            margin-left: 16px;
+            padding: 12px;
+            border-left: 4px solid #1e40af;
+            background-color: rgba(230, 240, 255, 0.8);
+            border-radius: 8px;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body class="bg-opacity-90">
@@ -100,7 +109,7 @@
             
             {% for review in reviews %}
                 <div class="review-card">
-                    {% if user == review.user %}
+                    {% if user == review.user or user.is_staff %}
                         <form method="POST" action="{% url 'delete_customer_review' review.id %}?rating={{ rating_filter }}" class="absolute top-0 right-0">
                             {% csrf_token %}
                             <button type="submit" class="delete-btn" title="Delete">&#x2716;</button>
@@ -110,11 +119,34 @@
                     <p class="text-gray-600">{{ review.review_text }}</p>
                     <p class="text-yellow-500">Rating: {{ review.rating }} Stars</p>
                     <p class="text-sm text-gray-500">Submitted on {{ review.created_at|date:"F j, Y, g:i a" }}</p>
+
+                    <!-- Display Admin Replies -->
+                    {% for reply in review.replies.all %}
+                        <div class="admin-reply">
+                            <p class="text-sm font-semibold text-red-700">Admin Reply:</p>
+                            <p class="text-gray-700">{{ reply.reply_text }}</p>
+                            <p class="text-xs text-gray-500">Replied on {{ reply.created_at|date:"F j, Y, g:i a" }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="ml-4 text-sm text-gray-500">No admin replies yet.</p>
+                    {% endfor %}
+
+                    <!-- Admin Reply Form -->
+                    {% if user.is_staff %}
+                        <form method="POST" action="{% url 'add_admin_reply' review.id %}" class="mt-2">
+                            {% csrf_token %}
+                            <textarea name="reply_text" rows="2" class="w-full p-2 border rounded" placeholder="Write your reply here..."></textarea>
+                            <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                Reply as Admin
+                            </button>
+                        </form>
+                    {% endif %}
                 </div>
             {% empty %}
                 <p class="text-white">No reviews yet for this rating.</p>
             {% endfor %}
         </div>
     </div>
+
 </body>
 </html>

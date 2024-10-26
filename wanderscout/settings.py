@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-lmo57ez)%!z+#6v75qwsgex2r@l077n!@gc(87^f2n^2k=%ctu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "samuella-putri-wanderscout.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "alano-davin-wanderscout.pbp.cs.ui.ac.id"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://pbp.cs.ui.ac.id/alano.davin/wanderscout", "https://pbp.cs.ui.ac.id/alano.davin/wanderscout"]
 
 
 # Application definition
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
