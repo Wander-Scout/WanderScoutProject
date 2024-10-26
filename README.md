@@ -109,4 +109,4 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 
 
 <h2><b>VI. Application deployment link</b></h2>
-<h3><b>http://samuella-putri-wanderscout.pbp.cs.ui.ac.id/</b></h3>
+<h3><b>http://alano-davin-wanderscout.pbp.cs.ui.ac.id/authentication/login/?next=/</b></h3>
