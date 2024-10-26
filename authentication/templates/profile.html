@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    /* Background and Basic Styling */
+    body::before {
+      content: '';
+      background-image: url("{% static 'images/batikbg.jpg' %}");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: brightness(0.9);
+    }
+
+    /* Ensure Content is Below Navbar */
+    .main-content {
+      padding-top: 90px;
+    }
+
+    /* Styling for the Profile Container */
+    #profile-container {
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Title Styling */
+    .profile-title {
+      color: #23395d;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button Styling */
+    .btn-save {
+      background-color: #335c81;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-save:hover {
+      background-color: #102a43;
+    }
+
+    .btn-cancel {
+      background-color: #bcd4e6;
+      color: #102a43;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+    }
+</style>
+
+<div class="main-content">
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg border border-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">Profile</h2>
+
+        <!-- Display Username -->
+        <div class="mb-4">
+            <label class="font-bold">Username:</label>
+            <div class="border border-gray-300 p-2 rounded w-full bg-gray-100 text-gray-700">
+                {{ user.username }}
+            </div>
+        </div>
+
+        <!-- Display Address, Age, and Phone Number -->
+        <div class="mb-4">
+            <label class="font-bold">Address:</label>
+            <div class="border border-gray-300 p-2 rounded w-full">
+                {{ profile.address }}
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="font-bold">Age:</label>
+            <div class="border border-gray-300 p-2 rounded w-full">
+                {{ profile.age }}
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="font-bold">Phone Number:</label>
+            <div class="border border-gray-300 p-2 rounded w-full">
+                {{ profile.phone_number }}
+            </div>
+        </div>
+
+        <!-- Edit Profile Button -->
+        <div class="mt-6">
+            <a href="{% url 'authentication:edit_profile_page' %}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                Edit Profile
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

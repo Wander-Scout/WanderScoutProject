@@ -7,6 +7,10 @@ from django.views.decorators.http import require_http_methods
 from authentication.decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .forms import ProfileForm
+from .models import Profile
+from django.http import JsonResponse
+from .decorators import allowed_users
 
 @require_http_methods(["GET"])
 @unauthenticated_user
@@ -39,6 +43,8 @@ def submit_register_form(request):
     else:
         messages.error(request, "Invalid registration details.")
     return render(request, 'register.html', {'form': form})
+
+
 @require_http_methods(["GET"])
 def display_login_form(request):
     form = AuthenticationForm()
@@ -62,3 +68,37 @@ def logout_user(request):
     logout(request)
     messages.success(request, "You have been logged out.")
     return redirect('authentication:login')
+
+@allowed_users(['tourist', 'admin'])
+@login_required
+@require_http_methods(["GET"])
+def display_edit_profile_page(request):
+    return render(request, 'edit_profile.html')
+
+@allowed_users(['tourist', 'admin'])
+@login_required
+@require_http_methods(["GET"])
+def display_edit_profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    form = ProfileForm(instance=profile)
+    form_data = {field.name: field.value() for field in form}
+    return JsonResponse({'success': True, 'form_data': form_data})
+
+@allowed_users(['tourist', 'admin'])
+@login_required
+@require_http_methods(["POST"])
+def submit_edit_profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    form = ProfileForm(request.POST, instance=profile)
+    if form.is_valid():
+        form.save()
+        return JsonResponse({'success': True, 'message': 'Profile updated successfully!'})
+    else:
+        return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+
+@allowed_users(['tourist', 'admin'])
+@login_required
+@require_http_methods(["GET"])
+def profile_view(request):
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'profile.html', {'profile': profile})
