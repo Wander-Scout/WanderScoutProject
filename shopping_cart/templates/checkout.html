@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto max-w-lg px-5 py-16">
+  <div class="bg-white rounded-lg shadow-md p-8 border border-gray-300">
+    
+    <!-- Header with App Name and Slogan -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-gray-800">WanderScout</h1>
+      <p class="text-sm font-medium text-gray-500">Explore Beyond Boundaries</p>
+      <p class="text-sm text-gray-400">Your adventure, just a click away</p>
+    </div>
+    
+    <!-- Service Receipt Title -->
+    <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800">Booking Receipt</h2>
+    <p class="text-base font-medium mb-2 text-gray-600 text-center">Booking ID: <span class="text-blue-700">{{ booking_id }}</span></p>
+    
+    <!-- Cart Items Table -->
+    <table class="w-full mt-6 border-t border-gray-300 pt-4">
+      <thead>
+        <tr class="text-gray-500 text-sm border-b border-gray-200">
+          <th class="text-left px-4 py-2">Service</th>
+          <th class="text-right px-4 py-2">Price</th>
+          <th class="text-right px-4 py-2">Quantity</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700 divide-y divide-dashed divide-gray-300 text-sm">
+        {% for item in cart_items %}
+        <tr>
+          <td class="px-4 py-2">{{ item.attraction.nama }}</td>
+          <td class="px-4 py-2 text-right">Rp{{ item.price }}</td>
+          <td class="px-4 py-2 text-right">{{ item.quantity }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Dotted Line Separator -->
+    <div class="my-4 border-t border-dashed border-gray-300"></div>
+
+    <!-- Total Price -->
+    <div class="text-right">
+      <h3 class="text-lg font-bold text-gray-800">Total Price: Rp{{ total_price }}</h3>
+    </div>
+    
+    <!-- Footer with Thank You Message -->
+    <div class="mt-8 text-center text-sm text-gray-500">
+      <p>Thank you for choosing WanderScout!</p>
+      <p>We hope to see you on your next adventure.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

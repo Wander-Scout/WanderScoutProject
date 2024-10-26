@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'restaurant',
     'image_display',
     'news_rss',
-    'authentication'
+    'authentication',
+    'shopping_cart'
 ]
 
 MIDDLEWARE = [

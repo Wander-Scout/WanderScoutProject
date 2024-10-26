@@ -9,4 +9,5 @@ urlpatterns = [
     path('image_display/', include('image_display.urls')),
     path('authentication/', include('authentication.urls')),
     path('tourist_attraction/', include('tourist_attraction.urls')),
+    path('cart/', include('shopping_cart.urls')),
 ]
