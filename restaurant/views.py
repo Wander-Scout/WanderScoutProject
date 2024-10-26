@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Restaurant
 import json
 from authentication.decorators import admin_only
+from django.contrib.auth.decorators import login_required
+import logging
 
 @require_http_methods(['GET'])
 def get_restaurants(request):
@@ -37,8 +39,11 @@ def restaurant_detail(request, restaurant_id):
 
 
 @require_http_methods(['POST'])
-@admin_only  # Restrict this view to admin users
+@login_required
 def add_restaurant(request):
+    if not request.user.is_staff:  # Check if the user is an admin
+        return JsonResponse({'error': 'Admin access required.'}, status=403)
+
     try:
         data = json.loads(request.body)
         restaurant = Restaurant.objects.create(
@@ -49,6 +54,23 @@ def add_restaurant(request):
             atmosphere=data['atmosphere'],
             food_variety=data['food_variety']
         )
-        return JsonResponse({'message': 'Restaurant added successfully!', 'restaurant': restaurant.id})
+        return JsonResponse({'success': True, 'message': 'Restaurant added successfully!', 'restaurant': restaurant.id})
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        print(f"Error adding restaurant: {e}")  # Logs error to the server console
+        return JsonResponse({'success': False, 'error': str(e)}, status=400)
+    
+
+logger = logging.getLogger(__name__)
+@require_http_methods(["GET"])
+def delete_restaurant(request, restaurant_id):
+    if not request.user.is_staff:  # Check if the user is an admin
+        return JsonResponse({'error': 'Admin access required.'}, status=403)
+
+    try:
+        restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+        restaurant.delete()
+        return JsonResponse({"success": True, "message": "Restaurant deleted successfully"})
+    except Restaurant.DoesNotExist:
+        return JsonResponse({"success": False, "message": "Restaurant not found"}, status=404)
+    except Exception as e:
+        return JsonResponse({"success": False, "message": str(e)}, status=500)
