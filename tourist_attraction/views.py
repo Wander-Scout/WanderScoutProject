@@ -4,6 +4,7 @@ from django.views.decorators.http import require_http_methods
 from .models import TouristAttraction
 from authentication.decorators import admin_only
 import json
+from django.contrib.auth.decorators import login_required
 
 @require_http_methods(['GET'])
 def get_tourist_attractions(request):
@@ -24,6 +25,7 @@ def attraction_detail(request, attraction_id):
     return render(request, 'attraction_detail.html', context)
 
 @admin_only
+@login_required
 @require_http_methods(['POST'])
 def add_tourist_attraction(request):
     try:
@@ -52,12 +54,10 @@ def add_tourist_attraction(request):
         )
         return JsonResponse({'message': 'Attraction added successfully.', 'attraction_id': str(attraction.id)}, status=201)
     except Exception as e:
-        # Log the exception details for debugging
-        import traceback
-        traceback.print_exc()
         return JsonResponse({'error': str(e)}, status=400)
 
 @admin_only
+@login_required
 @require_http_methods(['POST'])
 def edit_tourist_attraction(request, attraction_id):
     try:
@@ -80,12 +80,10 @@ def edit_tourist_attraction(request, attraction_id):
         attraction.save()
         return JsonResponse({'message': 'Attraction updated successfully.', 'attraction_id': str(attraction.id)}, status=200)
     except Exception as e:
-        # Log the exception details for debugging
-        import traceback
-        traceback.print_exc()
         return JsonResponse({'error': str(e)}, status=400)
 
 @admin_only
+@login_required
 @require_http_methods(['DELETE'])
 def delete_tourist_attraction(request, attraction_id):
     try:
