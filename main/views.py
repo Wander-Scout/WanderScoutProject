@@ -15,6 +15,7 @@ from image_display.views import fetch_and_store_rss_items
 def landing_page(request):
     return render(request, 'landing_page.html')
 
+@require_http_methods(["GET"])
 def home_page(request):
     #Fetch all the data from the rss feed
     fetch_and_store_rss_items()  

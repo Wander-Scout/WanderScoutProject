@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from .models import RSSItem
 
+#No HTTP required since it is called on a seperate page
 def fetch_and_store_rss_items():
     url = "https://jogja.antaranews.com/rss/photo.xml"
     response = requests.get(url)
@@ -10,10 +11,8 @@ def fetch_and_store_rss_items():
     if response.status_code == 200:
         root = ET.fromstring(response.content)
 
-        # Define namespaces
         namespaces = {
             'media': 'http://search.yahoo.com/mrss/',
-            # Include other namespaces if needed
         }
 
         channel = root.find('channel')
