@@ -27,7 +27,13 @@
       <tbody class="text-gray-700 divide-y divide-dashed divide-gray-300 text-sm">
         {% for item in cart_items %}
         <tr>
-          <td class="px-4 py-2">{{ item.attraction.nama }}</td>
+          <td class="px-4 py-2">
+            {% if item.attraction %}
+              {{ item.attraction.nama }}
+            {% elif item.restaurant %}
+              {{ item.restaurant.name }}
+            {% endif %}
+          </td>
           <td class="px-4 py-2 text-right">Rp{{ item.price }}</td>
           <td class="px-4 py-2 text-right">{{ item.quantity }}</td>
         </tr>

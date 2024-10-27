@@ -11,17 +11,23 @@
       <tbody class="divide-y divide-gray-300">
         {% for item in cart_items %}
         <tr>
-          <td class="px-6 py-4 font-semibold border border-gray-300">{{ item.attraction.nama }}</td>
+          <td class="px-6 py-4 font-semibold border border-gray-300">
+            {% if item.attraction %}
+              {{ item.attraction.nama }} <span class="text-sm text-gray-500">(Attraction)</span>
+            {% elif item.restaurant %}
+              {{ item.restaurant.name }} <span class="text-sm text-gray-500">(Restaurant)</span>
+            {% endif %}
+          </td>
           <td class="px-6 py-4 text-gray-700 border border-gray-300">
             Rp{{ item.price }}
             {% if item.is_weekend %}
               <small class="text-red-500">(Weekend)</small>
-            {% else %}
+            {% elif item.attraction %}
               <small class="text-green-500">(Weekday)</small>
             {% endif %}
           </td>
           <td class="px-6 py-4 text-right border border-gray-300">
-            <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('{{ item.attraction.id }}')">Remove</a>
+            <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('{{ item.attraction.id if item.attraction else item.restaurant.id }}', '{{ 'attraction' if item.attraction else 'restaurant' }}')">Remove</a>
           </td>
         </tr>
         {% endfor %}
