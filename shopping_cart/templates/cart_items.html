@@ -1,32 +1,41 @@
 {% if cart_items %}
+  <!-- Display the cart items in a table if there are any in the cart -->
   <div class="bg-white rounded-lg shadow-lg p-6">
     <table class="w-full table-fixed text-left border-collapse border border-gray-300">
       <thead class="bg-gray-100">
         <tr>
+          <!-- Header for the services, price, and action columns -->
           <th class="w-1/2 px-6 py-4 text-lg font-semibold border border-gray-300">Services</th>
           <th class="w-1/4 px-6 py-4 text-lg font-semibold border border-gray-300">Price</th>
           <th class="w-1/4 px-6 py-4 text-lg font-semibold border border-gray-300 text-right">Action</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-300">
+        <!-- Loop through each item in the cart and display it in a row -->
         {% for item in cart_items %}
         <tr>
           <td class="px-6 py-4 font-semibold border border-gray-300">
             {% if item.attraction %}
+              <!-- Display the name if it's an attraction, with a small label -->
               {{ item.attraction.nama }} <span class="text-sm text-gray-500">(Attraction)</span>
             {% elif item.restaurant %}
+              <!-- Display the name if it's a restaurant, with a small label -->
               {{ item.restaurant.name }} <span class="text-sm text-gray-500">(Restaurant)</span>
             {% endif %}
           </td>
           <td class="px-6 py-4 text-gray-700 border border-gray-300">
+            <!-- Show the price of the item -->
             Rp{{ item.price }}
             {% if item.is_weekend %}
+              <!-- Show a Weekend label in red if it applies -->
               <small class="text-red-500">(Weekend)</small>
             {% elif item.attraction %}
+              <!-- Show a Weekday label in green if it's a weekday attraction -->
               <small class="text-green-500">(Weekday)</small>
             {% endif %}
           </td>
           <td class="px-6 py-4 text-right border border-gray-300">
+            <!-- Remove link for deleting this item, showing it based on type (attraction or restaurant) -->
             <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('{{ item.attraction.id if item.attraction else item.restaurant.id }}', '{{ 'attraction' if item.attraction else 'restaurant' }}')">Remove</a>
           </td>
         </tr>
@@ -35,6 +44,7 @@
     </table>
   </div>
 
+  <!-- Section for total price and checkout option -->
   <div class="mt-8 text-right text-white">
     <h3 class="text-2xl font-bold text-shadow" id="total-price">Total Price: Rp{{ total_price }}</h3>
     <a href="#" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded shadow-lg">
@@ -43,5 +53,6 @@
   </div>
 
 {% else %}
+  <!-- Message for when the cart is empty -->
   <p class="text-center text-white text-xl">Your cart is empty.</p>
 {% endif %}
