@@ -21,36 +21,62 @@
         {% load custom_tags %}
 
         {% if user.is_authenticated and user.is_staff %}
-
-        <form id="addRestaurantForm" class="space-y-4">
-            <label for="name" class="block text-gray-700 font-medium">Restaurant Name:</label>
-            <input type="text" id="name" name="name" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
         
-            <label for="food_preference" class="block text-gray-700 font-medium">Food Preference:</label>
-            <select id="food_preference" name="food_preference" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
-                <option value="Chinese">Chinese</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Japanese">Japanese</option>
-                <option value="MiddleEastern">MiddleEastern</option>
-                <option value="Western">Western</option>
-            </select>
+        <!-- Add Restaurant Button -->
+        <button id="showAddFormButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-6">
+            Add Restaurant
+        </button>
         
-            <label for="average_price" class="block text-gray-700 font-medium">Average Price:</label>
-            <input type="number" id="average_price" name="average_price" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+        <!-- Hidden Form -->
+        <div id="addRestaurantFormContainer" class="hidden mb-6">
+            <form id="addRestaurantForm" class="space-y-4">
+                <label for="name" class="block text-gray-700 font-medium">Restaurant Name:</label>
+                <input type="text" id="name" name="name" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
         
-            <label for="rating" class="block text-gray-700 font-medium">Rating (out of 5):</label>
-            <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+                <label for="food_preference" class="block text-gray-700 font-medium">Food Preference:</label>
+                <select id="food_preference" name="food_preference" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+                    <option value="Chinese">Chinese</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="MiddleEastern">MiddleEastern</option>
+                    <option value="Western">Western</option>
+                </select>
         
-            <label for="atmosphere" class="block text-gray-700 font-medium">Atmosphere:</label>
-            <input type="text" id="atmosphere" name="atmosphere" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+                <label for="average_price" class="block text-gray-700 font-medium">Average Price:</label>
+                <input type="number" id="average_price" name="average_price" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
         
-            <label for="food_variety" class="block text-gray-700 font-medium">Food Variety:</label>
-            <input type="text" id="food_variety" name="food_variety" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+                <label for="rating" class="block text-gray-700 font-medium">Rating (out of 5):</label>
+                <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
         
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Add Restaurant</button>
-        </form>
+                <label for="atmosphere" class="block text-gray-700 font-medium">Atmosphere:</label>
+                <input type="text" id="atmosphere" name="atmosphere" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+        
+                <label for="food_variety" class="block text-gray-700 font-medium">Food Variety:</label>
+                <input type="text" id="food_variety" name="food_variety" required class="border border-gray-300 rounded-md p-2 w-full focus:border-blue-500 focus:outline-none">
+        
+                <div class="flex justify-end space-x-2">
+                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600">Submit</button>
+                    <button type="button" id="cancelAddFormButton" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Cancel</button>
+                </div>
+            </form>
+        </div>
 
         <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Show the Add Restaurant Form
+                document.getElementById("showAddFormButton").addEventListener("click", function() {
+                    document.getElementById("addRestaurantFormContainer").classList.remove("hidden");
+                    this.classList.add("hidden");
+                });
+
+                // Hide the Add Restaurant Form
+                document.getElementById("cancelAddFormButton").addEventListener("click", function() {
+                    document.getElementById("addRestaurantFormContainer").classList.add("hidden");
+                    document.getElementById("showAddFormButton").classList.remove("hidden");
+                    document.getElementById("addRestaurantForm").reset();
+                });
+
+                
             document.getElementById("addRestaurantForm").addEventListener("submit", function(event) {
                 event.preventDefault();  // Prevent form from submitting traditionally
         
@@ -74,8 +100,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert("Restaurant added successfully!");
-                        document.getElementById("addRestaurantForm").reset();
+                        location.reload();
                     } else {
                         alert("Failed to add restaurant. " + data.error);
                     }
@@ -85,6 +110,7 @@
                     alert("An error occurred while adding the restaurant.");
                 });
             });
+        });
         </script>
 
         {% else %}
@@ -104,6 +130,44 @@
 
         <div id="restaurant-list" class="space-y-6"></div>
         <p id="no-restaurants" class="text-center text-gray-700 hidden">No restaurants found.</p>
+
+        {% if user.is_authenticated and user.is_staff %}
+        <div id="editRestaurantModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+            <form id="editRestaurantForm" class="bg-white p-6 rounded shadow-lg w-full max-w-lg">
+                <h2 class="text-2xl font-semibold mb-4">Edit Restaurant</h2>
+                
+                <!-- Editable Fields for the Restaurant -->
+                <label for="edit_name" class="block text-gray-700 font-medium">Restaurant Name:</label>
+                <input type="text" id="edit_name" name="name" required class="border border-gray-300 rounded-md p-2 w-full mb-4">
+        
+                <label for="edit_food_preference" class="block text-gray-700 font-medium">Food Preference:</label>
+                <select id="edit_food_preference" name="food_preference" required class="border border-gray-300 rounded-md p-2 w-full mb-4">
+                    <option value="Chinese">Chinese</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="MiddleEastern">MiddleEastern</option>
+                    <option value="Western">Western</option>
+                </select>
+        
+                <label for="edit_average_price" class="block text-gray-700 font-medium">Average Price:</label>
+                <input type="number" id="edit_average_price" name="average_price" required class="border border-gray-300 rounded-md p-2 w-full mb-4">
+        
+                <label for="edit_rating" class="block text-gray-700 font-medium">Rating (out of 5):</label>
+                <input type="number" id="edit_rating" name="rating" min="0" max="5" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full mb-4">
+        
+                <label for="edit_atmosphere" class="block text-gray-700 font-medium">Atmosphere:</label>
+                <input type="text" id="edit_atmosphere" name="atmosphere" required class="border border-gray-300 rounded-md p-2 w-full mb-4">
+        
+                <label for="edit_food_variety" class="block text-gray-700 font-medium">Food Variety:</label>
+                <input type="text" id="edit_food_variety" name="food_variety" required class="border border-gray-300 rounded-md p-2 w-full mb-4">
+        
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">Save Changes</button>
+                    <button type="button" onclick="closeEditForm()" class="bg-gray-500 text-white py-2 px-4 rounded ml-2">Cancel</button>
+                </div>
+            </form>
+        </div>
+        {% endif %}
     </div>
 
     {% block scripts %}
@@ -180,7 +244,7 @@
 
                 // Restaurant details
                 const detailsDiv = document.createElement('div');
-                detailsDiv.classList.add('md:w-2/3', 'w-full', 'p-6', 'flex', 'flex-col', 'justify-between');
+                detailsDiv.classList.add('md:w-2/3', 'w-full', 'p-6', 'flex', 'flex-col', 'justify-between', 'h-full');
 
                 // Name with hyperlink
                 const nameLink = document.createElement('a');
@@ -210,16 +274,34 @@
                 foodVariety.classList.add('text-gray-600', 'mb-4');
                 foodVariety.textContent = `Food Variety: ${restaurant.food_variety || 'Unknown'}`;
 
-                // Admin-only delete button
-                if (isAdmin) {  // Use isAdmin as a boolean
+
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.classList.add('flex', 'justify-end', 'space-x-2');
+
+                // Admin-only buttons
+                if (isAdmin) {
+                    const editBtn = document.createElement('button');
+                    editBtn.classList.add('bg-yellow-500', 'hover:bg-yellow-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded');
+                    editBtn.textContent = 'Edit';
+                    editBtn.addEventListener('click', () => {
+                        openEditForm(restaurant.id);
+                    });
+                    buttonsDiv.appendChild(editBtn);
+
                     const deleteBtn = document.createElement('button');
-                    deleteBtn.classList.add('bg-red-500', 'hover:bg-red-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'mt-2');
+                    deleteBtn.classList.add('bg-red-500', 'hover:bg-red-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded');
                     deleteBtn.textContent = 'Delete';
                     deleteBtn.addEventListener('click', () => {
                         deleteRestaurant(restaurant.id);
                     });
-                    detailsDiv.appendChild(deleteBtn);
+                    buttonsDiv.appendChild(deleteBtn);
                 }
+
+                // Append buttonsDiv to detailsDiv
+                detailsDiv.appendChild(buttonsDiv);
+
+                
+
 
                 // Append details to the card
                 detailsDiv.appendChild(nameLink);
@@ -305,6 +387,82 @@
         }
 
     </script>
+        <script>
+            function openEditForm(restaurantId) {
+                fetch(`/restaurant/restaurant/${restaurantId}/data/`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("edit_name").value = data.name;
+                    document.getElementById("edit_food_preference").value = data.food_preference;
+                    document.getElementById("edit_average_price").value = data.average_price;
+                    document.getElementById("edit_rating").value = data.rating;
+                    document.getElementById("edit_atmosphere").value = data.atmosphere;
+                    document.getElementById("edit_food_variety").value = data.food_variety;
+    
+                    document.getElementById("editRestaurantForm").onsubmit = function (event) {
+                        event.preventDefault();
+                        submitEditForm(restaurantId);
+                    };
+    
+                    document.getElementById("editRestaurantModal").classList.remove("hidden");
+                })
+                .catch(error => {
+                    console.error("Error loading restaurant data:", error);
+                    alert("Failed to load restaurant data.");
+                });
+            }
+    
+            function submitEditForm(restaurantId) {
+                const formData = {
+                    name: document.getElementById("edit_name").value,
+                    food_preference: document.getElementById("edit_food_preference").value,
+                    average_price: document.getElementById("edit_average_price").value,
+                    rating: document.getElementById("edit_rating").value,
+                    atmosphere: document.getElementById("edit_atmosphere").value,
+                    food_variety: document.getElementById("edit_food_variety").value,
+                };
+    
+                fetch(`/restaurant/restaurant/${restaurantId}/update/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": getCSRFToken()
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert("Failed to update restaurant. " + (data.error || ""));
+                    }
+                })
+                .catch(error => {
+                    console.error("Error updating restaurant:", error);
+                    alert("An error occurred while updating the restaurant.");
+                });
+            }
+    
+            function getCSRFToken() {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.startsWith('csrftoken=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(10));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+    
+            function closeEditForm() {
+                document.getElementById("editRestaurantModal").classList.add("hidden");
+            }
+        </script>
     {% endblock %}
 </body>
 
