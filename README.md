@@ -38,6 +38,9 @@ Integrated with an RSS feed from local news sources, this module will keep users
 <br>
 <h4>Main (landing, home, and navbar):</h4>
 The central hub for users to navigate the app. This includes a landing page with featured content, popular tourist attractions, trending restaurants, and the latest news updates. The navigation bar will give users easy access to different sections of the app.
+<br>
+<h4>Shopping Cart</h4>
+This module will allow users to add and remove items from the cart, view selected services and their details. It will also allow users to checkout and view the booking receipt.
 
 <h2><b>IV. Source of initial dataset for main product category</b></h2>
 
@@ -83,25 +86,32 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 </ul>
 
 <h4>6. Read Reviews</h4>
-<p>Users can also view reviews left by others. This feature helps them evaluate restaurants and attractions based on real-life experiences and varied perspectives.</p>
+<p>Users can also view reviews left by others. This feature helps them evaluate restaurants and attractions based on real-life experiences and varied perspectives.
+</p>
+
+<h4>7. Add Services to Cart and Checkout</h4>
+<p>Users can add various services such as restaurant price, and attraction tickets price to a shopping cart. This feature allows them to:</p>
+<ul>
+    <li>Review and modify their selections in the cart</li>
+    <li>Proceed to checkout to confirm and complete their bookings</li>
+    <li>Generate a booking receipt upon successful checkout, including a unique booking ID</li>
+    <li>Additionally, users can search and view their past bookings using the booking ID, making it easy to reference previous bookings.</li>
+</ul>
 
 <h3>Admin Features</h3>
 
 <p>Admins have elevated permissions on the platform, enabling them to manage content and monitor user interactions. Below is a breakdown of what Admins can do:</p>
 
 <h4>1. Edit, Delete, and Add New Data</h4>
-<p>Admins have full control over the platform's data. They can add new content such as news articles, restaurant details, tourist attractions, and photos, keeping the platform updated. In addition, they can edit or remove outdated or incorrect data, ensuring the information on the platform is always accurate and relevant.</p>
+<p>Admins have full control over the platform's data. They can add new content such as news articles, restaurant details, tourist attractions, keeping the platform updated. In addition, they can edit or remove outdated or incorrect data, ensuring the information on the platform is always accurate and relevant.</p>
 
-<h4>2. View All User Data</h4>
-<p>Admins have access to the complete set of user data, including profiles, activity logs, and reviews. This allows them to monitor user interactions, track engagement, and ensure compliance with the platform’s guidelines. Admins are responsible for maintaining the integrity and safety of user data.</p>
+<h4>2. Modify Customer Reviews</h4> 
+<p>Admins can reply to customer reviews, allowing them to engage directly with users feedback. This feature enables admins to address user concerns, answer questions, and acknowledge positive feedback, fostering a constructive and interactive environment. By actively managing and responding to reviews, admins help ensure that user experiences are both respected and valued.</p>
 
-<h4>3. Modify Customer Reviews</h4>
-<p>Admins can edit, approve, or remove customer reviews. This ensures that the reviews posted are respectful, relevant, and free from inappropriate content. By managing customer reviews, admins help maintain a constructive and informative environment for all users.</p>
-
-<h4>4. Access and Modify Internal Data Formats</h4>
+<h4>3. Access and Modify Internal Data Formats</h4>
 <p>Admins can work directly with the platform’s underlying data structures, such as JSON and XML files. This ability allows them to modify how data is stored, transferred, and displayed, ensuring smooth functionality and integration with backend systems. This technical capability is essential for optimizing performance and implementing new features.</p>
 
-<h4>5. System Maintenance and Security</h4>
+<h4>4. System Maintenance and Security</h4>
 <p>Admins are also responsible for ensuring the platform runs efficiently by performing system updates, troubleshooting issues, and managing security protocols. This ensures the platform is stable, secure, and functioning correctly for all users.</p>
 
 <p>Admins are vital to the platform's operations, ensuring that content is up-to-date and accurate, user data is managed responsibly, and the platform remains secure and efficient.</p>
