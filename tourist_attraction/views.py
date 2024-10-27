@@ -7,17 +7,19 @@ import json
 from django.contrib.auth.decorators import login_required
 
 @require_http_methods(['GET'])
+# get the data from the database and return it as a JSON response
 def get_tourist_attractions(request):
     attractions = TouristAttraction.objects.all()
     return JsonResponse({'attractions': list(attractions.values())})
 
 @require_http_methods(['GET'])
+# display_attractions_as_cards to render the data as cards
 def display_attractions_as_cards(request):
     return render(request, 'attraction_cards.html')
 
 @require_http_methods(['GET'])
 def attraction_detail(request, attraction_id):
-    # Fetch attraction based on UUID
+    # Fetch attraction based on UUID and display it in the detail page
     attraction = get_object_or_404(TouristAttraction, id=attraction_id)
     context = {
         'attraction': attraction
@@ -28,6 +30,7 @@ def attraction_detail(request, attraction_id):
 @login_required
 @require_http_methods(['POST'])
 def add_tourist_attraction(request):
+    # Add attraction based on provided input from the admin empty fields will be defaulted in the html
     try:
         data = json.loads(request.body)
         
@@ -86,6 +89,7 @@ def edit_tourist_attraction(request, attraction_id):
 @login_required
 @require_http_methods(['DELETE'])
 def delete_tourist_attraction(request, attraction_id):
+    # Delete attraction based on UUID but search if it exist first
     try:
         attraction = get_object_or_404(TouristAttraction, id=attraction_id)
         attraction.delete()
