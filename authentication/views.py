@@ -14,57 +14,76 @@ from django.utils.html import strip_tags
 @require_http_methods(["GET"])
 @unauthenticated_user
 def display_register_form(request):
+    # show the registration form page
+    # this is a GET request (loads the form for users to fill in)
     form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
 @require_http_methods(["POST"])
 @unauthenticated_user
 def submit_register_form(request):
+    # process the registration form data when user submits it
+    # uses POST to handle form submission
     form = UserCreationForm(request.POST)
     if form.is_valid():
+        # save the new user
         user = form.save()
+        
+        # sanitize the username to prevent XSS attacks
         username = strip_tags(form.cleaned_data.get('username'))
-        user.username = username  # Set the sanitized username
+        user.username = username  # update the username after sanitizing
         user.save()
 
+        # add the new user to the "tourist" group
         try:
             group = Group.objects.get(name='tourist')
             user.groups.add(group)
         except Group.DoesNotExist:
+            # handle case where "tourist" group isn't found
             messages.error(
                 request,
                 "The 'tourist' group does not exist. Please contact support.",
             )
             return redirect('authentication:display_register_form')
 
+        # show a success message and redirect to login page
         messages.success(
             request, f'Account created for {username}! You can now log in.'
         )
         return redirect('authentication:login')
     else:
+        # if form data is invalid, show an error and reload registration form
         messages.error(request, "Invalid registration details.")
     return render(request, 'register.html', {'form': form})
 
 @require_http_methods(["GET"])
 def display_login_form(request):
+    # show the login form page
+    # uses GET to load the form
     form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
 @require_http_methods(["POST"])
 def submit_login_form(request):
+    # handle login when user submits their credentials
+    # uses POST to process login data
     form = AuthenticationForm(request, data=request.POST)
     if form.is_valid():
+        # if valid, log the user in and redirect to home page
         user = form.get_user()
         login(request, user)
         messages.success(request, "Login successful.")
         return redirect('home_page')
     else:
+        # show error if login fails and reload login form
         messages.error(request, "Invalid username or password.")
     return render(request, 'login.html', {'form': form})
 
 @require_http_methods(["POST"])
 @login_required
 def logout_user(request):
+    # log the user out
+    # uses POST to handle logout action
     logout(request)
     messages.success(request, "You have been logged out.")
     return redirect('authentication:login')
@@ -73,6 +92,8 @@ def logout_user(request):
 @login_required
 @require_http_methods(["GET"])
 def display_edit_profile_page(request):
+    # show the profile edit page
+    # uses GET to load the page
     profile, created = Profile.objects.get_or_create(user=request.user)
     return render(request, 'profile.html', {'profile': profile})
 
@@ -80,26 +101,35 @@ def display_edit_profile_page(request):
 @login_required
 @require_http_methods(["GET"])
 def display_edit_profile(request):
+    # send current profile data as JSON to the frontend
+    # uses GET to fetch profile data (usually for AJAX requests)
     profile, created = Profile.objects.get_or_create(user=request.user)
     form = ProfileForm(instance=profile)
+    
+    # create a dictionary with form field names and values
     form_data = {field.name: field.value() for field in form}
+    
     return JsonResponse({'success': True, 'form_data': form_data})
 
 @allowed_users(['tourist', 'admin'])
 @login_required
 @require_http_methods(["POST"])
 def submit_edit_profile(request):
+    # handle profile edits submitted by the user
+    # uses POST to update profile data (often used with AJAX)
     profile, created = Profile.objects.get_or_create(user=request.user)
     form = ProfileForm(request.POST, instance=profile)
 
     if form.is_valid():
+        # sanitize profile fields to prevent XSS
         profile_instance = form.save(commit=False)
-        
-        # Sanitize fields with strip_tags before saving
         profile_instance.address = strip_tags(profile_instance.address)
         profile_instance.phone_number = strip_tags(profile_instance.phone_number)
+        
+        # save sanitized data
         profile_instance.save()
         
-        return JsonResponse({'success': True, 'message': 'Profile updated successfully!'})
+        return JsonResponse({'success': True})
     else:
+        # send back form errors if validation fails
         return JsonResponse({'success': False, 'errors': form.errors}, status=400)

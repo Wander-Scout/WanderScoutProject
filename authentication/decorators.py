@@ -1,38 +1,41 @@
 from django.shortcuts import redirect
 from django.http import HttpResponse
 
+# decorator to restrict views for unauthenticated users only
 def unauthenticated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('home')
+        if request.user.is_authenticated:  # checks if the user is logged in
+            return redirect('home')  # if they are, redirect to home
         else:
-            return view_func(request, *args, **kwargs)
+            return view_func(request, *args, **kwargs)  # otherwise, allow access to the view
     return wrapper_func
 
-def allowed_users(allowed_roles=[]):
+# decorator to allow access only to users in specific groups
+def allowed_users(allowed_roles=[]):  # accepts a list of roles that are allowed access
     def decorator(view_func):
         def wrapper_func(request, *args, **kwargs):
             group = None
-            if request.user.groups.exists():
-                group = request.user.groups.all()[0].name
+            if request.user.groups.exists():  # checks if the user belongs to any groups
+                group = request.user.groups.all()[0].name  # gets the first group name the user belongs to
 
-            if group in allowed_roles:
-                return view_func(request, *args, **kwargs)
+            if group in allowed_roles:  # if the group is in the allowed roles list
+                return view_func(request, *args, **kwargs)  # grant access to the view
             else:
-                return HttpResponse('You are not authorized to view this page')
+                return HttpResponse('You are not authorized to view this page')  # deny access
         return wrapper_func
-    return decorator  # Added missing return here for the decorator
+    return decorator
 
+# decorator for admin-only views, with tourist redirection and custom messages
 def admin_only(view_func):
     def wrapper_func(request, *args, **kwargs):
         group = None
-        if request.user.groups.exists():
-            group = request.user.groups.all()[0].name
+        if request.user.groups.exists():  # checks if the user has any groups
+            group = request.user.groups.all()[0].name  # grabs the first group name
 
-        if group == 'tourist':
+        if group == 'tourist':  # tourists are redirected to the home page
             return redirect('home')
-        elif group == 'admin':
+        elif group == 'admin':  # admins can access the view
             return view_func(request, *args, **kwargs)
-        else:
-            return HttpResponse('You are not authorized to view this page')  # Added for non-admin, non-tourist users
+        else:  # other users get a custom unauthorized message
+            return HttpResponse('You are not authorized to view this page')
     return wrapper_func
