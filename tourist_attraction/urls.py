@@ -7,4 +7,5 @@ urlpatterns = [
     path('attractions/<uuid:attraction_id>/', views.attraction_detail, name='attraction_detail'),
     path('add_attraction/', views.add_tourist_attraction, name='add_tourist_attraction'),
     path('delete_attraction/<uuid:attraction_id>/', views.delete_tourist_attraction, name='delete_tourist_attraction'),
+    path('edit_attraction/<uuid:attraction_id>/', views.edit_tourist_attraction, name='edit_tourist_attraction'),
 ]

@@ -58,6 +58,34 @@ def add_tourist_attraction(request):
         return JsonResponse({'error': str(e)}, status=400)
 
 @admin_only
+@require_http_methods(['POST'])
+def edit_tourist_attraction(request, attraction_id):
+    try:
+        attraction = get_object_or_404(TouristAttraction, id=attraction_id)
+        data = json.loads(request.body)
+        
+        # Update fields with provided data or keep existing values
+        attraction.nama = data.get('nama', attraction.nama)
+        attraction.rating = float(data.get('rating', attraction.rating) or attraction.rating)
+        attraction.vote_average = float(data.get('vote_average', attraction.vote_average) or attraction.vote_average)
+        attraction.vote_count = int(data.get('vote_count', attraction.vote_count) or attraction.vote_count)
+        attraction.type = data.get('type', attraction.type)
+        attraction.htm_weekday = float(data.get('htm_weekday', attraction.htm_weekday) or attraction.htm_weekday)
+        attraction.htm_weekend = float(data.get('htm_weekend', attraction.htm_weekend) or attraction.htm_weekend)
+        attraction.description = data.get('description', attraction.description)
+        attraction.gmaps_url = data.get('gmaps_url', attraction.gmaps_url)
+        attraction.latitude = float(data.get('latitude', attraction.latitude) or attraction.latitude)
+        attraction.longitude = float(data.get('longitude', attraction.longitude) or attraction.longitude)
+        
+        attraction.save()
+        return JsonResponse({'message': 'Attraction updated successfully.', 'attraction_id': str(attraction.id)}, status=200)
+    except Exception as e:
+        # Log the exception details for debugging
+        import traceback
+        traceback.print_exc()
+        return JsonResponse({'error': str(e)}, status=400)
+
+@admin_only
 @require_http_methods(['DELETE'])
 def delete_tourist_attraction(request, attraction_id):
     try:
