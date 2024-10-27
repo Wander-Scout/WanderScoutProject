@@ -6,11 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from authentication.decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.models import Group
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import ProfileForm
 from .models import Profile
 from django.http import JsonResponse
-from .decorators import allowed_users
+from django.utils.html import strip_tags
 
 @require_http_methods(["GET"])
 @unauthenticated_user
@@ -24,7 +23,9 @@ def submit_register_form(request):
     form = UserCreationForm(request.POST)
     if form.is_valid():
         user = form.save()
-        username = form.cleaned_data.get('username')
+        username = strip_tags(form.cleaned_data.get('username'))
+        user.username = username  # Set the sanitized username
+        user.save()
 
         try:
             group = Group.objects.get(name='tourist')
@@ -43,7 +44,6 @@ def submit_register_form(request):
     else:
         messages.error(request, "Invalid registration details.")
     return render(request, 'register.html', {'form': form})
-
 
 @require_http_methods(["GET"])
 def display_login_form(request):
@@ -91,8 +91,15 @@ def display_edit_profile(request):
 def submit_edit_profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
     form = ProfileForm(request.POST, instance=profile)
+
     if form.is_valid():
-        form.save()
+        profile_instance = form.save(commit=False)
+        
+        # Sanitize fields with strip_tags before saving
+        profile_instance.address = strip_tags(profile_instance.address)
+        profile_instance.phone_number = strip_tags(profile_instance.phone_number)
+        profile_instance.save()
+        
         return JsonResponse({'success': True, 'message': 'Profile updated successfully!'})
     else:
         return JsonResponse({'success': False, 'errors': form.errors}, status=400)
