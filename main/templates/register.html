@@ -8,11 +8,11 @@
 />
 {% endblock meta %}
 
-<script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script> 
 
 {% block content %}
 <div class="flex min-h-screen">
-  <!-- Left side with the image and content -->
+  <!-- left side featuring the image and text -->
   <div
     class="w-1/2 bg-cover bg-center"
     style="background-image: url('/static/images/malioboro.jpeg');"
@@ -27,14 +27,13 @@
     </div>
   </div>
 
-  <!-- Right side with the form -->
+  <!-- right side : form -->
   <div
     class="w-1/2 flex items-center justify-center bg-gradient-to-b from-blue-900 to-blue-800 p-10"
   >
     <div
       class="w-full max-w-sm bg-white bg-opacity-10 p-8 rounded-xl shadow-lg"
     >
-      <!-- Apply Javanese font here -->
       <h2
         class="text-4xl font-bold text-white mb-4 text-center"
         style="font-family: 'Noto Sans Javanese', sans-serif;"
@@ -45,14 +44,14 @@
         Join us and start creating memories today.
       </p>
 
-      <!-- Form for registration -->
+      <!-- form for registration -->
       <form
         method="POST"
         action="{% url 'authentication:submit_register_form' %}"
         class="space-y-6"
       >
         {% csrf_token %}
-        <!-- Username field -->
+        <!-- username field -->
         <div class="relative">
           <input
             type="text"
@@ -69,7 +68,7 @@
           {% endif %}
         </div>
 
-        <!-- Password1 field -->
+        <!-- password field -->
         <div class="relative">
           <input
             type="password"
@@ -86,7 +85,7 @@
           {% endif %}
         </div>
 
-        <!-- Password2 (Confirm Password) field -->
+        <!-- confirm password field -->
         <div class="relative">
           <input
             type="password"
@@ -103,7 +102,7 @@
           {% endif %}
         </div>
 
-        <!-- Register Button -->
+        <!-- register button -->
         <div class="flex justify-center mt-6">
           <input
             type="submit"
@@ -113,7 +112,7 @@
         </div>
       </form>
 
-      <!-- Already have an account -->
+      <!-- redirect to login if already have an account -->
       <div class="mt-6 text-center">
         <p class="text-gray-300">
           Already have an account?
@@ -125,7 +124,7 @@
         </p>
       </div>
 
-      <!-- Display any messages (like registration success/failure) -->
+      <!-- success/failure message display -->
       {% if messages %}
       <ul class="mt-4 text-center text-red-300">
         {% for message in messages %}
@@ -137,7 +136,6 @@
   </div>
 </div>
 
-<!-- Font Awesome for the eye icon (if needed in future) -->
 <script
   src="https://kit.fontawesome.com/a076d05399.js"
   crossorigin="anonymous"

@@ -1,3 +1,4 @@
+<!-- importing static tag template so that django can use static url -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Reviews</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- styling format for the customer review page -->
     <style>
         body {
             background-image: url("{% static 'images/malioboro.jpeg' %}");
@@ -13,7 +15,6 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
         .delete-btn {
             position: absolute;
             top: 8px;
@@ -28,11 +29,9 @@
             justify-content: center;
             cursor: pointer;
         }
-
         .delete-btn:hover {
             background-color: #cc1f1a;
         }
-
         .review-card {
             position: relative;
             padding: 16px;
@@ -41,7 +40,6 @@
             background-color: rgba(255, 255, 255, 0.8);
             margin-bottom: 16px;
         }
-
         .admin-reply {
             margin-left: 16px;
             padding: 12px;
@@ -54,16 +52,16 @@
 </head>
 <body class="bg-opacity-90">
 
-    <!-- Include Navbar -->
+    <!-- including navbar -->
     {% include 'navbar.html' %}
 
-    <!-- Container for Reviews and Form -->
+    <!-- container for reviews and form -->
     <div class="max-w-4xl mx-auto mt-24 p-5 bg-blue-900 bg-opacity-90 rounded-lg shadow-lg">
         <h1 class="text-4xl font-bold text-white mb-4 text-center">Send us your Reviews!</h1>
 
-        <!-- Dropdown Filter for Ratings -->
+        <!-- dropdown feature for rating number -->
         <div class="flex justify-center mb-6">
-            <form method="GET" action="{% url 'display_customer_reviews' %}">
+            <form method="GET" action="{% url 'display_customer_reviews' %}" id="filter-form">
                 <label for="rating-filter" class="text-white font-medium mr-2">Filter by Rating:</label>
                 <select name="rating" id="rating-filter" class="px-4 py-2 bg-white border border-gray-300 rounded shadow-md">
                     <option value="" {% if not rating_filter %}selected{% endif %}>All Ratings</option>
@@ -79,13 +77,13 @@
             </form>
         </div>
 
-        <!-- Review Form -->
+        <!-- review form for authenticated user -->
         {% if user.is_authenticated %}
             <form id="review-form" method="POST" action="{% url 'submit_customer_review' %}" class="bg-white p-4 rounded-lg shadow-md mb-6">
                 {% csrf_token %}
                 <div class="mb-4">
                     <label for="review_text" class="block text-sm font-medium text-gray-700 mb-2">Your Review:</label>
-                    {{ form.review_text }}
+                    <textarea name="review_text" id="review_text" class="w-full p-2 border rounded" placeholder="Write your review here..."></textarea>
                 </div>
                 <div class="mb-4">
                     <label for="rating" class="block text-sm font-medium text-gray-700 mb-2">Rating:</label>
@@ -101,26 +99,26 @@
             </p>
         {% endif %}
 
-        <!-- Display Reviews -->
+        <!-- display reviews -->
         <div id="reviews-container" class="mt-8">
             {% if rating_filter %}
                 <p class="text-lg text-white mb-4">Showing reviews with {{ rating_filter }} star rating</p>
             {% endif %}
             
             {% for review in reviews %}
-                <div class="review-card">
-                    {% if user == review.user or user.is_staff %}
-                        <form method="POST" action="{% url 'delete_customer_review' review.id %}?rating={{ rating_filter }}" class="absolute top-0 right-0">
+                <div class="review-card" id="review-{{ review.id }}">
+                    {% if user == review.user %}
+                        <form method="POST" action="{% url 'delete_customer_review' review.id %}?rating={{ rating_filter }}" class="absolute top-0 right-0 delete-form">
                             {% csrf_token %}
                             <button type="submit" class="delete-btn" title="Delete">&#x2716;</button>
                         </form>
                     {% endif %}
                     <p class="text-lg font-semibold text-blue-900">{{ review.user.username }}</p>
-                    <p class="text-gray-600">{{ review.review_text }}</p>
+                    <p class="text-gray-600">{{ review.review_text|default_if_none:"No review text provided." }}</p>
                     <p class="text-yellow-500">Rating: {{ review.rating }} Stars</p>
                     <p class="text-sm text-gray-500">Submitted on {{ review.created_at|date:"F j, Y, g:i a" }}</p>
 
-                    <!-- Display Admin Replies -->
+                    <!-- section to display admin replies -->
                     {% for reply in review.replies.all %}
                         <div class="admin-reply">
                             <p class="text-sm font-semibold text-red-700">Admin Reply:</p>
@@ -131,7 +129,7 @@
                         <p class="ml-4 text-sm text-gray-500">No admin replies yet.</p>
                     {% endfor %}
 
-                    <!-- Admin Reply Form -->
+                    <!-- admin reply form -->
                     {% if user.is_staff %}
                         <form method="POST" action="{% url 'add_admin_reply' review.id %}" class="mt-2">
                             {% csrf_token %}
@@ -147,6 +145,57 @@
             {% endfor %}
         </div>
     </div>
+    
+    <!-- including the footer -->
+    {% include 'footer.html' %}
 
+    <!-- javascript to submit review, including ajax -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function getCSRFToken() {
+                return document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+            }
+
+            function addCustomerReview() {
+                fetch("{% url 'submit_customer_review' %}", {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": getCSRFToken(),
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                    body: new FormData(document.getElementById('review-form'))
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed sending review.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(data.message);
+
+                    // reset form and filter to 'all ratings'
+                    document.getElementById("review-form").reset();
+                    document.getElementById("rating-filter").value = "";
+
+                    // reload review list without page refresh
+                    document.getElementById("filter-form").submit();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed sending review.');
+                });
+            }
+
+            // event listener for form submission
+            const reviewForm = document.getElementById("review-form");
+            if (reviewForm) {
+                reviewForm.addEventListener("submit", function(e) {
+                    e.preventDefault();
+                    addCustomerReview();
+                });
+            }
+        });
+    </script>
 </body>
 </html>

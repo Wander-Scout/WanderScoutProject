@@ -1,3 +1,4 @@
+<!-- importing static tag template so that django can use static url -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">     
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanderscout</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- styling format for the customer home page -->
     <style>
         body::before {
             content: '';
@@ -33,7 +35,8 @@
             position: relative;
             width: 100%;
             z-index: 10;
-            min-height: 100vh;
+            min-height: 80vh;
+            padding: 2rem 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,8 +56,26 @@
             justify-content: center;
             width: 100%;
             max-width: 800px;
-            margin: 2rem auto;
-            height: 100%;
+            margin: 1.5rem auto;
+        }
+
+        .service-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .service-box {
+            width: 280px;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: scale(1.05);
         }
 
         .carousel-wrapper {
@@ -71,25 +92,12 @@
 
         .carousel-slide {
             min-width: 100%;
-            position: relative;
         }
 
         .carousel-image {
             width: 100%;
-            height: 400px;
+            height: 300px;
             object-fit: cover;
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 8px;
-            text-align: center;
-            font-size: 14px;
         }
 
         .carousel-btn {
@@ -115,33 +123,14 @@
         #nextBtn {
             right: 10px;
         }
-
-        .service-box {
-            width: 300px;
-            height: 200px;
-            overflow: hidden;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .service-box:hover {
-            transform: scale(1.05);
-        }
-
-        .service-section {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 2rem 0;
-        }
     </style>
 </head>
 <body class="smooth-scroll">
 
-    <!-- Include the navbar -->
+    <!-- including the navbar -->
     {% include 'navbar.html' %}
     
-    <!-- Welcome Text Section -->
+    <!-- welcome text section -->
     <section id="welcomeText" class="content text-center text-white text-shadow show">
         <div>
             <p class="text-2xl">Sugeng enjing, welcome to</p>
@@ -149,18 +138,16 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- display services section -->
     <section id="servicesContent" class="content text-center text-white text-shadow">
         <h2 class="text-3xl font-semibold mb-4">Take a peek at our services.</h2>
         <div class="service-section">
-            <!-- Tourist Attraction -->
             <a href="{% url 'tourist_attractions' %}" class="service-box relative">
                 <img src="{% static 'images/tourist_attraction.jpg' %}" alt="Tourist Attraction" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 text-center font-bold">
                     TOURIST ATTRACTION
                 </div>
             </a>
-            <!-- Restaurants -->
             <a href="{% url 'restaurants' %}" class="service-box relative">
                 <img src="{% static 'images/restaurant.jpg' %}" alt="Restaurants" class="w-full h-full object-cover">
                 <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 text-center font-bold">
@@ -170,36 +157,33 @@
         </div>
     </section>
 
-    <!-- Image Display Carousel Section -->
-<section id="carouselSection" class="carousel-container text-center content">
-    <h2 class="text-3xl font-semibold mb-4 text-shadow text-white">Explore Our Gallery</h2>
-    <div class="carousel-wrapper">
-        <div id="carousel-images" class="carousel-images flex transition-transform duration-500">
-            {% for image in images %}
-                <div class="carousel-slide min-w-full relative">
-                    {% if image.image_url %}
-                        <img src="{{ image.image_url }}" alt="{{ image.title }}" class="carousel-image object-cover w-full h-96">
-                    {% else %}
-                        <p class="text-gray-500 text-center w-full">Image not available for "{{ image.title }}"</p>
-                    {% endif %}
-                    <div class="carousel-caption absolute bottom-0 w-full bg-black bg-opacity-50 text-center text-white font-semibold">{{ image.title }}</div>
-                </div>
-            {% empty %}
-                <p class="text-gray-500 text-center w-full">No images available in the gallery.</p>
-            {% endfor %}
-        </div>        
+    <!-- carousel for image gallery section -->
+    <section id="carouselSection" class="carousel-container text-center content">
+        <h2 class="text-3xl font-semibold mb-4 text-shadow text-white">Explore Our Gallery</h2>
+        <div class="carousel-wrapper">
+            <div id="carousel-images" class="carousel-images flex">
+                {% for image in images %}
+                    <div class="carousel-slide min-w-full">
+                        {% if image.image_url %}
+                            <img src="{{ image.image_url }}" alt="{{ image.title }}" class="carousel-image object-cover w-full h-80">
+                        {% else %}
+                            <p class="text-gray-500 text-center w-full">Image not available for "{{ image.title }}"</p>
+                        {% endif %}
+                        <div class="carousel-caption absolute bottom-0 w-full bg-black bg-opacity-50 text-center text-white font-semibold">{{ image.title }}</div>
+                    </div>
+                {% empty %}
+                    <p class="text-gray-500 text-center w-full">No images available in the gallery.</p>
+                {% endfor %}
+            </div>        
+            <button id="prevBtn" class="carousel-btn" aria-label="Previous Slide">&#10094;</button>
+            <button id="nextBtn" class="carousel-btn" aria-label="Next Slide">&#10095;</button>
+        </div>
+    </section>
 
-        <!-- Navigation Buttons -->
-        <button id="prevBtn" class="carousel-btn" aria-label="Previous Slide">&#10094;</button>
-        <button id="nextBtn" class="carousel-btn" aria-label="Next Slide">&#10095;</button>
-    </div>
-</section>
-
-
-
-    <!-- Include Footer -->
+    <!-- including footer -->
     {% include 'footer.html' %}
 
+    <!-- javascript for the homepage -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const carouselImages = document.getElementById('carousel-images');
@@ -225,22 +209,19 @@
                 updateCarousel();
             });
 
-            // Fade-in effect on scroll
+            // fade-in effect on scroll
             function handleScroll() {
                 fadeInElements.forEach((el) => {
                     const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 100) {
+                    if (rect.top < window.innerHeight - 150) {
                         el.classList.add('show');
                     }
                 });
             }
 
             window.addEventListener('scroll', handleScroll);
-
-            // Trigger fade-in on load
             handleScroll();
         });
     </script>
-
 </body>
 </html>

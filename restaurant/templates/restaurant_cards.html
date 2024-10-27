@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 
 {% load static %}
 
@@ -15,6 +14,8 @@
 </head>
 
 <body>
+    {% include 'navbar.html' %}
+
     <div class="container mx-auto pt-24 pb-10">
         <h1 class="text-3xl font-bold text-center mb-10">Restaurants</h1>
 
@@ -464,6 +465,7 @@
             }
         </script>
     {% endblock %}
+    {% include 'footer.html' %}
 </body>
 
 </html>
