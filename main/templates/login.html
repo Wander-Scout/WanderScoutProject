@@ -5,11 +5,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese:wght@400..700&display=swap" rel="stylesheet">
 {% endblock meta %}
 
-<script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script> 
 
 {% block content %}
 <div class="flex min-h-screen">
-  <!-- Left side with the image and content -->
+  <!-- left side featuring the image and text -->
   <div class="w-1/2 bg-cover bg-center" style="background-image: url('/static/images/malioboro.jpeg');">
     <div class="flex flex-col items-center justify-center h-full p-10 bg-black bg-opacity-50">
       <h1 class="text-5xl font-bold text-white mb-4">WanderScout.</h1>
@@ -17,14 +17,13 @@
     </div>
   </div>
 
-  <!-- Right side with the form -->
+  <!-- right side : form -->
   <div class="w-1/2 flex items-center justify-center bg-gradient-to-b from-blue-900 to-blue-800 p-10">
     <div class="w-full max-w-sm bg-white bg-opacity-10 p-8 rounded-xl shadow-lg">
-      <!-- Apply Javanese font here -->
       <h2 class="text-4xl font-bold text-white mb-4 text-center" style="font-family: 'Noto Sans Javanese', sans-serif;">ꦱꦼꦭꦩꦠ꧀ꦝꦠꦁ.</h2>
       <p class="text-sm text-gray-300 mb-6 text-center">We’re glad to see you again. Log in to continue.</p>
 
-      <!-- Form for login -->
+      <!-- form for login -->
       <form method="POST" action="{% url 'authentication:submit_login_form' %}" class="space-y-6">
         {% csrf_token %}
         <div class="relative">
@@ -38,18 +37,18 @@
                  class="w-full px-4 py-3 bg-transparent border-b border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500" 
                  placeholder="Enter your password" required />
           <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
-            <i class="fas fa-eye text-gray-400"></i> <!-- Eye icon -->
+            <i class="fas fa-eye text-gray-400"></i>
           </span>
         </div>
 
-        <!-- Cream Gradient Login Button -->
+        <!-- login button-->
         <div class="flex justify-center mt-6">
           <input type="submit" value="LOGIN" 
                  class="w-full py-3 bg-gradient-to-r from-cream-200 to-beige-400 text-gray-800 font-bold rounded-full hover:opacity-90 transition duration-200" />
         </div>
       </form>
 
-      <!-- Register prompt -->
+      <!-- register prompt -->
       <div class="mt-6 text-center">
         <p class="text-gray-300">Don't have an account? 
           <a href="{% url 'authentication:display_register_form' %}" 
@@ -57,7 +56,7 @@
         </p>
       </div>
 
-      <!-- Display any messages (like login success/failure) -->
+      <!-- success/failure message display -->
       {% if messages %}
       <ul class="mt-4 text-center text-red-300">
         {% for message in messages %}
@@ -69,6 +68,5 @@
   </div>
 </div>
 
-<!-- Font Awesome for the eye icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 {% endblock content %}
