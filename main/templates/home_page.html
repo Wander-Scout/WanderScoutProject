@@ -54,6 +54,7 @@
             width: 100%;
             max-width: 800px;
             margin: 2rem auto;
+            height: 100%;
         }
 
         .carousel-wrapper {
@@ -170,25 +171,31 @@
     </section>
 
     <!-- Image Display Carousel Section -->
-    <section id="carouselSection" class="carousel-container text-center content">
-        <h2 class="text-3xl font-semibold mb-4 text-shadow text-white">Explore Our Gallery</h2>
-        <div class="carousel-wrapper">
-            <div id="carousel-images" class="carousel-images">
-                {% for image in images %}
-                    <div class="carousel-slide">
-                        <img src="{{ image.image_url }}" alt="Gallery Image" class="carousel-image">
-                        <div class="carousel-caption">{{ image.caption }}</div>
-                    </div>
-                {% empty %}
-                    <p class="text-gray-500 text-center w-full">No images available in the gallery.</p>
-                {% endfor %}
-            </div>
+<section id="carouselSection" class="carousel-container text-center content">
+    <h2 class="text-3xl font-semibold mb-4 text-shadow text-white">Explore Our Gallery</h2>
+    <div class="carousel-wrapper">
+        <div id="carousel-images" class="carousel-images flex transition-transform duration-500">
+            {% for image in images %}
+                <div class="carousel-slide min-w-full relative">
+                    {% if image.image_url %}
+                        <img src="{{ image.image_url }}" alt="{{ image.title }}" class="carousel-image object-cover w-full h-96">
+                    {% else %}
+                        <p class="text-gray-500 text-center w-full">Image not available for "{{ image.title }}"</p>
+                    {% endif %}
+                    <div class="carousel-caption absolute bottom-0 w-full bg-black bg-opacity-50 text-center text-white font-semibold">{{ image.title }}</div>
+                </div>
+            {% empty %}
+                <p class="text-gray-500 text-center w-full">No images available in the gallery.</p>
+            {% endfor %}
+        </div>        
 
-            <!-- Navigation Buttons -->
-            <button id="prevBtn" class="carousel-btn" aria-label="Previous Slide">&#10094;</button>
-            <button id="nextBtn" class="carousel-btn" aria-label="Next Slide">&#10095;</button>
-        </div>
-    </section>
+        <!-- Navigation Buttons -->
+        <button id="prevBtn" class="carousel-btn" aria-label="Previous Slide">&#10094;</button>
+        <button id="nextBtn" class="carousel-btn" aria-label="Next Slide">&#10095;</button>
+    </div>
+</section>
+
+
 
     <!-- Include Footer -->
     {% include 'footer.html' %}

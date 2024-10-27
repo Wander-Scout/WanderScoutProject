@@ -1,25 +1,27 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-from .models import CustomerReview
-from .forms import CustomerReviewForm
+from .models import CustomerReview, AdminReply
+from .forms import CustomerReviewForm, AdminReplyForm
 from image_display.models import RSSItem
-from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
 from authentication.decorators import allowed_users
-from .models import AdminReply
-from .forms import AdminReplyForm
+from image_display.views import fetch_and_store_rss_items
+
 
 @login_required(login_url='authentication:login')
 def landing_page(request):
     return render(request, 'landing_page.html')
 
 def home_page(request):
-    images = RSSItem.objects.all()
-    return render(request, 'home_page.html', {'images': images})
+    #Fetch all the data from the rss feed
+    fetch_and_store_rss_items()  
+    images = RSSItem.objects.all().order_by('-pub_date')  
+
+    return render(request, 'home_page.html', {'images': images})  
+
 
 @require_http_methods(["GET"])
 def display_customer_reviews(request):
