@@ -6,21 +6,37 @@ from django.http import JsonResponse
 from .models import Cart, CartItem, Booking, BookingItem
 from django.views.decorators.http import require_http_methods
 from authentication.decorators import allowed_users
+from restaurant.models import Restaurant  # Import Restaurant model
+
 
 @allowed_users(['tourist', 'admin'])
 @require_http_methods(["POST"])
-def add_to_cart(request, attraction_id):
+def add_to_cart(request, item_id):
     cart, created = Cart.objects.get_or_create(user=request.user)
+    item_type = request.POST.get('item_type', 'attraction')  # Default to 'attraction' if not specified
 
-    attraction = get_object_or_404(TouristAttraction, id=attraction_id)
-    today = datetime.today().weekday()
-    price = attraction.htm_weekday if today < 5 else attraction.htm_weekend
+    # Determine the item type and add accordingly
+    if item_type == 'attraction':
+        item = get_object_or_404(TouristAttraction, id=item_id)
+        today = datetime.today().weekday()
+        price = item.htm_weekday if today < 5 else item.htm_weekend
+        cart_item, created = CartItem.objects.get_or_create(
+            cart=cart,
+            attraction=item,
+            defaults={'price': price, 'is_weekend': today >= 5}
+        )
+    elif item_type == 'restaurant':
+        item = get_object_or_404(Restaurant, id=item_id)
+        price = item.average_price
+        cart_item, created = CartItem.objects.get_or_create(
+            cart=cart,
+            restaurant=item,
+            defaults={'price': price}
+        )
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid item type'}, status=400)
 
-    cart_item, created = CartItem.objects.get_or_create(
-        cart=cart, attraction=attraction,
-        defaults={'price': price, 'is_weekend': today >= 5}
-    )
-
+    # Increase quantity if the item already exists
     if not created:
         cart_item.quantity += 1
     cart_item.save()
@@ -29,6 +45,7 @@ def add_to_cart(request, attraction_id):
         return JsonResponse({'success': True})
 
     return redirect('view_cart')
+
 
 @allowed_users(['tourist', 'admin'])
 @require_http_methods(["GET"])
@@ -42,15 +59,17 @@ def view_cart(request):
         items = []
         total_price = 0
 
+    # Prepare items for JSON response if AJAX
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         cart_items = {
-            str(item.attraction.id): {
-                'id': str(item.attraction.id),
-                'name': item.attraction.nama,
+            str(item.id): {
+                'id': str(item.id),
+                'name': item.attraction.nama if item.attraction else item.restaurant.name,
                 'price': item.price,
                 'quantity': item.quantity,
-                'is_weekend': item.is_weekend,
+                'is_weekend': item.is_weekend if item.attraction else None,  # Only relevant for attractions
                 'total_item_price': item.price * item.quantity,
+                'item_type': 'attraction' if item.attraction else 'restaurant'
             }
             for item in items
         }
@@ -67,47 +86,51 @@ def view_cart(request):
 
 @allowed_users(['tourist', 'admin'])
 @require_http_methods(["POST"])
-def remove_from_cart(request, attraction_id):
+def remove_from_cart(request, item_id):
+    print(f"Attempting to remove item with ID: {item_id}")  # Debugging statement
     cart = Cart.objects.filter(user=request.user).first()
+    
     if cart:
-        cart_item = CartItem.objects.filter(cart=cart, attraction__id=attraction_id).first()
-        if cart_item:
+        # Attempt to find the CartItem by its primary key (UUID) directly
+        try:
+            cart_item = CartItem.objects.get(id=item_id, cart=cart)
             cart_item.delete()
+            print("Item deleted successfully")  # Debugging statement
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'success': True})
+        except CartItem.DoesNotExist:
+            print("Failed to delete item or item not found")  # Debugging statement
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'success': False, 'error': 'Item not found'}, status=404)
 
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({'success': True})
+    print("Bad Request - Cart not found or unauthorized")  # Debugging statement
+    return JsonResponse({'success': False, 'error': 'Bad Request'}, status=400)
 
-    return redirect('view_cart')
+
 
 @allowed_users(['tourist', 'admin'])
 @require_http_methods(["POST"])
 def checkout_view(request):
-    # Get the user's cart
     cart = Cart.objects.filter(user=request.user).first()
     
-    # Ensure cart exists and has items
     if not cart or not cart.items.exists():
         return JsonResponse({'error': 'Your cart is empty'}, status=400)
 
-    # Retrieve cart items and calculate total price
     items = list(cart.items.all())
     total_price = sum(item.price * item.quantity for item in items)
-
-    # Generate a unique booking_id for the new Booking instance
     new_booking_id = uuid.uuid4()
 
-    # Create a new Booking instance for this checkout with a new booking_id
     booking = Booking.objects.create(
         user=request.user,
         booking_id=new_booking_id,
         total_price=total_price
     )
 
-    # Create BookingItem instances for each item in the cart
     for item in items:
+        name = item.attraction.nama if item.attraction else item.restaurant.name
         BookingItem.objects.create(
             booking=booking,
-            name=item.attraction.nama,
+            name=name,
             price=item.price,
             quantity=item.quantity
         )
@@ -115,13 +138,13 @@ def checkout_view(request):
     # Clear the cart after checkout
     cart.items.all().delete()
 
-    # Pass the data to the template
     context = {
         'cart_items': items,
         'total_price': total_price,
-        'booking_id': new_booking_id,  # Use the new booking_id
+        'booking_id': new_booking_id,
     }
     return render(request, 'checkout.html', context)
+
 
 @allowed_users(['tourist', 'admin'])
 @require_http_methods(["GET"])
@@ -135,6 +158,7 @@ def booking_detail_view(request, booking_id):
         'items': items
     }
     return render(request, 'booking_detail.html', context)
+
 
 @allowed_users(['tourist', 'admin'])
 @require_http_methods(["GET"])

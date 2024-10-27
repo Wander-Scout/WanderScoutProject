@@ -120,7 +120,6 @@
   
         <!-- Proceed to Checkout Button -->
         <div class="mt-8 text-right">
-          <h3 class="text-2xl total-price mb-4">Total Price: Rp{{ total_price }}</h3>
           <!-- Form for Proceeding to Checkout -->
           <form action="{% url 'checkout' %}" method="post" id="checkout-form">
               {% csrf_token %}
@@ -133,100 +132,101 @@
     {% endif %}
 </div>
 
-
-<!-- AJAX script for handling cart updates -->
 <script>
-  function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
-        }
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
       }
     }
-    return cookieValue;
   }
+  return cookieValue;
+}
 
-  const csrftoken = getCookie('csrftoken');  // Get CSRF token for AJAX requests
+const csrftoken = getCookie('csrftoken');  // CSRF token for AJAX requests
 
-  function refreshCart() {
-    fetch("{% url 'view_cart' %}", {
-        method: 'GET',
-        headers: {
+async function refreshCart() {
+  try {
+    const response = await fetch("{% url 'view_cart' %}", {
+      method: 'GET',
+      headers: {
         'x-requested-with': 'XMLHttpRequest'  // Ensure server recognizes this as an AJAX request
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        let cartContent = '';
+      }
+    });
 
-        if (Object.keys(data.cart_items).length > 0) {
-        // Iterate over cart items from the response
-        Object.values(data.cart_items).forEach(item => {
-            cartContent += `
-            <tr class="align-middle">
-                <td class="px-6 py-4">
-                <h3 class="text-lg font-bold">${item.name}</h3>
-                </td>
-                <td class="px-6 py-4 text-lg text-gray-700">
-                Rp${item.price} x ${item.quantity} = Rp${(item.price * item.quantity).toFixed(2)}
-                ${item.is_weekend ? '<small class="text-red-500">(Weekend)</small>' : '<small class="text-green-500">(Weekday)</small>'}
-                </td>
-                <td class="px-6 py-4 text-right">
-                <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('${item.id}')">Remove</a>
-                </td>
-            </tr>
-            `;
-        });
+    const data = await response.json();
+    let cartContent = '';
 
-        // Update the tbody with the cart items
-        document.querySelector('#cart-items-body').innerHTML = cartContent;
+    if (Object.keys(data.cart_items).length > 0) {
+      // Populate cart items in the table
+      Object.values(data.cart_items).forEach(item => {
+        const itemName = item.item_type === 'attraction' ? `${item.name} (Attraction)` : `${item.name} (Restaurant)`;
+        cartContent += `
+          <tr class="align-middle">
+            <td class="px-6 py-4">
+              <h3 class="text-lg font-bold">${itemName}</h3>
+            </td>
+            <td class="px-6 py-4 text-lg text-gray-700">
+              Rp${item.price} x ${item.quantity} = Rp${(item.price * item.quantity).toFixed(2)}
+              ${item.is_weekend !== null ? (item.is_weekend ? '<small class="text-red-500">(Weekend)</small>' : '<small class="text-green-500">(Weekday)</small>') : ''}
+            </td>
+            <td class="px-6 py-4 text-right">
+              <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold" onclick="removeFromCart('${item.id}')">Remove</a>
+            </td>
+          </tr>
+        `;
+      });
 
-        // Update total price
-        document.querySelector('.total-price').innerText = `Total Price: Rp${data.total_price.toFixed(2)}`;
-
-        // Update booking ID if available
-        if (data.booking_id) {
-            document.querySelector('.text-blue-700').innerText = data.booking_id;
-        }
-        } else {
-        // If cart is empty, show empty message and hide the table
-        document.querySelector('#cart-container').innerHTML = '<p class="text-center text-2xl mt-8 empty-cart-message">Your cart is empty.</p>';
-        }
-    })
-    .catch(error => console.error('Error refreshing cart:', error));
+      // Update cart table and total price
+      document.querySelector('#cart-items-body').innerHTML = cartContent;
+    } else {
+      // Display empty cart message and clear total price if the cart is empty
+      document.querySelector('#cart-container').innerHTML = '<p class="text-center text-2xl mt-8 empty-cart-message">Your cart is empty.</p>';
     }
+  } catch (error) {
+    console.error('Error refreshing cart:', error);
+  }
+}
 
+async function removeFromCart(itemId) {
+  console.log(`Attempting to remove item with ID: ${itemId}`);
+  const removeUrl = `/cart/remove/${itemId}/`; // Matches the URL pattern with trailing slash
 
-  function removeFromCart(attractionId) {
-    const removeUrl = `/cart/remove/${attractionId}/`;
-
-    // Send an asynchronous POST request to remove the item
-    fetch(removeUrl, { 
+  try {
+    const response = await fetch(removeUrl, {
       method: 'POST',
       headers: {
-        'X-CSRFToken': csrftoken,  // Include CSRF token for POST requests
-        'x-requested-with': 'XMLHttpRequest'  // Mark request as AJAX
+        'X-CSRFToken': csrftoken,
+        'x-requested-with': 'XMLHttpRequest'
       }
-    })
-    .then(response => response.json())  // Expect JSON response
-    .then(data => {
-      if (data.success) {
-        refreshCart();  // Refresh the cart content after successful removal
-      } else {
-        console.error('Failed to remove item from cart');
-      }
-    })
-    .catch(error => console.error('Error removing item:', error));
-  }
+    });
 
-  // Initialize cart refresh on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    refreshCart();  // Load cart data on page load
-    setInterval(refreshCart, 10000);  // Auto refresh every 10 seconds
-  });
+    const data = await response.json();
+    if (data.success) {
+      console.log("Item successfully removed.");
+
+      // Refresh the cart content and total price immediately after removal
+      refreshCart();
+    } else {
+      console.error('Failed to delete item or item not found');
+    }
+  } catch (error) {
+    console.error('Error removing item:', error);
+  }
+}
+
+
+// Initialize cart refresh on page load
+document.addEventListener('DOMContentLoaded', () => {
+  refreshCart()
+  setInterval(2000); // Load cart data on page load
+});
+
+
 </script>
+

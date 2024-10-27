@@ -64,9 +64,10 @@
             <a href="{{ attraction.gmaps_url|default:'#' }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200 mr-4">
                 Get Directions
             </a>
-            <button onclick="addToCart('{{ attraction.id }}')" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('{{ attraction.id }}', 'attraction')" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
+              Add to Cart
+          </button>
+          
         </div>
     </div>
     
@@ -89,15 +90,15 @@
     
       const csrftoken = getCookie('csrftoken');  // Get CSRF token
     
-      // Function to add the attraction to the cart using AJAX
-      function addToCart(attractionId) {
-        fetch(`/cart/add/${attractionId}/`, {  // Use the URL matching your `add_to_cart` view
+      function addToCart(itemId, itemType = 'attraction') {
+        fetch(`/cart/add/${itemId}/`, {
           method: 'POST',
           headers: {
-            'X-CSRFToken': csrftoken,  // Include CSRF token in the headers
-            'X-Requested-With': 'XMLHttpRequest',  // Mark request as AJAX
-            'Content-Type': 'application/json'  // Set content type to JSON
-          }
+            'X-CSRFToken': csrftoken,
+            'X-Requested-With': 'XMLHttpRequest',  // Ensures Django treats it as AJAX
+            'Content-Type': 'application/x-www-form-urlencoded'  // URL-encoded data
+          },
+          body: new URLSearchParams({ 'item_type': itemType })  // Send item_type as well
         })
         .then(response => {
           if (response.ok) {
@@ -114,6 +115,7 @@
         })
         .catch(error => console.error('Error:', error));
       }
+
     </script>
     
     {% block scripts %}

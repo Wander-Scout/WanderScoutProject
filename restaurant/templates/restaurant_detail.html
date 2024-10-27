@@ -60,9 +60,61 @@
         <div class="bg-blue-600 text-white rounded-lg p-8 text-center mb-16">
             <h2 class="text-3xl font-bold mb-6">Plan Your Visit</h2>
             <p class="mb-8">Make sure to visit {{ restaurant.name }} and enjoy the delicious food and great atmosphere!</p>
+            <button onclick="addToCart('{{ restaurant.id }}')" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-gray-200">
+                Add to Plan
+            </button>
         </div>
-
     </div>
+</div>
+
+<!-- JavaScript Section for Add to Cart functionality -->
+<script>
+  // Helper function to get CSRF token from cookies
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const csrftoken = getCookie('csrftoken');  // Get CSRF token
+
+  // Function to add the restaurant to the cart using AJAX
+  function addToCart(restaurantId) {
+    fetch(`/cart/add/${restaurantId}/`, {
+        method: 'POST',
+        headers: {
+        'X-CSRFToken': csrftoken,
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({ item_type: 'restaurant' })  // Form-encoded data
+    })
+    .then(response => {
+        if (response.ok) {
+        return response.json();
+        }
+        throw new Error('Failed to add to cart');
+    })
+    .then(data => {
+        if (data.success) {
+        alert("Restaurant added to your plan!");
+        } else {
+        alert("Failed to add restaurant to your plan.");
+        }
+    })
+    .catch(error => console.error('Error:', error));
+    }
+
+</script>
 
     {% block scripts %}
     {% endblock %}
