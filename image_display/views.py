@@ -11,6 +11,7 @@ def fetch_and_store_rss_items():
     if response.status_code == 200:
         root = ET.fromstring(response.content)
 
+        #No alternative mrss
         namespaces = {
             'media': 'http://search.yahoo.com/mrss/',
         }
@@ -18,6 +19,7 @@ def fetch_and_store_rss_items():
         channel = root.find('channel')
         items = channel.findall('item')
 
+        # Loop through the items and store them in the database
         for item in items:
             title = item.find('title').text
             description = item.find('description').text
