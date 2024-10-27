@@ -149,12 +149,12 @@
         fetch("{% url 'authentication:display_edit_profile' %}", {
             method: 'GET',
             headers: {
-                'X-Requested-With': 'XMLHttpRequest',
+                'X-Requested-With': 'XMLHttpRequest', // indicates it's an AJAX request
             }
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
+            if (data.success) {  // fill in form fields with data from the server, or leave blank if no data
                 document.getElementById('id_address').value = data.form_data.address || '';
                 document.getElementById('id_age').value = data.form_data.age || '';
                 document.getElementById('id_phone_number').value = data.form_data.phone_number || '';
@@ -163,28 +163,28 @@
     
         // AJAX POST request to save form data
         document.querySelector('#editProfileForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // stop the form from a traditional submit
             
-            const formData = new FormData(this);
-    
+            const formData = new FormData(this); // gather form data to send
+                // send the form data with AJAX POST
             fetch("{% url 'authentication:submit_edit_profile' %}", {
                 method: 'POST',
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',
                 },
-                body: formData
+                body: formData // send data in the request body
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert(data.message);
+                    // if successful, redirect back to the profile page
                     window.location.href = "{% url 'authentication:profile' %}";
-                } else {
+                } else { // if there are errors, gather and show them
                     let errorMessage = '';
                     for (let field in data.errors) {
                         errorMessage += `${field}: ${data.errors[field].join(', ')}\n`;
                     }
-                    alert(errorMessage);
+                    alert(errorMessage); // display errors to the user
                 }
             });
         });
@@ -195,7 +195,7 @@
         const profileView = document.getElementById('profileView');
         const editForm = document.getElementById('editProfileForm');
         const profileTitle = document.getElementById('profileTitle');
-
+// toggle visibility of profile view and edit form
         if (profileView.classList.contains('hidden')) {
             profileView.classList.remove('hidden');
             editForm.classList.add('hidden');
