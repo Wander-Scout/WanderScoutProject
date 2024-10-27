@@ -86,7 +86,8 @@ Photo Gallery (https://jogja.antaranews.com/rss/photo.xml)
 </ul>
 
 <h4>6. Read Reviews</h4>
-<p>Users can also view reviews left by others. This feature helps them evaluate restaurants and attractions based on real-life experiences and varied perspectives.</p>
+<p>Users can also view reviews left by others. This feature helps them evaluate restaurants and attractions based on real-life experiences and varied perspectives.
+</p>
 
 <h4>7. Add Services to Cart and Checkout</h4>
 <p>Users can add various services such as restaurant price, and attraction tickets price to a shopping cart. This feature allows them to:</p>
