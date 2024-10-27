@@ -98,7 +98,6 @@ def view_cart(request):
 @allowed_users(['tourist', 'admin'])  # Limit access to 'tourist' or 'admin' users
 @require_http_methods(["POST"])  # Only POST requests allowed
 def remove_from_cart(request, item_id):
-    print(f"Attempting to remove item with ID: {item_id}")  # Debugging print
     cart = Cart.objects.filter(user=request.user).first()  # Try to get the user's cart
 
     if cart:
@@ -106,7 +105,6 @@ def remove_from_cart(request, item_id):
             # Try to get the CartItem by its ID and cart
             cart_item = CartItem.objects.get(id=item_id, cart=cart)
             cart_item.delete()  # Delete the item from the cart
-            print("Item deleted successfully")  # Debugging print
             # Send back a success response if AJAX
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                 return JsonResponse({'success': True})
