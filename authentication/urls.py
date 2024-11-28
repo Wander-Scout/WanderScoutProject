@@ -14,4 +14,6 @@ urlpatterns = [
     path('profile/', views.display_edit_profile_page, name='profile'),
     path('profile-data/', views.display_edit_profile, name='display_edit_profile'),
     path('profile-submit/', views.submit_edit_profile, name='submit_edit_profile'),
+    path('flutter_login/', views.flutter_login, name='flutter_login'),
+    path('register-flutter/', views.register_flutter, name='register_flutter'),
 ]
