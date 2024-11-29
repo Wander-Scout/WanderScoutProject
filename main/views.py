@@ -11,6 +11,8 @@ from image_display.models import RSSItem
 from authentication.decorators import allowed_users
 from image_display.views import fetch_and_store_rss_items
 from django.utils.html import strip_tags
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core import serializers
 
 # Home Page View
 @login_required(login_url='authentication:login')  # make sure the user is logged in
@@ -46,29 +48,31 @@ def display_customer_reviews(request):
 
 
 # submit Customer Review View
-@allowed_users(['tourist'])  # ensure only users with the 'tourist' role can access this view
-@require_http_methods(["POST"])  # only allow POST requests
+@allowed_users(['tourist'])  # Ensure only users with the 'tourist' role can access this view
+@require_http_methods(["POST"])  # Only allow POST requests
 def submit_customer_review(request):
-    form = CustomerReviewForm(request.POST)  # create a form instance with POST data
+    if not request.user.is_authenticated:  # Ensure user is authenticated
+        return JsonResponse({"message": "User not authenticated"}, status=401)
+
+    form = CustomerReviewForm(request.POST)  # Create a form instance with POST data
     
     if form.is_valid():
-        review = form.save(commit=False)  # save the review, but don't commit yet
-        review.user = request.user  # associate the review with the logged-in user
+        review = form.save(commit=False)  # Save the review, but don't commit yet
+        review.user = request.user  # Associate the review with the logged-in user
         
-        review.review_text = strip_tags(form.cleaned_data['review_text'])  # sanitize review text
-        review.save()  # save the review to the database
+        review.review_text = strip_tags(form.cleaned_data['review_text'])  # Sanitize review text
+        review.save()  # Save the review to the database
 
         response_data = {
-            'username': request.user.username,
+            'username': request.user.username,  # Include username in the response
             'review_text': review.review_text,
             'rating': review.rating,
             'created_at': review.created_at.strftime('%B %d, %Y, %I:%M %p'),
-            'message': 'Your review has been submitted!'
+            'message': 'Your review has been submitted!',
         }
-        return JsonResponse(response_data, status=201)  # send a success response as JSON
+        return JsonResponse(response_data, status=201)  # Send a success response as JSON
     else:
-        return JsonResponse({'message': 'There was an error in your submission.'}, status=400)
-        # if form isn't valid, send an error response
+        return JsonResponse({'message': 'Form submission error', 'errors': form.errors.as_json()}, status=400)
 
 
 # delete Customer Review View
@@ -99,3 +103,63 @@ def add_admin_reply(request, review_id):
     )
 
     return redirect('display_customer_reviews')  # redirect back to the reviews page
+
+def show_review_json(request):
+    data = CustomerReview.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.http import JsonResponse
+from .models import CustomerReview
+
+@csrf_exempt
+def create_review_flutter(request):
+    if request.method == 'POST':
+        # Ensure the user is authenticated
+        if not request.user.is_authenticated:
+            return JsonResponse({"status": "error", "message": "User not authenticated"}, status=401)
+
+        try:
+            data = json.loads(request.body)
+
+            # Create the review entry
+            new_review = CustomerReview.objects.create(
+                user=request.user,  # Assign the logged-in user
+                review_text=data["review_text"], 
+                rating=int(data["rating"]),
+            )
+
+            new_review.save()
+
+            return JsonResponse({"status": "success"}, status=200)
+        except KeyError as e:
+            return JsonResponse(
+                {"status": "error", "message": f"Missing key: {str(e)}"},
+                status=400
+            )
+        except Exception as e:
+            return JsonResponse(
+                {"status": "error", "message": str(e)},
+                status=500
+            )
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+
+@csrf_exempt
+def fetch_reviews(request):
+    if request.method == "GET":
+        reviews = CustomerReview.objects.all()
+        review_list = [
+            {
+                "id": review.id,
+                "username": review.user.username if review.user else "Anonymous",  # Default to "Anonymous"
+                "review_text": review.review_text,
+                "rating": review.rating,
+                "created_at": review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            }
+            for review in reviews
+        ]
+        return JsonResponse(review_list, safe=False)
+    else:
+        return JsonResponse({"message": "Invalid request method"}, status=405)
