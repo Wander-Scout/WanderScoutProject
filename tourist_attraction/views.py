@@ -5,6 +5,8 @@ from .models import TouristAttraction
 from authentication.decorators import admin_only
 import json
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
+from django.http import HttpResponse
 
 @require_http_methods(['GET'])
 # get the data from the database and return it as a JSON response
@@ -96,3 +98,19 @@ def delete_tourist_attraction(request, attraction_id):
         return JsonResponse({'message': 'Attraction deleted successfully.'}, status=200)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
+
+#------------------------------------------------------------#
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from .models import TouristAttraction
+from .serializers import TouristAttractionSerializer
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_tourist_attractions(request):
+    attractions = TouristAttraction.objects.all()
+    serializer = TouristAttractionSerializer(attractions, many=True)
+    return Response(serializer.data)
