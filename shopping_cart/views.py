@@ -185,3 +185,28 @@ def search_booking_view(request):
 
     # If no booking_id was provided, just redirect to the cart
     return redirect('view_cart')
+
+##final project
+
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from django.http import JsonResponse
+from .models import Cart
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_view_cart(request):
+    # Debug: Log the Authorization header
+    print("Authorization header received:", request.headers.get("Authorization"))
+
+    try:
+        cart = Cart.objects.get(user=request.user)
+        return JsonResponse({"cart": cart.to_dict()})
+    except Cart.DoesNotExist:
+        return JsonResponse({"error": "Cart not found for this user."}, status=404)
+    except Exception as e:
+        return JsonResponse({"error": f"An unexpected error occurred: {str(e)}"}, status=500)
+
+

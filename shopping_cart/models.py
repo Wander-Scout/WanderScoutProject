@@ -9,6 +9,15 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Links the cart to the user
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically sets the date/time when the cart is created
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user": self.user.username,
+            "created_at": self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            "items": [item.to_dict() for item in self.items.all()],  # Serialize related items
+        }
+
+
     def __str__(self):
         return f"Cart #{self.id} for {self.user}"  # Gives a friendly description of the cart
 
@@ -21,6 +30,16 @@ class CartItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Stores the price of each item
     is_weekend = models.BooleanField(default=False)  # Indicates if the item is for a weekend
     quantity = models.IntegerField(default=1)  # How many of this item are in the cart
+
+
+    def to_dict(self):
+        return {
+            "id": str(self.id),
+            "name": self.attraction.nama if self.attraction else self.restaurant.name,
+            "price": float(self.price),
+            "is_weekend": self.is_weekend,
+            "quantity": self.quantity,
+        }
 
     def __str__(self):
         # Show item name and quantity, whether it's an attraction or restaurant

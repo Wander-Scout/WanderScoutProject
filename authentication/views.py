@@ -142,34 +142,34 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 import json
-
+from django.contrib.auth import logout as auth_logout
+from rest_framework.authtoken.models import Token
 
 @csrf_exempt
 def flutter_login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            auth_login(request, user)
-            # Successful login status.
+    if request.method == 'POST':
+        data = request.POST
+        username = data.get('username')
+        password = data.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            token, created = Token.objects.get_or_create(user=user)
             return JsonResponse({
-                "username": user.username,
                 "status": True,
-                "message": "Login successful!"
-                # Add other data if you want to send data to Flutter.
+                "message": "Login successful!",
+                "username": user.username,
+                "token": token.key,
             }, status=200)
         else:
             return JsonResponse({
                 "status": False,
-                "message": "Login failed, account disabled."
+                "message": "Invalid username or password.",
             }, status=401)
-
-    else:
-        return JsonResponse({
-            "status": False,
-            "message": "Login failed, check email or password again."
-        }, status=401)
+    return JsonResponse({
+        "status": False,
+        "message": "Invalid request method.",
+    }, status=400)
     
 @csrf_exempt
 def register_flutter(request):
@@ -197,10 +197,20 @@ def register_flutter(request):
         user = User.objects.create_user(username=username, password=password1)
         user.save()
 
+        # Add the new user to the "tourist" group
+        try:
+            group = Group.objects.get(name='tourist')
+            user.groups.add(group)
+        except Group.DoesNotExist:
+            return JsonResponse({
+                "status": False,
+                "message": "The 'tourist' group does not exist. Please contact support."
+            }, status=400)
+
         return JsonResponse({
             "username": user.username,
             "status": 'success',
-            "message": "User created successfully!"
+            "message": "User created successfully and added to 'tourist' group!"
         }, status=200)
 
     else:
@@ -208,3 +218,20 @@ def register_flutter(request):
             "status": False,
             "message": "Invalid request method."
         }, status=400)
+
+@csrf_exempt
+def flutter_logout(request):
+    username = request.user.username
+
+    try:
+        auth_logout(request)
+        return JsonResponse({
+            "username": username,
+            "status": True,
+            "message": "Logged out successfully!"
+        }, status=200)
+    except:
+        return JsonResponse({
+        "status": False,
+        "message": "Logout failed."
+        }, status=401)

@@ -8,4 +8,5 @@ urlpatterns = [
     path('add_attraction/', views.add_tourist_attraction, name='add_tourist_attraction'),
     path('delete_attraction/<uuid:attraction_id>/', views.delete_tourist_attraction, name='delete_tourist_attraction'),
     path('edit_attraction/<uuid:attraction_id>/', views.edit_tourist_attraction, name='edit_tourist_attraction'),
+    path('api_tourist_attractions', views.api_tourist_attractions, name='api_tourist_attractions'),
 ]
