@@ -148,11 +148,20 @@ def create_review_flutter(request):
         
         
 
+from django.core.paginator import Paginator
+from rest_framework.pagination import PageNumberPagination
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def fetch_reviews(request):
-    reviews = CustomerReview.objects.all()
+    page_number = request.GET.get('page', 1)
+    page_size = request.GET.get('page_size', 5)  # You can set a default page size
+
+    reviews = CustomerReview.objects.all().order_by('-created_at')
+    paginator = Paginator(reviews, page_size)
+    page_obj = paginator.get_page(page_number)
+
     review_list = [
         {
             "id": review.id,
@@ -161,6 +170,15 @@ def fetch_reviews(request):
             "rating": review.rating,
             "created_at": review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
         }
-        for review in reviews
+        for review in page_obj.object_list
     ]
-    return JsonResponse(review_list, safe=False)
+
+    response = {
+        'reviews': review_list,
+        'has_next': page_obj.has_next(),
+        'has_previous': page_obj.has_previous(),
+        'page_number': page_obj.number,
+        'total_pages': paginator.num_pages,
+    }
+
+    return JsonResponse(response, safe=False)
