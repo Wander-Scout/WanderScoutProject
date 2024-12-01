@@ -113,53 +113,54 @@ import json
 from django.http import JsonResponse
 from .models import CustomerReview
 
-@csrf_exempt
+
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def create_review_flutter(request):
-    if request.method == 'POST':
-        # Ensure the user is authenticated
-        if not request.user.is_authenticated:
-            return JsonResponse({"status": "error", "message": "User not authenticated"}, status=401)
+    try:
+        data = request.data  # DRF request object handles parsing
 
-        try:
-            data = json.loads(request.body)
+        # Create the review entry
+        new_review = CustomerReview.objects.create(
+            user=request.user,  # Assign the logged-in user
+            review_text=data["review_text"], 
+            rating=int(data["rating"]),
+        )
 
-            # Create the review entry
-            new_review = CustomerReview.objects.create(
-                user=request.user,  # Assign the logged-in user
-                review_text=data["review_text"], 
-                rating=int(data["rating"]),
-            )
+        new_review.save()
 
-            new_review.save()
+        return JsonResponse({"status": "success"}, status=201)
+    except KeyError as e:
+        return JsonResponse(
+            {"status": "error", "message": f"Missing key: {str(e)}"},
+            status=400
+        )
+    except Exception as e:
+        return JsonResponse(
+            {"status": "error", "message": str(e)},
+            status=500
+        )
+        
+        
 
-            return JsonResponse({"status": "success"}, status=200)
-        except KeyError as e:
-            return JsonResponse(
-                {"status": "error", "message": f"Missing key: {str(e)}"},
-                status=400
-            )
-        except Exception as e:
-            return JsonResponse(
-                {"status": "error", "message": str(e)},
-                status=500
-            )
-    else:
-        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
-
-@csrf_exempt
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def fetch_reviews(request):
-    if request.method == "GET":
-        reviews = CustomerReview.objects.all()
-        review_list = [
-            {
-                "id": review.id,
-                "username": review.user.username if review.user else "Anonymous",  # Default to "Anonymous"
-                "review_text": review.review_text,
-                "rating": review.rating,
-                "created_at": review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-            }
-            for review in reviews
-        ]
-        return JsonResponse(review_list, safe=False)
-    else:
-        return JsonResponse({"message": "Invalid request method"}, status=405)
+    reviews = CustomerReview.objects.all()
+    review_list = [
+        {
+            "id": review.id,
+            "username": review.user.username if review.user else "Anonymous",
+            "review_text": review.review_text,
+            "rating": review.rating,
+            "created_at": review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        for review in reviews
+    ]
+    return JsonResponse(review_list, safe=False)
