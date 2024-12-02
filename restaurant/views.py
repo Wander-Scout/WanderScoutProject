@@ -8,6 +8,8 @@ import json
 from authentication.decorators import admin_only
 from django.contrib.auth.decorators import login_required
 import logging
+from django.core import serializers
+from django.http import HttpResponse
 
 @require_http_methods(['GET'])
 def get_restaurants(request):
@@ -112,3 +114,19 @@ def update_restaurant(request, restaurant_id):
         return JsonResponse({"success": True}) # return success message
     except Exception as e: # return error message if an exception occurs
         return JsonResponse({"success": False, "error": str(e)}, status=400)
+    
+#------------------------------------------------------------#
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from .models import Restaurant
+from .serializers import RestaurantSerializer
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_restaurant(request):
+    attractions = Restaurant.objects.all()
+    serializer = RestaurantSerializer(attractions, many=True)
+    return Response(serializer.data)
