@@ -17,6 +17,10 @@ urlpatterns = [
     # Allows you to search for a specific booking by its ID, useful when you need quick access to a specific booking.
     path('search-booking/', views.search_booking_view, name='search_booking'),
 
-    path('api/cart/', views.api_view_cart, name='api_view_cart'),
+    path('api/cart/add/<uuid:item_id>/', views.api_add_to_cart, name='api_add_to_cart'),
+    path('api/cart/remove/<uuid:item_id>/', views.api_remove_from_cart, name='api_remove_from_cart'),
+    path('api/cart/checkout/', views.api_checkout, name='api_checkout'),
+    path('api/cart/items/', views.api_view_cart_items, name='api_view_cart_items'),
+    path('api/search/', views.api_search_booking, name='api_search_booking'),
     
 ]
