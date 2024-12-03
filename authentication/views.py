@@ -155,11 +155,13 @@ def flutter_login(request):
 
         if user is not None:
             token, created = Token.objects.get_or_create(user=user)
+            is_admin = user.groups.filter(name='admin').exists()
             return JsonResponse({
                 "status": True,
                 "message": "Login successful!",
                 "username": user.username,
                 "token": token.key,
+                "is_admin": is_admin,
             }, status=200)
         else:
             return JsonResponse({
@@ -235,3 +237,30 @@ def flutter_logout(request):
         "status": False,
         "message": "Logout failed."
         }, status=401)
+    
+
+
+
+from django.contrib.auth.decorators import login_required
+from authentication.decorators import admin_only
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from django.contrib.auth.models import User
+
+@csrf_exempt
+@admin_only
+@login_required
+def admin_only_view(request):
+    if request.method == 'GET':
+        # Example admin-only data
+        users = User.objects.all().values('id', 'username', 'email')
+        return JsonResponse({
+            "status": True,
+            "message": "Admin data retrieved successfully.",
+            "data": list(users),
+        }, status=200)
+    else:
+        return JsonResponse({
+            "status": False,
+            "message": "Invalid request method.",
+        }, status=400)

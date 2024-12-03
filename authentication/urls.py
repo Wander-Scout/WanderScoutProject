@@ -18,4 +18,5 @@ urlpatterns = [
     path('register-flutter/', views.register_flutter, name='register_flutter'),
     # path('TokenAuthMiddleware/', views.TokenAuthMiddleware, name='TokenAuthMiddleware'),
     path('flutter_logout/', views.flutter_logout, name='flutter_logout'),
+    path('admin-only/', views.admin_only_view, name='admin_only_view'),
 ]
