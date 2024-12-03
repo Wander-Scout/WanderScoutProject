@@ -192,21 +192,178 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
-from .models import Cart
+from .models import Cart, Booking
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_add_to_cart(request, item_id):
+    try:
+        cart, _ = Cart.objects.get_or_create(user=request.user)
+        item_type = request.data.get('item_type', 'attraction')  # 'attraction' or 'restaurant'
+
+        if item_type == 'attraction':
+            item = get_object_or_404(TouristAttraction, id=item_id)
+            today = datetime.today().weekday()
+            price = item.htm_weekday if today < 5 else item.htm_weekend
+            cart_item, created = CartItem.objects.get_or_create(
+                cart=cart,
+                attraction=item,
+                defaults={'price': price, 'is_weekend': today >= 5}
+            )
+        elif item_type == 'restaurant':
+            item = get_object_or_404(Restaurant, id=item_id)
+            price = item.average_price
+            cart_item, created = CartItem.objects.get_or_create(
+                cart=cart,
+                restaurant=item,
+                defaults={'price': price}
+            )
+        else:
+            return JsonResponse({'success': False, 'error': 'Invalid item type'}, status=400)
+
+        if not created:
+            cart_item.quantity += 1
+            cart_item.save()
+
+        return JsonResponse({'success': True, 'message': 'Item added to cart.'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_remove_from_cart(request, item_id):
+    try:
+        # Convert item_id to string if it's a UUID object
+        item_uuid = uuid.UUID(str(item_id))  # Ensure it’s a valid UUID
+
+        cart = Cart.objects.get(user=request.user)
+        cart_item = CartItem.objects.get(id=item_uuid, cart=cart)  # UUID-compatible lookup
+        cart_item.delete()
+
+        return JsonResponse({'success': True, 'message': 'Item removed from cart.'})
+    except Cart.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Cart not found.'}, status=404)
+    except CartItem.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Item not found in cart.'}, status=404)
+    except ValueError:
+        return JsonResponse({'success': False, 'error': 'Invalid UUID format.'}, status=400)
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+    
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_checkout(request):
+    try:
+        cart = Cart.objects.get(user=request.user)
+        if not cart.items.exists():
+            return JsonResponse({'success': False, 'error': 'Cart is empty.'}, status=400)
+
+        items = list(cart.items.all())
+        total_price = sum(item.price * item.quantity for item in items)
+        new_booking_id = uuid.uuid4()
+
+        booking = Booking.objects.create(
+            user=request.user,
+            booking_id=new_booking_id,
+            total_price=total_price
+        )
+
+        for item in items:
+            name = item.attraction.nama if item.attraction else item.restaurant.name
+            BookingItem.objects.create(
+                booking=booking,
+                name=name,
+                price=item.price,
+                quantity=item.quantity
+            )
+
+        cart.items.all().delete()
+
+        receipt = {
+            'booking_id': str(new_booking_id),
+            'total_price': total_price,
+            'items': [
+                {
+                    'name': item.attraction.nama if item.attraction else item.restaurant.name,
+                    'price': item.price,
+                    'quantity': item.quantity
+                }
+                for item in items
+            ]
+        }
+
+        return JsonResponse({'success': True, 'receipt': receipt})
+    except Cart.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Cart not found.'}, status=404)
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def api_view_cart(request):
-    # Debug: Log the Authorization header
-    print("Authorization header received:", request.headers.get("Authorization"))
-
+def api_view_cart_items(request):
     try:
         cart = Cart.objects.get(user=request.user)
-        return JsonResponse({"cart": cart.to_dict()})
+        items = cart.items.all()
+        cart_items = [
+            {
+                'id': item.id,
+                'name': item.attraction.nama if item.attraction else item.restaurant.name,
+                'price': float(item.price),
+                'quantity': item.quantity,
+                'total_item_price': float(item.price * item.quantity),
+                'is_weekend': bool(item.is_weekend),
+                'item_type': 'attraction' if item.attraction else 'restaurant'
+            }
+            for item in items
+        ]
+        total_price = float(sum(item.price * item.quantity for item in items))
+
+        return JsonResponse({
+            "cart": {
+                "id": cart.id,
+                "user": str(cart.user),
+                "created_at": cart.created_at.isoformat(),
+                "items": cart_items
+            },
+            "total_price": total_price
+        })
     except Cart.DoesNotExist:
-        return JsonResponse({"error": "Cart not found for this user."}, status=404)
+        return JsonResponse({'success': False, 'error': 'Cart not found.'}, status=404)
     except Exception as e:
-        return JsonResponse({"error": f"An unexpected error occurred: {str(e)}"}, status=500)
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def api_search_booking(request):
+    booking_id = request.GET.get('booking_id')
+
+    if not booking_id:
+        return JsonResponse({'error': 'Booking ID is required.'}, status=400)
+
+    try:
+        booking = Booking.objects.get(booking_id=booking_id, user=request.user)
+        items = booking.items.all()
+
+        return JsonResponse({
+            'booking_id': str(booking.booking_id),
+            'total_price': float(booking.total_price),
+            'items': [
+                {
+                    'name': item.name,
+                    'price': float(item.price),
+                    'quantity': item.quantity,
+                }
+                for item in items
+            ]
+        })
+    except Booking.DoesNotExist:
+        return JsonResponse({'error': 'Booking not found.'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
