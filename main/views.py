@@ -88,21 +88,6 @@ def delete_customer_review(request, review_id):
     # redirect back to the reviews page, retaining the current rating filter
 
 
-# add Admin Reply View
-@allowed_users(['admin'])  # ensure only 'admin' users can access this view
-@require_http_methods(["POST"])  # only allow POST requests
-@user_passes_test(lambda u: u.is_staff)  # double-check that the user is staff
-def add_admin_reply(request, review_id):
-    review = get_object_or_404(CustomerReview, id=review_id)  # find the review by ID
-    reply_text = request.POST.get('reply_text', '')  # get the reply text from POST data
-
-    AdminReply.objects.create(
-        review=review,
-        admin=request.user,  # associate reply with the admin user
-        reply_text=reply_text
-    )
-
-    return redirect('display_customer_reviews')  # redirect back to the reviews page
 
 def show_review_json(request):
     data = CustomerReview.objects.filter(user=request.user)
@@ -150,13 +135,30 @@ def create_review_flutter(request):
 
 from django.core.paginator import Paginator
 from rest_framework.pagination import PageNumberPagination
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from django.core.paginator import Paginator
+
+from .models import CustomerReview, AdminReply
+
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from django.core.paginator import Paginator
+
+from .models import CustomerReview, AdminReply
 
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def fetch_reviews(request):
     page_number = request.GET.get('page', 1)
-    page_size = request.GET.get('page_size', 5)  # You can set a default page size
+    page_size = request.GET.get('page_size', 5)
 
     reviews = CustomerReview.objects.all().order_by('-created_at')
     paginator = Paginator(reviews, page_size)
@@ -169,6 +171,14 @@ def fetch_reviews(request):
             "review_text": review.review_text,
             "rating": review.rating,
             "created_at": review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            "admin_replies": [
+                {
+                    "reply_text": reply.reply_text,
+                    "admin_username": reply.admin.username,
+                    "created_at": reply.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+                }
+                for reply in AdminReply.objects.filter(review=review)
+            ],
         }
         for review in page_obj.object_list
     ]
@@ -182,3 +192,38 @@ def fetch_reviews(request):
     }
 
     return JsonResponse(response, safe=False)
+
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def add_admin_reply(request, review_id):
+    if not request.user.is_staff:  # Ensure the user is an admin
+        return JsonResponse({'error': 'Only admins can reply to reviews.'}, status=403)
+
+    review = get_object_or_404(CustomerReview, id=review_id)
+    reply_text = request.data.get('reply_text', '')
+
+    if not reply_text:
+        return JsonResponse({'error': 'Reply text is required.'}, status=400)
+
+    AdminReply.objects.create(
+        review=review,
+        admin=request.user,
+        reply_text=reply_text,
+    )
+
+    return JsonResponse({'message': 'Reply added successfully.'}, status=201)
+
+from django.http import JsonResponse
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def check_if_admin(request):
+    """Check if the logged-in user is an admin."""
+    is_admin = request.user.is_staff  # Django's default flag for admin users
+    return JsonResponse({'is_admin': is_admin})
