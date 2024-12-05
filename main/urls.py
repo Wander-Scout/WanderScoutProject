@@ -21,4 +21,5 @@ urlpatterns = [
     # this URL allows deleting a specific review, using the review ID
     path('apireview/', views.create_review_flutter, name="create_review_flutter"),
     path('json/', views.fetch_reviews, name='fetch_reviews'),
+    path('check_if_admin/', views.check_if_admin, name='check_if_admin'),
 ]
