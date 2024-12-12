@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lmo57ez)%!z+#6v75qwsgex2r@l077n!@gc(87^f2n^2k=%ctu
 DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "alano-davin-wanderscout.pbp.cs.ui.ac.id","10.0.2.2"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://pbp.cs.ui.ac.id/alano.davin/wanderscout", "https://pbp.cs.ui.ac.id/alano.davin/wanderscout"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://alano-davin-wanderscout.pbp.cs.ui.ac.id", "https://alano-davin-wanderscout.pbp.cs.ui.ac.id"]
 
 
 # Application definition
