@@ -145,6 +145,11 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
 
+CORS_ALLOWED_ORIGINS = [
+    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id/',
+    'localhost:8000',
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
