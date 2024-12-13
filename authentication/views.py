@@ -175,6 +175,13 @@ def flutter_login(request):
     
 @csrf_exempt
 def register_flutter(request):
+    if request.method == 'OPTIONS':
+        response = JsonResponse({"message": "CORS preflight successful"})
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+        return response
+
     if request.method == 'POST':
         data = json.loads(request.body)
         username = data['username']
