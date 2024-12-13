@@ -107,10 +107,6 @@ from rest_framework.response import Response
 from .models import TouristAttraction
 from .serializers import TouristAttractionSerializer
 
-from django.http import JsonResponse
-
-from django.http import JsonResponse
-from rest_framework.decorators import api_view
 
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
