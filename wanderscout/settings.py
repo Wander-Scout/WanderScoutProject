@@ -26,8 +26,11 @@ SECRET_KEY = 'django-insecure-lmo57ez)%!z+#6v75qwsgex2r@l077n!@gc(87^f2n^2k=%ctu
 DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "alano-davin-wanderscout.pbp.cs.ui.ac.id","10.0.2.2"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://alano-davin-wanderscout.pbp.cs.ui.ac.id", "https://alano-davin-wanderscout.pbp.cs.ui.ac.id"]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
 
 # Application definition
 
@@ -146,10 +149,10 @@ CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
 
 CORS_ALLOWED_ORIGINS = [
-    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id/',
-    'localhost:8000',
+    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
 ]
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
