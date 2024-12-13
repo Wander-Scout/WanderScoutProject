@@ -107,10 +107,33 @@ from rest_framework.response import Response
 from .models import TouristAttraction
 from .serializers import TouristAttractionSerializer
 
-@api_view(['GET'])
+from django.http import JsonResponse
+
+def cors_preflight_handler(request):
+    if request.method == "OPTIONS":
+        response = JsonResponse({"detail": "Preflight success"})
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        response["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+        return response
+    return None
+
+@api_view(['GET', 'OPTIONS'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def api_tourist_attractions(request):
+    # Handle preflight (OPTIONS) request
+    if request.method == 'OPTIONS':
+        response = JsonResponse({'detail': 'Preflight request successful'})
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Authorization, Content-Type'
+        return response
+
+    # Handle GET request
     attractions = TouristAttraction.objects.all()
     serializer = TouristAttractionSerializer(attractions, many=True)
-    return Response(serializer.data)
+
+    response = Response(serializer.data)
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
