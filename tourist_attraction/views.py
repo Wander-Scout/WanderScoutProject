@@ -122,18 +122,23 @@ def cors_preflight_handler(request):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def api_tourist_attractions(request):
+    origin = request.headers.get('Origin')  # Get the Origin header from the request
+
     # Handle preflight (OPTIONS) request
     if request.method == 'OPTIONS':
         response = JsonResponse({'detail': 'Preflight request successful'})
-        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Origin'] = origin  # Dynamically set to the request's Origin
         response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
         response['Access-Control-Allow-Headers'] = 'Authorization, Content-Type'
+        response['Access-Control-Allow-Credentials'] = 'true'
         return response
 
     # Handle GET request
     attractions = TouristAttraction.objects.all()
     serializer = TouristAttractionSerializer(attractions, many=True)
 
+    # Include CORS headers in the GET response
     response = Response(serializer.data)
-    response['Access-Control-Allow-Origin'] = '*'
+    response['Access-Control-Allow-Origin'] = origin  # Dynamically set to the request's Origin
+    response['Access-Control-Allow-Credentials'] = 'true'
     return response
