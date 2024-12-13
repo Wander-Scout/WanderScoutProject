@@ -109,12 +109,20 @@ from .serializers import TouristAttractionSerializer
 
 from django.http import JsonResponse
 
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
 
-@api_view(['GET'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
+@api_view(['OPTIONS', 'GET'])
 def api_tourist_attractions(request):
-    attractions = TouristAttraction.objects.all()
-    serializer = TouristAttractionSerializer(attractions, many=True)
-    return Response(serializer.data)
+    if request.method == 'OPTIONS':  # Handle preflight
+        response = JsonResponse({'detail': 'Preflight successful'})
+        response['Access-Control-Allow-Origin'] = 'http://localhost:8080'  # Match the origin
+        response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Authorization, Content-Type'
+        response['Access-Control-Allow-Credentials'] = 'true'
+        return response
+
+    # Handle GET request
+    return JsonResponse({'data': 'API response'})
+
 
