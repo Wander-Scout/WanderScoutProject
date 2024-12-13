@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "alano-davin-wanderscout.pbp.cs.ui.ac.id","10.0.2.2"]
 CSRF_TRUSTED_ORIGINS = [
     'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
+    'http://localhost:63191',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
@@ -152,6 +153,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http://localhost:\d+$",  # Allow any localhost port
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
