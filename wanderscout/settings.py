@@ -23,25 +23,6 @@ ALLOWED_HOSTS = [
     "alano-davin-wanderscout.pbp.cs.ui.ac.id",
     "10.0.2.2",
 ]
-
-# CORS settings
-
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOWED_ORIGINS = [
-    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
-    'http://localhost:8080',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-]
-
-CORS_ALLOWED_ORIGINS_REGEX = [
-    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
-    'http://localhost:8080',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-]
-
 CSRF_TRUSTED_ORIGINS = [
     'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
     'http://localhost:8080',
@@ -148,18 +129,9 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS',  # Ensure OPTIONS is allowed for preflight
-]
-
-# Add 'authorization' to allowed headers along with default headers
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'Authorization',
-    'Content-Type',
-    'X-CSRFToken',
-]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
