@@ -59,11 +59,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Make sure this is above CommonMiddleware
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # Make sure this is above CommonMiddleware
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -147,7 +147,6 @@ CORS_ALLOW_METHODS = [
     'PATCH',
     'DELETE',
     'OPTIONS',  # Ensure OPTIONS is allowed for preflight
-    'authorization',
 ]
 
 # Add 'authorization' to allowed headers along with default headers
@@ -155,9 +154,4 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'Authorization',
     'Content-Type',
     'X-CSRFToken',
-    'authorization',
-]
-
-CORS_EXPOSE_HEADERS = [
-    'authorization',
 ]
