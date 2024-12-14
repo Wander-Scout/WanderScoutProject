@@ -25,7 +25,17 @@ ALLOWED_HOSTS = [
 ]
 
 # CORS settings
+
+CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOWED_ORIGINS = [
+    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
+    'http://localhost:8080',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+
+CORS_ALLOWED_ORIGINS_REGEX = [
     'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
     'http://localhost:8080',
     'http://localhost:8000',
@@ -123,8 +133,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
