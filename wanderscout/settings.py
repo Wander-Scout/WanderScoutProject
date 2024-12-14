@@ -25,12 +25,12 @@ ALLOWED_HOSTS = [
 ]
 
 # CORS settings
-# CORS_ALLOWED_ORIGINS = [
-#     'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
-#     'http://localhost:8080',
-#     'http://localhost:8000',
-#     'http://127.0.0.1:8000',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
+    'http://localhost:8080',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
@@ -59,8 +59,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'wanderscout.middleware.CustomCorsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # Make sure this is above CommonMiddleware
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -124,8 +123,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
