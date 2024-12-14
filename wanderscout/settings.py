@@ -151,7 +151,6 @@ CORS_ALLOW_METHODS = [
 
 # Add 'authorization' to allowed headers along with default headers
 CORS_ALLOW_HEADERS = list(default_headers) + [
-    'Authorization',
     'Content-Type',
     'X-CSRFToken',
 ]
