@@ -147,6 +147,7 @@ CORS_ALLOW_METHODS = [
     'PATCH',
     'DELETE',
     'OPTIONS',  # Ensure OPTIONS is allowed for preflight
+    'authorization',
 ]
 
 # Add 'authorization' to allowed headers along with default headers
@@ -154,4 +155,9 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'Authorization',
     'Content-Type',
     'X-CSRFToken',
+    'authorization',
+]
+
+CORS_EXPOSE_HEADERS = [
+    'authorization',
 ]
