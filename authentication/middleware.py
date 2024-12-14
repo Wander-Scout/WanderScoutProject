@@ -6,6 +6,10 @@ class TokenAuthMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        # Skip authentication for preflight requests
+        if request.method == "OPTIONS":
+            return self.get_response(request)
+
         auth_header = request.headers.get("Authorization")
         if auth_header and auth_header.startswith("Token "):
             token_key = auth_header.split(" ")[1]
