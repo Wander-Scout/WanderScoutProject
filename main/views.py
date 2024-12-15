@@ -74,6 +74,21 @@ def submit_customer_review(request):
     else:
         return JsonResponse({'message': 'Form submission error', 'errors': form.errors.as_json()}, status=400)
 
+
+# delete Customer Review View
+@allowed_users(['tourist'])  # ensure only 'tourist' users can delete reviews
+@require_http_methods(["POST"])  # only allow POST requests
+def delete_customer_review(request, review_id):
+    review = get_object_or_404(CustomerReview, id=review_id, user=request.user)
+    # get the review by ID, ensuring it belongs to the current user
+
+    review.delete()  # delete the review
+    rating_filter = request.GET.get('rating', '')  # get the current rating filter
+    return HttpResponseRedirect(f"{reverse('display_customer_reviews')}?rating={rating_filter}")
+    # redirect back to the reviews page, retaining the current rating filter
+
+
+
 def show_review_json(request):
     data = CustomerReview.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
@@ -212,22 +227,3 @@ def check_if_admin(request):
     """Check if the logged-in user is an admin."""
     is_admin = request.user.is_staff  # Django's default flag for admin users
     return JsonResponse({'is_admin': is_admin})
-
-
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from .models import CustomerReview
-
-@api_view(['DELETE'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-def delete_customer_review(request, review_id):
-    # Retrieve the review and ensure it belongs to the currently authenticated user
-    review = get_object_or_404(CustomerReview, id=review_id, user=request.user)
-    
-    review.delete()
-    return Response({"message": "Review deleted successfully."}, status=204)
