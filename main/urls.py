@@ -22,4 +22,6 @@ urlpatterns = [
     path('apireview/', views.create_review_flutter, name="create_review_flutter"),
     path('json/', views.fetch_reviews, name='fetch_reviews'),
     path('check_if_admin/', views.check_if_admin, name='check_if_admin'),
+    path('get_current_user/', views.get_current_user, name='get_current_user'),
+    path('reviews/<int:review_id>/delete/', views.delete_review, name='delete_review'),
 ]
