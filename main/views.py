@@ -153,14 +153,32 @@ from django.core.paginator import Paginator
 
 from .models import CustomerReview, AdminReply
 
+from django.http import JsonResponse
+from django.core.paginator import Paginator
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from .models import CustomerReview, AdminReply
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def fetch_reviews(request):
     page_number = request.GET.get('page', 1)
     page_size = request.GET.get('page_size', 5)
+    rating_filter = request.GET.get('rating')
 
     reviews = CustomerReview.objects.all().order_by('-created_at')
+
+    # Apply rating filter if provided
+    if rating_filter is not None:
+        try:
+            rating_value = int(rating_filter)
+            reviews = reviews.filter(rating=rating_value)
+        except ValueError:
+            # If rating_filter is not an integer, ignore it or handle the error as needed
+            pass
+
     paginator = Paginator(reviews, page_size)
     page_obj = paginator.get_page(page_number)
 
@@ -192,6 +210,7 @@ def fetch_reviews(request):
     }
 
     return JsonResponse(response, safe=False)
+
 
 
 @api_view(['POST'])
