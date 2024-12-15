@@ -227,3 +227,47 @@ def check_if_admin(request):
     """Check if the logged-in user is an admin."""
     is_admin = request.user.is_staff  # Django's default flag for admin users
     return JsonResponse({'is_admin': is_admin})
+
+
+
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+from .models import CustomerReview
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def get_current_user(request):
+    """
+    Returns the username of the currently logged-in user.
+    Example Response:
+    {
+      "username": "john_doe"
+    }
+    """
+    return JsonResponse({"username": request.user.username}, status=200)
+
+@api_view(['DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def delete_review(request, review_id):
+    """
+    Delete a review by its ID. 
+    Only the author of the review or an admin can delete it.
+    Example successful response:
+    {
+      "message": "Review deleted successfully."
+    }
+    """
+    review = get_object_or_404(CustomerReview, id=review_id)
+
+    # Check if the user is admin or the author of the review
+    if request.user.is_staff or review.user == request.user:
+        review.delete()
+        return JsonResponse({"message": "Review deleted successfully."}, status=204)
+    else:
+        return JsonResponse({"error": "You do not have permission to delete this review."}, status=403)
