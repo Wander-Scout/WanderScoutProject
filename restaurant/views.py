@@ -143,11 +143,7 @@ from django.http import JsonResponse
 from .models import Restaurant
 
 @csrf_exempt
-@api_view(['POST'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-@admin_only
-def add_restaurant(request):
+def add_restaurant_flutter(request):
     data = request.data
     name = data.get('name')
     food_preference = data.get('food_preference')
@@ -177,25 +173,7 @@ def add_restaurant(request):
     )
     return JsonResponse({'status': True, 'message': 'Restaurant added successfully.'}, status=201)
 
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
-from .models import Restaurant
 
-@csrf_exempt
-@api_view(['DELETE'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-@admin_only
-def delete_restaurant(request, restaurant_id):
-    try:
-        restaurant = Restaurant.objects.get(id=restaurant_id)  # UUID or int
-        restaurant.delete()
-        return JsonResponse({'status': True, 'message': 'Restaurant deleted successfully.'}, status=200)
-    except ValueError:
-        return JsonResponse({'status': False, 'message': 'Invalid ID format.'}, status=400)
-    except Restaurant.DoesNotExist:
-        return JsonResponse({'status': False, 'message': 'Restaurant not found.'}, status=404)
 
 
 from django.http import JsonResponse
@@ -228,3 +206,18 @@ def edit_restaurant(request, restaurant_id):
             return JsonResponse({"error": str(e)}, status=400)
     return JsonResponse({"error": "Invalid request method."}, status=405)
 
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from authentication.decorators import admin_only
+
+@csrf_exempt
+def delete_restaurant_flutter(request, restaurant_id):
+    if request.method == "DELETE":
+        try:
+            restaurant = get_object_or_404(Restaurant, id=restaurant_id)
+            restaurant.delete()
+            return JsonResponse({"message": "Restaurant deleted successfully!"}, status=200)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request method."}, status=405)
