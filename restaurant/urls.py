@@ -10,6 +10,9 @@ urlpatterns = [
     path('api/add_restaurant/', views.add_restaurant, name='add_restaurant'),
     path('api/delete_restaurant/<uuid:restaurant_id>/', views.delete_restaurant, name='delete_restaurant'),
     path('api_restaurant/', views.api_restaurant, name='api_restaurant'),
+    path('add-restaurant/', views.add_restaurant, name='add_restaurant'),
+    path('delete-restaurant/<int:restaurant_id>/', views.delete_restaurant, name='delete_restaurant'),
+    path('edit/<uuid:restaurant_id>/', views.edit_restaurant, name='edit_restaurant'),
 
     
 ]

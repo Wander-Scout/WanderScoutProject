@@ -130,3 +130,101 @@ def api_restaurant(request):
     attractions = Restaurant.objects.all()
     serializer = RestaurantSerializer(attractions, many=True)
     return Response(serializer.data)
+
+
+# restaurant/views.py
+
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+from django.views.decorators.csrf import csrf_exempt
+from authentication.decorators import admin_only
+from django.http import JsonResponse
+from .models import Restaurant
+
+@csrf_exempt
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+@admin_only
+def add_restaurant(request):
+    data = request.data
+    name = data.get('name')
+    food_preference = data.get('food_preference')
+    average_price = data.get('average_price')
+    rating = data.get('rating')
+    atmosphere = data.get('atmosphere')
+    food_variety = data.get('food_variety')
+
+    # Validate data
+    if not all([name, food_preference, average_price, rating, atmosphere, food_variety]):
+        return JsonResponse({'status': False, 'message': 'All fields are required.'}, status=400)
+
+    try:
+        average_price = int(average_price)
+        rating = float(rating)
+    except ValueError:
+        return JsonResponse({'status': False, 'message': 'Invalid data type for price or rating.'}, status=400)
+
+    # Create the restaurant
+    restaurant = Restaurant.objects.create(
+        name=name,
+        food_preference=food_preference,
+        average_price=average_price,
+        rating=rating,
+        atmosphere=atmosphere,
+        food_variety=food_variety,
+    )
+    return JsonResponse({'status': True, 'message': 'Restaurant added successfully.'}, status=201)
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from .models import Restaurant
+
+@csrf_exempt
+@api_view(['DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+@admin_only
+def delete_restaurant(request, restaurant_id):
+    try:
+        restaurant = Restaurant.objects.get(id=restaurant_id)  # UUID or int
+        restaurant.delete()
+        return JsonResponse({'status': True, 'message': 'Restaurant deleted successfully.'}, status=200)
+    except ValueError:
+        return JsonResponse({'status': False, 'message': 'Invalid ID format.'}, status=400)
+    except Restaurant.DoesNotExist:
+        return JsonResponse({'status': False, 'message': 'Restaurant not found.'}, status=404)
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
+from .models import Restaurant
+from authentication.decorators import admin_only
+import json
+
+@csrf_exempt
+@admin_only
+def edit_restaurant(request, restaurant_id):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body.decode("utf-8"))
+            restaurant = get_object_or_404(Restaurant, id=restaurant_id)
+
+            # Update restaurant details
+            restaurant.name = data.get("name", restaurant.name)
+            restaurant.food_preference = data.get("food_preference", restaurant.food_preference)
+            restaurant.average_price = data.get("average_price", restaurant.average_price)
+            restaurant.rating = data.get("rating", restaurant.rating)
+            restaurant.atmosphere = data.get("atmosphere", restaurant.atmosphere)
+            restaurant.food_variety = data.get("food_variety", restaurant.food_variety)
+
+            restaurant.save()
+
+            return JsonResponse({"message": "Restaurant updated successfully!"}, status=200)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request method."}, status=405)
+
