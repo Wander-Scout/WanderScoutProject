@@ -89,7 +89,12 @@ WSGI_APPLICATION = 'wanderscout.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/tmp/db.sqlite3',
+        'NAME': 'postgres',
+        'USER': 'postgres.jmrsseloyeovdfcsellu',
+        'PASSWORD': 'kwaikwai2$',
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
+        'PORT': '6543',
+
     }
 }
 
