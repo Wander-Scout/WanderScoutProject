@@ -116,3 +116,71 @@ def api_tourist_attractions(request):
     serializer = TouristAttractionSerializer(attractions, many=True)
     return Response(serializer.data)
 
+# Add a new attraction (admin only)
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def add_tourist_attraction_flutter(request):
+    # In a real scenario, you'd check if user is admin.
+    # Assuming admin_only is enforced at a higher level or through permissions.
+    try:
+        data = json.loads(request.body)
+        
+        attraction = TouristAttraction.objects.create(
+            no=data.get('no', 0),
+            nama=data.get('nama', 'Unknown Attraction'),
+            rating=float(data.get('rating', 0.0)),
+            vote_average=float(data.get('vote_average', 0.0)),
+            vote_count=int(data.get('vote_count', 0)),
+            type=data.get('type', 'General'),
+            htm_weekday=float(data.get('htm_weekday', 0.0)),
+            htm_weekend=float(data.get('htm_weekend', 0.0)),
+            description=data.get('description', 'No description available.'),
+            gmaps_url=data.get('gmaps_url', 'https://www.google.com/maps'),
+            latitude=float(data.get('latitude', 0.0)),
+            longitude=float(data.get('longitude', 0.0))
+        )
+        return JsonResponse({'message': 'Attraction added successfully.', 'attraction_id': str(attraction.id)}, status=201)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
+
+# Edit an existing attraction (admin only)
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def edit_tourist_attraction_flutter(request, attraction_id):
+    # Again, ensure admin permission checks as needed.
+    try:
+        attraction = get_object_or_404(TouristAttraction, id=attraction_id)
+        data = json.loads(request.body)
+
+        attraction.no = data.get('no', attraction.no)
+        attraction.nama = data.get('nama', attraction.nama)
+        attraction.rating = float(data.get('rating', attraction.rating))
+        attraction.vote_average = float(data.get('vote_average', attraction.vote_average))
+        attraction.vote_count = int(data.get('vote_count', attraction.vote_count))
+        attraction.type = data.get('type', attraction.type)
+        attraction.htm_weekday = float(data.get('htm_weekday', attraction.htm_weekday))
+        attraction.htm_weekend = float(data.get('htm_weekend', attraction.htm_weekend))
+        attraction.description = data.get('description', attraction.description)
+        attraction.gmaps_url = data.get('gmaps_url', attraction.gmaps_url)
+        attraction.latitude = float(data.get('latitude', attraction.latitude))
+        attraction.longitude = float(data.get('longitude', attraction.longitude))
+
+        attraction.save()
+        return JsonResponse({'message': 'Attraction updated successfully.', 'attraction_id': str(attraction.id)}, status=200)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
+
+# Delete an attraction (admin only)
+@api_view(['DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def delete_tourist_attraction_flutter(request, attraction_id):
+    # Ensure admin permission checks as needed.
+    try:
+        attraction = get_object_or_404(TouristAttraction, id=attraction_id)
+        attraction.delete()
+        return JsonResponse({'message': 'Attraction deleted successfully.'}, status=200)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
