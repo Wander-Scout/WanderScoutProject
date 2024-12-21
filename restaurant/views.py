@@ -145,6 +145,7 @@ from .models import Restaurant
 import json
 
 @csrf_exempt
+@admin_only
 def add_restaurant_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)  # Parse the JSON from request body
@@ -219,6 +220,7 @@ from django.views.decorators.csrf import csrf_exempt
 from authentication.decorators import admin_only
 
 @csrf_exempt
+@admin_only
 def delete_restaurant_flutter(request, restaurant_id):
     if request.method == "DELETE":
         try:
