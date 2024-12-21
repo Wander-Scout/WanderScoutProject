@@ -22,6 +22,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "alano-davin-wanderscout.pbp.cs.ui.ac.id",
     "10.0.2.2",
+    ".vercel.app",
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://alano-davin-wanderscout.pbp.cs.ui.ac.id',
