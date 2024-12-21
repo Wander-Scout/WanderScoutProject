@@ -142,36 +142,43 @@ from authentication.decorators import admin_only
 from django.http import JsonResponse
 from .models import Restaurant
 
+import json
+
 @csrf_exempt
 def add_restaurant_flutter(request):
-    data = request.data
-    name = data.get('name')
-    food_preference = data.get('food_preference')
-    average_price = data.get('average_price')
-    rating = data.get('rating')
-    atmosphere = data.get('atmosphere')
-    food_variety = data.get('food_variety')
+    if request.method == 'POST':
+        data = json.loads(request.body)  # Parse the JSON from request body
+        name = data.get('name')
+        food_preference = data.get('food_preference')
+        average_price = data.get('average_price')
+        rating = data.get('rating')
+        atmosphere = data.get('atmosphere')
+        food_variety = data.get('food_variety')
+        
+        # Validate the data
+        if not all([name, food_preference, average_price, rating, atmosphere, food_variety]):
+            return JsonResponse({'status': False, 'message': 'All fields are required.'}, status=400)
+        
+        # Convert strings to correct types
+        try:
+            average_price = int(average_price)
+            rating = float(rating)
+        except ValueError:
+            return JsonResponse({'status': False, 'message': 'Invalid data type for price or rating.'}, status=400)
+        
+        # Create the restaurant
+        restaurant = Restaurant.objects.create(
+            name=name,
+            food_preference=food_preference,
+            average_price=average_price,
+            rating=rating,
+            atmosphere=atmosphere,
+            food_variety=food_variety,
+        )
+        return JsonResponse({'status': True, 'message': 'Restaurant added successfully.'}, status=201)
 
-    # Validate data
-    if not all([name, food_preference, average_price, rating, atmosphere, food_variety]):
-        return JsonResponse({'status': False, 'message': 'All fields are required.'}, status=400)
+    return JsonResponse({'status': False, 'message': 'Invalid request method.'}, status=405)
 
-    try:
-        average_price = int(average_price)
-        rating = float(rating)
-    except ValueError:
-        return JsonResponse({'status': False, 'message': 'Invalid data type for price or rating.'}, status=400)
-
-    # Create the restaurant
-    restaurant = Restaurant.objects.create(
-        name=name,
-        food_preference=food_preference,
-        average_price=average_price,
-        rating=rating,
-        atmosphere=atmosphere,
-        food_variety=food_variety,
-    )
-    return JsonResponse({'status': True, 'message': 'Restaurant added successfully.'}, status=201)
 
 
 
