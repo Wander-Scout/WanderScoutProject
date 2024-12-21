@@ -121,8 +121,6 @@ def api_tourist_attractions(request):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def add_tourist_attraction_flutter(request):
-    # In a real scenario, you'd check if user is admin.
-    # Assuming admin_only is enforced at a higher level or through permissions.
     try:
         data = json.loads(request.body)
         
@@ -149,7 +147,6 @@ def add_tourist_attraction_flutter(request):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def edit_tourist_attraction_flutter(request, attraction_id):
-    # Again, ensure admin permission checks as needed.
     try:
         attraction = get_object_or_404(TouristAttraction, id=attraction_id)
         data = json.loads(request.body)
@@ -177,7 +174,6 @@ def edit_tourist_attraction_flutter(request, attraction_id):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def delete_tourist_attraction_flutter(request, attraction_id):
-    # Ensure admin permission checks as needed.
     try:
         attraction = get_object_or_404(TouristAttraction, id=attraction_id)
         attraction.delete()
