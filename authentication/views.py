@@ -265,3 +265,100 @@ def admin_only_view(request):
             "status": False,
             "message": "Invalid request method.",
         }, status=400)
+ 
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.utils.html import strip_tags
+from .models import Profile
+from django.contrib.auth.models import User
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth.models import Group
+from django.http import JsonResponse
+from django.utils.html import strip_tags
+from django.views.decorators.csrf import csrf_exempt
+from .models import Profile
+from .forms import ProfileForm
+from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
+import json
+
+# Existing views (login, register, etc.) remain as is.
+# Just ensure no @login_required or @admin_only on the token endpoints below.
+
+#---------------------------------------------------------
+# Token-based authentication endpoints
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def flutter_get_profile(request):
+    # Check for token in Authorization header
+    token_str = request.headers.get('Authorization')
+    if not token_str:
+        return JsonResponse({"success": False, "error": "Authentication token is missing"}, status=401)
+
+    try:
+        token = Token.objects.get(key=token_str)
+        user = token.user
+        profile, _ = Profile.objects.get_or_create(user=user)
+        profile_data = {
+            "username": user.username,
+            "address": profile.address or "",
+            "phone_number": profile.phone_number or "",
+            "age": profile.age if profile.age is not None else "",
+        }
+        return JsonResponse({"success": True, "profile": profile_data}, status=200)
+
+    except Token.DoesNotExist:
+        return JsonResponse({"success": False, "error": "Invalid or expired token"}, status=401)
+    except Exception as e:
+        return JsonResponse({"success": False, "error": str(e)}, status=500)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def flutter_update_profile(request):
+    # Check for token in Authorization header
+    token_str = request.headers.get('Authorization')
+    if not token_str:
+        return JsonResponse({"success": False, "error": "Authentication token is missing"}, status=401)
+
+    try:
+        token = Token.objects.get(key=token_str)
+        user = token.user
+
+        profile, _ = Profile.objects.get_or_create(user=user)
+
+        # Read POST data
+        address = strip_tags(request.POST.get("address", "")).strip()
+        phone_number = strip_tags(request.POST.get("phone_number", "")).strip()
+        age_str = strip_tags(request.POST.get("age", "")).strip()
+
+        # Validate and update fields
+        if address:
+            profile.address = address
+        if phone_number:
+            profile.phone_number = phone_number
+        if age_str:
+            if age_str.isdigit():
+                profile.age = int(age_str)
+            else:
+                return JsonResponse({"success": False, "error": "Invalid age"}, status=400)
+
+        profile.save()
+        return JsonResponse({"success": True, "message": "Profile updated successfully!"}, status=200)
+
+    except Token.DoesNotExist:
+        return JsonResponse({"success": False, "error": "Invalid or expired token"}, status=401)
+    except Exception as e:
+        return JsonResponse({"success": False, "error": str(e)}, status=500)
+
+# Leave other views as they are.
+#---------------------------------------------------------
+
