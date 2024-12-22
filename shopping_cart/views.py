@@ -191,8 +191,13 @@ def search_booking_view(request):
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from django.http import JsonResponse
-from .models import Cart, Booking
+from django.http import JsonResponse, Http404
+from .models import Cart, CartItem, Booking, BookingItem
+from tourist_attraction.models import TouristAttraction
+from restaurant.models import Restaurant
+from django.shortcuts import get_object_or_404
+from datetime import datetime
+import uuid
 
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
@@ -235,11 +240,9 @@ def api_add_to_cart(request, item_id):
 @permission_classes([IsAuthenticated])
 def api_remove_from_cart(request, item_id):
     try:
-        # Convert item_id to string if it's a UUID object
-        item_uuid = uuid.UUID(str(item_id))  # Ensure it’s a valid UUID
-
+        item_uuid = uuid.UUID(str(item_id))  # Ensure valid UUID
         cart = Cart.objects.get(user=request.user)
-        cart_item = CartItem.objects.get(id=item_uuid, cart=cart)  # UUID-compatible lookup
+        cart_item = CartItem.objects.get(id=item_uuid, cart=cart)
         cart_item.delete()
 
         return JsonResponse({'success': True, 'message': 'Item removed from cart.'})
@@ -252,7 +255,6 @@ def api_remove_from_cart(request, item_id):
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
-    
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
@@ -281,15 +283,17 @@ def api_checkout(request):
                 quantity=item.quantity
             )
 
+        # Clear the cart
         cart.items.all().delete()
 
         receipt = {
             'booking_id': str(new_booking_id),
-            'total_price': total_price,
+            # Ensure total_price is float
+            'total_price': float(total_price),
             'items': [
                 {
                     'name': item.attraction.nama if item.attraction else item.restaurant.name,
-                    'price': item.price,
+                    'price': float(item.price),
                     'quantity': item.quantity
                 }
                 for item in items
@@ -309,18 +313,18 @@ def api_view_cart_items(request):
     try:
         cart = Cart.objects.get(user=request.user)
         items = cart.items.all()
-        cart_items = [
-            {
-                'id': item.id,
+        cart_items = []
+        for item in items:
+            cart_items.append({
+                'id': str(item.id),
                 'name': item.attraction.nama if item.attraction else item.restaurant.name,
-                'price': float(item.price),
+                'price': float(item.price),  # Make sure it's float
                 'quantity': item.quantity,
                 'total_item_price': float(item.price * item.quantity),
                 'is_weekend': bool(item.is_weekend),
                 'item_type': 'attraction' if item.attraction else 'restaurant'
-            }
-            for item in items
-        ]
+            })
+
         total_price = float(sum(item.price * item.quantity for item in items))
 
         return JsonResponse({
@@ -337,13 +341,11 @@ def api_view_cart_items(request):
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
-
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def api_search_booking(request):
     booking_id = request.GET.get('booking_id')
-
     if not booking_id:
         return JsonResponse({'error': 'Booking ID is required.'}, status=400)
 
